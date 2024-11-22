@@ -34,9 +34,11 @@ namespace DH01EventManager
         public List <EquipmentObject>? getEventEquipment() { return this.eventEquipment; } //GetEventEquipment
 
         // Event Setters
-        public void setEventID(String id) {  this.eventID = id; }
-        public void setEventName(String name) {  this.eventname = name; }
-        public void setEventDate(DateTime date) { this.eventDate = date; }
-        public void setEventLocation(LocationObject location) { this.eventlocation = location; }
+        public void setEventID(String id) {  this.eventID = id; } // SetEventID
+        public void setEventName(String name) {  this.eventname = name; } // SetEventName
+        public void setEventDate(DateTime date) { this.eventDate = date; } // SetEventDate
+        public void setEventLocation(LocationObject location) { this.eventlocation = location; } // SetEventLocation
+        public void setEventStaff(List<StaffObject> staff) { this.eventStaff = staff; } // SetEventStaff
+        public void addEventEquipment(List<EquipmentObject> equipment) { this.eventEquipment = equipment; } // SetEventEquipment
     }// EventObject
 }
