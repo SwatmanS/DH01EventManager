@@ -17,10 +17,12 @@ namespace DH01EventManager
         private DateTime eventDate;
         public  EventObject(String id, String name, LocationObject location,DateTime date,List<StaffObject>? staff, List<EquipmentObject>? eventEquipment) 
         {
+            // Creates a new EventObject
             this.eventID = id;
             this.eventname = name;
             this.eventDate = date;  
             this.eventlocation = location;
+            // Below can be Null
             this.eventStaff = staff;
             this.eventEquipment = eventEquipment;
         }// EventObject - Constructor
