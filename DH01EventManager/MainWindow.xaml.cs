@@ -19,12 +19,12 @@ namespace DH01EventManager
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Window x = new SamsTestPage();
-            x.Show();
+            bool d = true;
+            if (d)
+            {
+                Window debugWindow = new DebugWindow();
+                debugWindow.Show();
+            }
         }
     }
 }

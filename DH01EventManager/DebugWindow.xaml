@@ -1,0 +1,15 @@
+﻿<Window x:Class="DH01EventManager.DebugWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DH01EventManager"
+        mc:Ignorable="d"
+        Title="DebugWindow" Height="512" Width="512">
+    <Grid>
+        <Button Content="Sam Test" HorizontalAlignment="Left" Margin="128,128,0,0" VerticalAlignment="Top" Click="GoToSamTest"/>
+        <Button Content="Jasmine Test" HorizontalAlignment="Left" Margin="128,384,0,0" VerticalAlignment="Top" Click="GoToJasmineTest"/>
+        <Button Content="Owen Test" HorizontalAlignment="Left" Margin="384,128,0,0" VerticalAlignment="Top" Click="GoToOwenTest"/>
+        <Button Content="Gina Test" Margin="384,384,0,0" VerticalAlignment="Top" Click="GoToGinaTest" HorizontalAlignment="Left" Width="52"/>
+    </Grid>
+</Window>
