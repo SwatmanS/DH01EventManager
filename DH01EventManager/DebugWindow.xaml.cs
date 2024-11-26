@@ -39,7 +39,8 @@ namespace DH01EventManager
         }
         private void GoToGinaTest(object sender, RoutedEventArgs e)
         {
-
+            Window x = new GinasTestPage();
+            x.Show();
         }
     }
 }
