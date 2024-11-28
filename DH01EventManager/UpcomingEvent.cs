@@ -16,6 +16,8 @@ namespace DH01EventManager
         public UpcomingEvent(string id, string name, LocationObject location, DateTime date, List<StaffObject>? staff, List<EquipmentObject>? eventEquipment,Int32 estimate) : base(id, name, location, date, staff, eventEquipment)
         {
             this.eventEstimatedTurnout = estimate;
+            //do we not need to calculate the estimated turnout using flyers handed out, info from 
+            //community leaders, and previous event data?
         } // Upcoming Event Constructor 
         public UpcomingEvent(EventObject e,Int32 estimate) : base(e.getEventID(), e.getEventName(), e.getEventLocation(), e.getEventDate(), e.getEventStaff(), e.getEventEquipment())
         {
