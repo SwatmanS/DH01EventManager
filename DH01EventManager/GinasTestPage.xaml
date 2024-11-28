@@ -7,20 +7,70 @@
         mc:Ignorable="d"
         Title="GinasTestPage" WindowState="Maximized">
 
-    <Grid Background="#FF30AAB1">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 
-        <!--this creates the Grid layout-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="240"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="150"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="60"/>
-        </Grid.RowDefinitions>
-    </Grid>
+        <Grid Background="#FF30AAB1">
+
+            <!--this creates the Grid layout-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" MinWidth="50"/>
+                <ColumnDefinition Width="auto" MinWidth="150"/>
+                <ColumnDefinition Width="*" MinWidth="400"/>
+                <ColumnDefinition Width="auto" MinWidth="50"/>
+                <ColumnDefinition Width="auto" MinWidth="50"/>
+                <ColumnDefinition Width="auto" MinWidth="50"/>
+                <ColumnDefinition Width="auto" MinWidth="50"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" MinHeight="50"/>
+                <RowDefinition Height="1200" MinHeight="0"/>
+                <RowDefinition Height="auto" MinHeight="50"/>
+            </Grid.RowDefinitions>
+
+            <!--navbar-->
+            <Rectangle Grid.Row="0" Grid.ColumnSpan="10" Fill="#FFFFFF"/>
+
+            <!--footer-->
+            <Rectangle Grid.Row="3" Grid.ColumnSpan="10" Fill="#FFFFFF"/>
+
+            <!--creates a back button with image-->
+            <Button x:Name="GoBack" Grid.Column="0" Grid.Row="0" Width="auto" Height="auto"
+                Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="GoBack_Click">
+                <Image Source="images/Back.png" Width="75" Height="75"/>
+            </Button>
+
+            <!--creates a home button with image-->
+            <Button x:Name="GoHome" Grid.Column="1" Grid.Row="0" Width="auto" Height="auto"
+                Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="GoHome_Click">
+                <Image Source="/images/LogoLong.png" Width="225" Height="80" />
+            </Button>
+
+            <!--creates an events button with image-->
+            <Button x:Name="GoToEvents" Grid.Column="3" Grid.Row="0" Width="auto" Height="auto"
+                Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="GoToEvents_Click">
+                <Image Source="images/Events.png" Width="80" Height="80"/>
+            </Button>
+
+            <!--creates an add button with image-->
+            <Button x:Name="GoToAddEvent" Grid.Column="4" Grid.Row="0" Width="auto" Height="auto"
+                Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="GoToAddEvent_Click">
+                <Image Source="images/Add.png" Width="80" Height="80"/>
+            </Button>
+
+            <!--creates a settings button with image-->
+            <Button x:Name="GoToSettings" Grid.Column="5" Grid.Row="0" Width="auto" Height="auto"
+                Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="GoToSettings_Click">
+                <Image Source="images/Settings.png" Width="80" Height="80"/>
+            </Button>
+
+            <!--creates a login button with image-->
+            <Button x:Name="GoToLogin" Grid.Column="6" Grid.Row="0" Width="auto" Height="auto"
+                Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="GoToLogin_Click">
+                <Image Source="images/Login.png" Width="80" Height="80"/>
+            </Button>
+
+        </Grid>
+
+    </ScrollViewer>
+
 </Window>

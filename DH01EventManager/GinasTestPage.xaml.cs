@@ -23,5 +23,40 @@ namespace DH01EventManager
         {
             InitializeComponent();
         }
+
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            //close the current window
+            this.Close();
+        }
+
+        private void GoHome_Click(object sender, RoutedEventArgs e)
+        {
+            //hides current window and goes to the home page 
+            MainWindow l_page = new();
+            this.Hide();
+            l_page.ShowDialog();
+            this.Show();
+        }
+        private void GoToEvents_Click(object sender, RoutedEventArgs e)
+        {
+            //close the current window
+            this.Close();
+        }
+        private void GoToAddEvent_Click(object sender, RoutedEventArgs e)
+        {
+            //close the current window
+            this.Close();
+        }
+        private void GoToSettings_Click(object sender, RoutedEventArgs e)
+        {
+            //close the current window
+            this.Close();
+        }
+        private void GoToLogin_Click(object sender, RoutedEventArgs e)
+        {
+            //close the current window
+            this.Close();
+        }
     }
 }

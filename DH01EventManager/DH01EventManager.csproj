@@ -9,11 +9,38 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\Add.png" />
+    <None Remove="images\Back.png" />
+    <None Remove="images\Edit.png" />
+    <None Remove="images\Events.png" />
+    <None Remove="images\Filter.png" />
+    <None Remove="images\Login.png" />
+    <None Remove="images\LogoLong.png" />
+    <None Remove="images\LogoSquare.png" />
+    <None Remove="images\Logout.png" />
+    <None Remove="images\Search.png" />
+    <None Remove="images\Settings.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\Add.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="images\" />
+    <Resource Include="images\Back.png" />
+    <Resource Include="images\Edit.png" />
+    <Resource Include="images\Events.png" />
+    <Resource Include="images\Filter.png" />
+    <Resource Include="images\Login.png" />
+    <Resource Include="images\LogoLong.png" />
+    <Resource Include="images\LogoSquare.png" />
+    <Resource Include="images\Logout.png" />
+    <Resource Include="images\Search.png" />
+    <Resource Include="images\Settings.png" />
   </ItemGroup>
 
 </Project>
