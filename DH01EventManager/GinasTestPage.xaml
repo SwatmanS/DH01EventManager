@@ -6,7 +6,21 @@
         xmlns:local="clr-namespace:DH01EventManager"
         mc:Ignorable="d"
         Title="GinasTestPage" WindowState="Maximized">
-    <Grid>
-        
+
+    <Grid Background="#FF30AAB1">
+
+        <!--this creates the Grid layout-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
     </Grid>
 </Window>
