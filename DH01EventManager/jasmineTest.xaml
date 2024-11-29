@@ -6,7 +6,28 @@
         xmlns:local="clr-namespace:DH01EventManager"
         mc:Ignorable="d"
         Title="jasmineTest" Height="450" Width="800">
-    <Grid>
-        
+
+    <Grid Height="434" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="223*"/>
+            <ColumnDefinition Width="325*"/>
+            <ColumnDefinition Width="252*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="128"/>
+            <RowDefinition Height="179"/>
+            <RowDefinition Height="auto" MinHeight="47"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="alucardButton"
+Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="alucard" Grid.Row="1" Grid.Column="1" Width="185" Height="174">
+            <Image Source="https://i.pinimg.com/736x/38/eb/03/38eb03a5b0d88e7da751af664ea16df7.jpg" Width="177" Height="153" Grid.Row="1" Grid.Column="1"/>
+        </Button>
+        <TextBlock HorizontalAlignment="Center" Height="28" TextWrapping="Wrap" Text="click Alucard to test &lt;3" VerticalAlignment="Top" Width="124" Grid.Row="2" Grid.Column="1" />
     </Grid>
+
+
+
+
+
+
 </Window>

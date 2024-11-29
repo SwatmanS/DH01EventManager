@@ -23,5 +23,12 @@ namespace DH01EventManager
         {
             InitializeComponent();
         }
+
+        private void alucard(object sender, RoutedEventArgs e)
+        {
+            //close the current window
+
+            test.EquipmentObjectTest();
+        }
     }
 }
