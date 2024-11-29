@@ -8,7 +8,7 @@
         private string equipmentType;
         private int equipmentQuantity;
 
-        public EquipmentObject(string ID, string name, string type, int quantity)
+        public EquipmentObject(int ID, string name, string type, int quantity)
         {
             this.equipmentID = ID;
             this.equipmentName = name; 
@@ -27,7 +27,7 @@
 
 
         //setters
-        public void setEquipmentID(String id) { this.equipmentID = id; }
+        public void setEquipmentID(int id) { this.equipmentID = id; }
         public void setEquipmentName(String name) { this.equipmentName = name; }
         public void setEquipmentType(String type) { this.equipmentType = type; }
         public void setEquipmentQuantity(int quantity) { this.equipmentQuantity = quantity; }
