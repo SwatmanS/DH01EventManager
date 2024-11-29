@@ -28,7 +28,8 @@ namespace DH01EventManager
         {
             //close the current window
 
-            test.EquipmentObjectTest();
+            //test.EquipmentObjectTest();
+            test.LocationObjectTest();
         }
     }
 }

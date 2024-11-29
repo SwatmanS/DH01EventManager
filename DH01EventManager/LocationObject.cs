@@ -21,7 +21,7 @@
         public int GetLocationID() { return this.locationID; }
         public string GetLocationName() {return this.locationName; }  
 
-        public string GetlocationType() { return this.locationType;}
+        public string GetLocationType() { return this.locationType;}
 
         public int GetLocationCapacity() { return this.locationCapacity;}
 

@@ -3,7 +3,7 @@
     internal class EquipmentObject
     {
         //attributes - feel free to change
-        private string equipmentID;
+        private int equipmentID;
         private string equipmentName;
         private string equipmentType;
         private int equipmentQuantity;
@@ -19,7 +19,7 @@
         
         //gettters
 
-        public string getEquipmentID() { return this.equipmentID; }
+        public int getEquipmentID() { return this.equipmentID; }
         public string getEquipmentName() { return this.equipmentName; }
 
         public string getEquipmentType() { return this.equipmentType; }
