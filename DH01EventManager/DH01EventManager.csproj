@@ -14,6 +14,7 @@
     <None Remove="images\Edit.png" />
     <None Remove="images\Events.png" />
     <None Remove="images\Filter.png" />
+    <None Remove="images\HomePageImage.jpg" />
     <None Remove="images\Login.png" />
     <None Remove="images\LogoLong.png" />
     <None Remove="images\LogoSquare.png" />
@@ -39,6 +40,7 @@
     <Resource Include="images\LogoLong.png" />
     <Resource Include="images\LogoSquare.png" />
     <Resource Include="images\Logout.png" />
+    <Resource Include="images\HomePageImage.jpg" />
     <Resource Include="images\Search.png" />
     <Resource Include="images\Settings.png" />
   </ItemGroup>

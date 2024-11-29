@@ -15,18 +15,14 @@ using System.Windows.Shapes;
 namespace DH01EventManager
 {
     /// <summary>
-    /// Interaction logic for GinasTestPage.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class GinasTestPage : Window
+    public partial class Login : Window
     {
-        public GinasTestPage()
+        public Login()
         {
             InitializeComponent();
-
-            Boolean loggedIn = false;
-            this.DataContext = loggedIn;
         }
-
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
             //close the current window
