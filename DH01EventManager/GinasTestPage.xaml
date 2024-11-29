@@ -15,7 +15,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" MinWidth="50"/>
             <ColumnDefinition Width="auto" MinWidth="150"/>
-            <ColumnDefinition Width="*" MinWidth="400"/>
+            <ColumnDefinition Width="*" MinWidth="100"/>
             <ColumnDefinition Width="auto" MinWidth="50"/>
             <ColumnDefinition Width="auto" MinWidth="50"/>
             <ColumnDefinition Width="auto" MinWidth="50"/>
@@ -74,23 +74,58 @@
                 <!--this creates the Grid layout-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" MinWidth="75"/>
-                    <ColumnDefinition Width="*" MinWidth="200"/>
+                    <ColumnDefinition Width="*" MinWidth="100"/>
+                    <ColumnDefinition Width="*" MinWidth="100"/>
                     <ColumnDefinition Width="auto" MinWidth="75"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" MinHeight="75"/>
-                    <RowDefinition Height="auto" MinHeight="800"/>
+                    <RowDefinition Height="auto" MinHeight="600"/>
+                    <RowDefinition Height="auto" MinHeight="200"/>
                     <RowDefinition Height="auto" MinHeight="400"/>
                     <RowDefinition Height="auto" MinHeight="150"/>
                 </Grid.RowDefinitions>
 
                 <!--middle block-->
-                <Border BorderThickness="1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" 
-                    CornerRadius="100" BorderBrush="white" Background="#FFFFFF">
+                <Border BorderThickness="1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" 
+                    CornerRadius="100" BorderBrush="white" Background="#FFFFFF" Height="auto" Width="auto">
                 </Border>
 
+                <!--text on the middle block-->
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto" Width="auto"
+                    TextWrapping="Wrap" MinWidth="100" MaxWidth="600" FontSize="20" FontFamily="Verdana"
+                    Foreground="#209ca4" Background="{x:Null}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                    Text="Welcome to the rose foundation events planner where we do our abccccccccc come on sing aqlong with me lets gooooo abcd efg hijk elemeno p qrs tuv wwwwwwwwwww x y anddddddddddddd z now u know ur abcs next time come and play with me"/>
+
+                <!--image on the middle block-->
+                <Image Source="/images/HomePageImage.jpg" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" 
+                        Width="800" Height="500"/>
+
+                <!--creates an events button with image-->
+                <Button x:Name="GoToEventsBig" Grid.Column="1" Grid.Row="3" Width="300" Height="120"
+                    Background="#FFFFFF" Click="GoToEvents_Click"  Foreground="#209ca4"
+                    Content="View Events" FontSize="40" FontFamily="Verdana">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="50"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <!--creates an add button with image-->
+                <Button x:Name="GoToAddEventBig" Grid.Column="2" Grid.Row="3" Width="300" Height="120"
+                    Background="#FFFFFF" Click="GoToAddEvent_Click" Foreground="#209ca4"
+                    Content="Add Event" FontSize="40" FontFamily="Verdana">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="50"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+
                 <!--footer-->
-                <Rectangle Grid.Row="3" Grid.ColumnSpan="10" Fill="#FF1A7277"/>
+                <Rectangle Grid.Row="4" Grid.ColumnSpan="10" Fill="#FF1A7277"/>
 
 
             </Grid>
