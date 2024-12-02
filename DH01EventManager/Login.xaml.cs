@@ -20,7 +20,7 @@ namespace DH01EventManager
     /// </summary>
     public partial class Login : Window
     {
-        private bool isLoggedIn = false;
+        public static bool isLoggedIn = false;
 
         public Login()
         {

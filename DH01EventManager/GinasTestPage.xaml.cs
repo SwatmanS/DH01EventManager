@@ -19,12 +19,21 @@ namespace DH01EventManager
     /// </summary>
     public partial class GinasTestPage : Window
     {
+        public static bool isLoggedIn = false;
         public GinasTestPage()
         {
             InitializeComponent();
 
-            Boolean loggedIn = false;
-            this.DataContext = loggedIn;
+            UpdateLoginImage();
+        }
+
+        private void UpdateLoginImage()
+        {
+            string imagePath = isLoggedIn
+        ? "pack://application:,,,/images/Logout.png"
+        : "pack://application:,,,/images/Login.png";
+
+            LoginLogoutImage.Source = new BitmapImage(new Uri(imagePath));
         }
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
