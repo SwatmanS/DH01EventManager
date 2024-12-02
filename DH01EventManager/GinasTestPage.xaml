@@ -19,7 +19,6 @@
             <ColumnDefinition Width="auto" MinWidth="50"/>
             <ColumnDefinition Width="auto" MinWidth="50"/>
             <ColumnDefinition Width="auto" MinWidth="50"/>
-            <ColumnDefinition Width="auto" MinWidth="50"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" MinHeight="50"/>
@@ -53,14 +52,8 @@
             <Image Source="images/Add.png" Width="80" Height="80"/>
         </Button>
 
-        <!--creates a settings button with image-->
-        <Button x:Name="GoToSettings" Grid.Column="5" Grid.Row="0" Width="auto" Height="auto"
-                    Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="GoToSettings_Click">
-            <Image Source="images/Settings.png" Width="80" Height="80"/>
-        </Button>
-
-        <!--creates a login button with image-->
-        <Button x:Name="GoToLogin" Grid.Column="6" Grid.Row="0" Width="auto" Height="auto"
+        <!--creates a login/logout button with image-->
+        <Button x:Name="GoToLogin" Grid.Column="5" Grid.Row="0" Width="auto" Height="auto"
                     Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="GoToLogin_Click">
             <Image x:Name="LoginLogoutImage" Width="80" Height="80"/>
         </Button>

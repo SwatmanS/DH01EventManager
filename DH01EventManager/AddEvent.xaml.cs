@@ -15,12 +15,13 @@ using System.Windows.Shapes;
 namespace DH01EventManager
 {
     /// <summary>
-    /// Interaction logic for GinasTestPage.xaml
+    /// Interaction logic for AddEvent.xaml
     /// </summary>
-    public partial class GinasTestPage : Window
+    public partial class AddEvent : Window
     {
-        public static bool isLoggedIn = false;
-        public GinasTestPage()
+        public static bool isLoggedIn = true;
+
+        public AddEvent()
         {
             InitializeComponent();
 
@@ -55,14 +56,6 @@ namespace DH01EventManager
             //close the current window
             this.Close();
         }
-        private void GoToAddEvent_Click(object sender, RoutedEventArgs e)
-        {
-            //hides current window and goes to the add event page 
-            AddEvent l_page = new();
-            this.Hide();
-            l_page.ShowDialog();
-            this.Show();
-        }
         private void GoToLogin_Click(object sender, RoutedEventArgs e)
         {
             //hides current window and goes to the login page 
@@ -70,6 +63,10 @@ namespace DH01EventManager
             this.Hide();
             l_page.ShowDialog();
             this.Show();
+        }
+        private void SubmitLogin_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("event added");
         }
     }
 }
