@@ -60,5 +60,11 @@ namespace DH01EventManager
             l_page.ShowDialog();
             this.Show();
         }
+        private void SubmitLogin_Click(object sender, RoutedEventArgs e)
+        {
+            //close the current window
+            MessageBox.Show("logged in");
+            this.Close();
+        }
     }
 }
