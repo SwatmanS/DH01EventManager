@@ -101,10 +101,28 @@
                 </Border>
 
                 <!--login header-->
+                <TextBox Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="Login"
+                         FontSize="40" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#209ca4"/>
+
                 <!--username text-->
+                <TextBox Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="Username:"
+                         FontSize="30" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#209ca4"/>
+
                 <!--username input-->
+
+
                 <!--password text-->
+                <TextBox Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="Password:"
+                         FontSize="30" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                         BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#209ca4"/>
+
                 <!--password input with hidden input-->
+                <StackPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
+                    <PasswordBox x:Name="passwordBox" Width="200" MaxLength="16" PasswordChanged="passwordBox_PasswordChanged" Password=""/>
+                    <TextBlock x:Name="statusText" HorizontalAlignment="Center"/>
+                </StackPanel>
 
                 <!--creates a submit button-->
                 <Button x:Name="SubmitLogin" Grid.Column="1" Grid.Row="6" Width="200" Height="60"

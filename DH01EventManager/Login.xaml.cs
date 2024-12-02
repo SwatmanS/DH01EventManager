@@ -62,9 +62,31 @@ namespace DH01EventManager
         }
         private void SubmitLogin_Click(object sender, RoutedEventArgs e)
         {
-            //close the current window
-            MessageBox.Show("logged in");
-            this.Close();
+            if (passwordBox.Password == "abc") //get this from the database
+            {
+                MessageBox.Show("logged in");
+                //log the user in 
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("username or password incorrect");
+            }
+        }
+        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (passwordBox.Password == "Password")
+            {
+                statusText.Text = "'Password' is not allowed as a password.";
+            }
+            else if (passwordBox.Password ==  "")
+            {
+                statusText.Text = "Please input your Password!";
+            }
+            else
+            {
+                statusText.Text = string.Empty;
+            }
         }
     }
 }
