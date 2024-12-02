@@ -42,5 +42,10 @@ namespace DH01EventManager
         public void setEventLocation(LocationObject location) { this.eventlocation = location; } // SetEventLocation
         public void setEventStaff(List<StaffObject> staff) { this.eventStaff = staff; } // SetEventStaff
         public void addEventEquipment(List<EquipmentObject> equipment) { this.eventEquipment = equipment; } // SetEventEquipment
+
+        public void addToDatabase()
+        {
+            //sql query that uploads contents of object to database
+        }
     }// EventObject
 }
