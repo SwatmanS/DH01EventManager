@@ -20,10 +20,6 @@ namespace DH01EventManager
             testE.setEquipmentType("Medical");
             testE.setEquipmentQuantity(10);
             MessageBox.Show("getEquipmentID: " + testE.getEquipmentID() + "\ngetEquipmentName: " + testE.getEquipmentName() + "\ngetEquipmentType: " + testE.getEquipmentType() + "\ngetEquipmentQuantity: " + testE.getEquipmentQuantity(), "Eq Setter with Valid Data Result");
-
-
-
-
         }
 
         public static void EventObjectTest()
@@ -34,7 +30,7 @@ namespace DH01EventManager
         {
             //int id, str name, str type, int capacity
             var testLo = new LocationObject(1, "Bukit Tinggi Medical Centre", "Doctors' Surgery", 40);
-            MessageBox.Show("Constructing equipment object using parameters: 1, Bukit Tinggi Medical Centre, Doctors' Surgery, 40\nResult: " + testLo, "Lo Constructor Test");
+            MessageBox.Show("Constructing location object using parameters: 1, Bukit Tinggi Medical Centre, Doctors' Surgery, 40\nResult: " + testLo, "Lo Constructor Test");
             MessageBox.Show("GetLocationID: " + testLo.GetLocationName() + "\nGetLocationType: " + testLo.GetLocationType() + "\nGetLocationCapacity: " + testLo.GetLocationCapacity(), "Lo Getter Test");
             MessageBox.Show("Using setters to change the following values:\nID = 2\nName = Bentong Town Hall\nType = Town Hall\nCapacity = 100", "Lo Setter Test with Valid Data");
             testLo.SetLocationID(2);
@@ -54,7 +50,7 @@ namespace DH01EventManager
         {
             //int id, str name, str type, str array workable events
             var testSt = new StaffObject(1, "Zara", "Nurse", ["Medical", "Information"]);
-            MessageBox.Show("Constructing equipment object using parameters: 1, Zara, Nurse, [Medical, Information]\nResult: " + testSt, "St Constructor Test");
+            MessageBox.Show("Constructing staff object using parameters: 1, Zara, Nurse, [Medical, Information]\nResult: " + testSt, "St Constructor Test");
             MessageBox.Show("getStaffID: " + testSt.getStaffID() + "\ngetStaffName: " + testSt.getStaffName() + "\ngetStaffType: " + testSt.getStaffType() + "\ngetWorkableEvents: " + testSt.GetWorkableEvents(), "St Getter Test");
             MessageBox.Show("Using setters to change the following values:\nID = 2\nName = Nor\nType = Admin\nWorkable Events = [Information]", "St Setter Test with Valid Data");
             testSt.setStaffID(2);
@@ -71,7 +67,14 @@ namespace DH01EventManager
 
         public static void UserObjectTest()
         {
-
+            var testUs = new UserObject("jasmine", "ilovealucard", false);
+            MessageBox.Show("Constructing user object using parameters: Jasmine, ilovealucard, false\n Result: " + testUs, "Us Constructor Test");
+            MessageBox.Show("getUsername: " + testUs.getUsername() + "\ngetPassword: " + testUs.getPassword() + "\ngetLoggedIn: " + testUs.getLoggedIn(), "Us Getter Test");
+            MessageBox.Show("Using setters to change the following values:\nusername = lawson\npassword = istilllovealucard\nloggedIn = true", "Us Setter Test with Valid Data");
+            testUs.setUsername("lawson");
+            testUs.setPassword("istilllovealucard");
+            testUs.setLoggedIn(true);
+            MessageBox.Show("getUsername: " + testUs.getUsername() + "\ngetPassword: " + testUs.getPassword() + "\ngetLoggedIn: " + testUs.getLoggedIn(), "Us Setter with Valid Data Result");
         }
     }
 }

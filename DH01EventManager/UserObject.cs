@@ -8,11 +8,25 @@ namespace DH01EventManager
 {
     internal class UserObject
     {
-        //i feel like user attributes like the username and the password should be stored in the
-        //database (and the password should be hashed) for data security 
-        //i honestly feel like the user class is kinda pointless? there's nothing to really store?
-        //whether a user is be logged in or not would be stored as a global boolean and the
-        //code to change that would be in the login page and there would be a function for
-        // logging out
-    }
+        private string username;
+        private string password;
+        private Boolean loggedIn;
+
+        public UserObject(string username, string password, Boolean loggedIn)
+        {
+            this.username = username;
+            this.password = password;
+            this.loggedIn = loggedIn;
+        }
+        //constructor
+
+        public string getUsername() { return username; }
+        public string getPassword() { return password; }    
+        public Boolean getLoggedIn() { return loggedIn; }
+
+        public void setUsername(string username) { this.username = username; }
+        public void setPassword(string password) { this.password = password; }  
+
+        public void setLoggedIn(Boolean loggedIn) { this.loggedIn = loggedIn;}
+     }
 }
