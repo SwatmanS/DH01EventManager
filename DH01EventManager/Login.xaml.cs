@@ -20,21 +20,24 @@ namespace DH01EventManager
     /// </summary>
     public partial class Login : Window
     {
-        public static bool isLoggedIn = false;
+        //should be taken from user class
+        public static bool isLoggedIn = true;
 
         public Login()
         {
             InitializeComponent();
-
+            //decides which image to use for the login/logout image
             UpdateLoginImage();
         }
 
         private void UpdateLoginImage()
         {
+            //decides on the image that will be shown depending on the state of isloggedin
             string imagePath = isLoggedIn
         ? "pack://application:,,,/images/Logout.png"
         : "pack://application:,,,/images/Login.png";
 
+            //shows the image as a bitmap
             LoginLogoutImage.Source = new BitmapImage(new Uri(imagePath));
         }
 
@@ -97,11 +100,7 @@ namespace DH01EventManager
         }
         private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (passwordBox.Password == "Password")
-            {
-                PasswordText.Text = "'Password' is not allowed as a password.";
-            }
-            else if (passwordBox.Password ==  "")
+            if (passwordBox.Password ==  "") //lets user know to input something if box is empty
             {
                 PasswordText.Text = "Please input your Password!";
             }

@@ -19,21 +19,24 @@ namespace DH01EventManager
     /// </summary>
     public partial class AddEvent : Window
     {
+        //should be taken from user class
         public static bool isLoggedIn = true;
 
         public AddEvent()
         {
             InitializeComponent();
-
+            //decides which image to use for the login/logout image
             UpdateLoginImage();
         }
 
         private void UpdateLoginImage()
         {
+            //decides on the image that will be shown depending on the state of isloggedin
             string imagePath = isLoggedIn
         ? "pack://application:,,,/images/Logout.png"
         : "pack://application:,,,/images/Login.png";
 
+            //shows the image as a bitmap
             LoginLogoutImage.Source = new BitmapImage(new Uri(imagePath));
         }
 

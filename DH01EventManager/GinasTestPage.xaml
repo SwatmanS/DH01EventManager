@@ -125,9 +125,9 @@
                 <!--footer-->
                 <Rectangle Grid.Row="4" Grid.ColumnSpan="10" Fill="#FF1A7277"/>
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0, 40, 0, 0"
-    TextWrapping="Wrap" MinWidth="100" MaxWidth="600" FontSize="20" FontFamily="Verdana"
-    Foreground="#209ca4" Background="{x:Null}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="10"
-    Text="Made By DH01" />
+                    TextWrapping="Wrap" MinWidth="100" MaxWidth="600" FontSize="20" FontFamily="Verdana"
+                    Foreground="#209ca4" Background="{x:Null}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="10"
+                    Text="Made By DH01" />
 
 
             </Grid>
