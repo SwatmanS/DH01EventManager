@@ -20,6 +20,8 @@ namespace DH01EventManager
     /// </summary>
     public partial class GinasTestPage : Window
     {
+        //should be taken from user class
+        public static bool isLoggedIn = true;
 
         
 

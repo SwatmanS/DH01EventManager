@@ -67,7 +67,7 @@ namespace DH01EventManager
             l_page.ShowDialog();
             this.Show();
         }
-        private void SubmitLogin_Click(object sender, RoutedEventArgs e)
+        private void SubmitAddEvent_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("event added");
         }
