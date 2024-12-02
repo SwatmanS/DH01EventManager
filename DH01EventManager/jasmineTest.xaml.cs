@@ -30,7 +30,8 @@ namespace DH01EventManager
 
             //test.EquipmentObjectTest();
             //test.LocationObjectTest();
-            test.StaffObjectTest();
+            //test.StaffObjectTest();
+            test.UserObjectTest();
         }
     }
 }

@@ -27,6 +27,6 @@ namespace DH01EventManager
         public void setUsername(string username) { this.username = username; }
         public void setPassword(string password) { this.password = password; }  
 
-        public void setLogged(Boolean loggedIn) { this.loggedIn = loggedIn;}
+        public void setLoggedIn(Boolean loggedIn) { this.loggedIn = loggedIn;}
      }
 }
