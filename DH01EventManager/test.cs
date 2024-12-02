@@ -26,7 +26,7 @@ namespace DH01EventManager
 
         }
 
-        public void EventObjectTest()
+        public static void EventObjectTest()
         {
         }
 
@@ -45,22 +45,31 @@ namespace DH01EventManager
 
         }
 
-        public void PastEventsTest()
+        public static void PastEventsTest()
         {
 
         }
 
-        public void StaffObjectTest()
+        public static void StaffObjectTest()
+        {
+            //int id, str name, str type, str array workable events
+            var testSt = new StaffObject(1, "Zara", "Nurse", ["Medical", "Information"]);
+            MessageBox.Show("Constructing equipment object using parameters: 1, Zara, Nurse, [Medical, Information]\nResult: " + testSt, "St Constructor Test");
+            MessageBox.Show("getStaffID: " + testSt.getStaffID() + "\ngetStaffName: " + testSt.getStaffName() + "\ngetStaffType: " + testSt.getStaffType() + "\ngetWorkableEvents: " + testSt.GetWorkableEvents(), "St Getter Test");
+            MessageBox.Show("Using setters to change the following values:\nID = 2\nName = Nor\nType = Admin\nWorkable Events = [Information]", "St Setter Test with Valid Data");
+            testSt.setStaffID(2);
+            testSt.setStaffName("Nor");
+            testSt.setWorkableEvents(["Information"]);
+            MessageBox.Show("getStaffID: " + testSt.getStaffID() + "\ngetStaffName: " + testSt.getStaffName() + "\ngetStaffType: " + testSt.getStaffType() + "\ngetWorkableEvents: " + testSt.GetWorkableEvents(), "St Setter with Valid Data Result");
+
+        }
+
+        public static void UpcomingEventTest()
         {
 
         }
 
-        public void UpcomingEventTest()
-        {
-
-        }
-
-        public void UserObjectTest()
+        public static void UserObjectTest()
         {
 
         }

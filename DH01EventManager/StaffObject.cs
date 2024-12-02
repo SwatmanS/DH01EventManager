@@ -3,12 +3,12 @@
     public class StaffObject
     {
         //attributes - feel free to change
-        private string staffID;
+        private int staffID;
         private string staffName; //might be unneccessary
         private string staffType;
         private string[] workableEvents; //maybe certain staff can only work certain events?
 
-        public StaffObject(string ID, string name, string type, string[] workable)
+        public StaffObject(int ID, string name, string type, string[] workable)
         {
             this.staffID = ID;
             this.staffName = name;
@@ -22,7 +22,7 @@
         //gettters
 
 
-        public string getStaffID() { return this.staffID; }
+        public int getStaffID() { return this.staffID; }
         public string getStaffName() { return this.staffName; }
 
         public string getStaffType() { return this.staffType; }
@@ -30,7 +30,7 @@
         
 
         //setters
-        public void setStaffID(String id) { this.staffID = id; }
+        public void setStaffID(int id) { this.staffID = id; }
 
         public void setStaffName(String name) { this.staffName = name; }
         public void setStaffType(String type) { this.staffType = type; }
