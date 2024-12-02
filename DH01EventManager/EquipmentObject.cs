@@ -1,6 +1,6 @@
 ﻿namespace DH01EventManager
 {
-    internal class EquipmentObject
+    public class EquipmentObject
     {
         //attributes - feel free to change
         private int equipmentID;

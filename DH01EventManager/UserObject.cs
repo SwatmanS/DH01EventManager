@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DH01EventManager
 {
-    internal class UserObject
+    public class UserObject
     {
         private string username;
         private string password;

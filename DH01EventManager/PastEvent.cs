@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DH01EventManager
 {
-    internal class PastEvent : EventObject
+    public class PastEvent : EventObject
     {
         private Int32 eventActualTurnout;
         public PastEvent(string id, string name, LocationObject location, DateTime date, List<StaffObject>? staff, List<EquipmentObject>? eventEquipment, Int32 actual) : base(id, name, location, date, staff, eventEquipment)

@@ -7,7 +7,7 @@ using System.Xaml.Schema;
 
 namespace DH01EventManager
 {
-    internal class EventObject
+    public class EventObject
     {
         private String eventID;
         private String  eventname;
