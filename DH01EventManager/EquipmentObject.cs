@@ -18,7 +18,6 @@
 
         
         //gettters
-
         public Int32 getEquipmentID() { return this.equipmentID; }
         public String getEquipmentName() { return this.equipmentName; }
 
