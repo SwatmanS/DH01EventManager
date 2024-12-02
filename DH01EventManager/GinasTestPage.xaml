@@ -99,9 +99,15 @@
 
                 <!--text on the middle block-->
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto" Width="auto"
+    TextWrapping="Wrap" MinWidth="100" MaxWidth="600" FontWeight="Bold" FontSize="40" FontFamily="Verdana"
+    Foreground="#209ca4" Background="{x:Null}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+    Text="Welcome to the Event Manager."/>
+
+                <!--text on the middle block-->
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Height="auto" Width="auto"
                     TextWrapping="Wrap" MinWidth="100" MaxWidth="600" FontSize="20" FontFamily="Verdana"
                     Foreground="#209ca4" Background="{x:Null}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                    Text="Welcome to the rose foundation events planner where we do our abccccccccc come on sing aqlong with me lets gooooo abcd efg hijk elemeno p qrs tuv wwwwwwwwwww x y anddddddddddddd z now u know ur abcs next time come and play with me"/>
+                    Text="Welcome to the Event Manager." />
 
                 <!--image on the middle block-->
                 <Image Source="/images/HomePageImage.jpg" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" 
