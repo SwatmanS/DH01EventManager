@@ -29,13 +29,10 @@ namespace DH01EventManager
         {
             InitializeComponent();
             //creates initial instance of class
-            DH01EventManager.UserObject user1 = new UserObject("a", "b", false);
-
             //decides which image to use for the login/logout image
             UpdateLoginImage();
         }
-        //should be taken from user class
-        public static bool isLoggedIn = false;
+        //should be taken from user c
 
         private void UpdateLoginImage()
         {
