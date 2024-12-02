@@ -62,13 +62,7 @@
         <!--creates a login button with image-->
         <Button x:Name="GoToLogin" Grid.Column="6" Grid.Row="0" Width="auto" Height="auto"
                     Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="GoToLogin_Click">
-            <Image Source="images/Login.png" Width="80" Height="80" />
-        </Button>
-
-        <!--creates a logout button with image-->
-        <Button x:Name="GoToLogout" Grid.Column="6" Grid.Row="0" Width="auto" Height="auto"
-                    Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="GoToLogin_Click">
-            <Image Source="images/Logout.png" Width="80" Height="80" />
+            <Image x:Name="LoginLogoutImage" Width="80" Height="80"/>
         </Button>
 
         <!-- the scroll area-->
@@ -111,17 +105,22 @@
                          BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#209ca4"/>
 
                 <!--username input-->
+                <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox x:Name="usernameBox" Width="200" MaxLength="16" Text="" 
+                             SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="30" FontSize="20" FontFamily="Verdana"/>
+                    <TextBlock x:Name="UsernameText" HorizontalAlignment="Center"/>
+                </StackPanel>
 
-
-                <!--password text-->
+                    <!--password text-->
                 <TextBox Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="Password:"
                          FontSize="30" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
                          BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#209ca4"/>
 
                 <!--password input with hidden input-->
                 <StackPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
-                    <PasswordBox x:Name="passwordBox" Width="200" MaxLength="16" PasswordChanged="passwordBox_PasswordChanged" Password=""/>
-                    <TextBlock x:Name="statusText" HorizontalAlignment="Center"/>
+                    <PasswordBox x:Name="passwordBox" Width="200" MaxLength="16" PasswordChanged="passwordBox_PasswordChanged" 
+                                 Password="" SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="30" FontSize="20" FontFamily="Verdana"/>
+                    <TextBlock x:Name="PasswordText" HorizontalAlignment="Center"/>
                 </StackPanel>
 
                 <!--creates a submit button-->
