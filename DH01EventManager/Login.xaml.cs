@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DH01EventManager
 {
@@ -19,10 +20,24 @@ namespace DH01EventManager
     /// </summary>
     public partial class Login : Window
     {
+        public static bool isLoggedIn = false;
+
         public Login()
         {
             InitializeComponent();
+
+            UpdateLoginImage();
         }
+
+        private void UpdateLoginImage()
+        {
+            string imagePath = isLoggedIn
+        ? "pack://application:,,,/images/Logout.png"
+        : "pack://application:,,,/images/Login.png";
+
+            LoginLogoutImage.Source = new BitmapImage(new Uri(imagePath));
+        }
+
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
             //close the current window
@@ -62,30 +77,39 @@ namespace DH01EventManager
         }
         private void SubmitLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (passwordBox.Password == "abc") //get this from the database
+            if (passwordBox.Password == "abc" && usernameBox.Text == "12345") //get this from the database
             {
+                isLoggedIn = true;
+                UpdateLoginImage();
                 MessageBox.Show("logged in");
-                //log the user in 
                 this.Close();
+            }
+            else if (passwordBox.Password != "abc" && usernameBox.Text != "12345")
+            {
+                MessageBox.Show("both username and password incorrect");
+            }
+            else if (passwordBox.Password == "abc")
+            {
+                MessageBox.Show("password incorrect");
             }
             else
             {
-                MessageBox.Show("username or password incorrect");
+                MessageBox.Show("username incorrect");
             }
         }
         private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (passwordBox.Password == "Password")
             {
-                statusText.Text = "'Password' is not allowed as a password.";
+                PasswordText.Text = "'Password' is not allowed as a password.";
             }
             else if (passwordBox.Password ==  "")
             {
-                statusText.Text = "Please input your Password!";
+                PasswordText.Text = "Please input your Password!";
             }
             else
             {
-                statusText.Text = string.Empty;
+                PasswordText.Text = string.Empty;
             }
         }
     }

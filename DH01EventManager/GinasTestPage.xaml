@@ -62,13 +62,7 @@
         <!--creates a login button with image-->
         <Button x:Name="GoToLogin" Grid.Column="6" Grid.Row="0" Width="auto" Height="auto"
                     Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="GoToLogin_Click">
-            <Image Source="images/Login.png" Width="80" Height="80" />
-        </Button>
-
-        <!--creates a logout button with image-->
-        <Button x:Name="GoToLogout" Grid.Column="6" Grid.Row="0" Width="auto" Height="auto"
-                    Background="{x:Null}" Foreground="{x:Null}" BorderBrush="#FFFFFF" Click="GoToLogin_Click">
-            <Image Source="images/Logout.png" Width="80" Height="80" />
+            <Image x:Name="LoginLogoutImage" Width="80" Height="80"/>
         </Button>
 
         <!-- the scroll area-->
