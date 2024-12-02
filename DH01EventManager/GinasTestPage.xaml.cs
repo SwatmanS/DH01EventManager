@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,15 +20,20 @@ namespace DH01EventManager
     /// </summary>
     public partial class GinasTestPage : Window
     {
-        //should be taken from user class
-        public static bool isLoggedIn = true;
+
+        
 
         public GinasTestPage()
         {
             InitializeComponent();
+            //creates initial instance of class
+            DH01EventManager.UserObject user1 = new UserObject("a", "b", false);
+
             //decides which image to use for the login/logout image
             UpdateLoginImage();
         }
+        //should be taken from user class
+        public static bool isLoggedIn = false;
 
         private void UpdateLoginImage()
         {

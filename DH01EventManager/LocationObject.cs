@@ -3,12 +3,12 @@
     public class LocationObject
     {
         //attributes
-        private int locationID;
-        private string locationName;
-        private string locationType;
-        private int locationCapacity;
+        private Int32 locationID;
+        private String locationName;
+        private String locationType;
+        private Int32 locationCapacity;
 
-        public LocationObject(int locationID, string locationName, string locationType, int locationCapacity)
+        public LocationObject(Int32 locationID, String locationName, String locationType, Int32 locationCapacity)
         {
             this.locationID = locationID;
             this.locationName = locationName;
@@ -18,21 +18,21 @@
 
         //getters
 
-        public int GetLocationID() { return this.locationID; }
-        public string GetLocationName() {return this.locationName; }  
+        public Int32 GetLocationID() { return this.locationID; }
+        public String GetLocationName() {return this.locationName; }  
 
-        public string GetLocationType() { return this.locationType;}
+        public String GetLocationType() { return this.locationType;}
 
-        public int GetLocationCapacity() { return this.locationCapacity;}
+        public Int32 GetLocationCapacity() { return this.locationCapacity;}
 
         //setters
 
-        public void SetLocationID(int locationID) { this.locationID = locationID; }
-        public void SetLocationName(string locationName) { this.locationName = locationName; }  
+        public void SetLocationID(Int32 locationID) { this.locationID = locationID; }
+        public void SetLocationName(String locationName) { this.locationName = locationName; }  
 
-        public void SetLocationType(string locationType) { this.locationType = locationType; }
+        public void SetLocationType(String locationType) { this.locationType = locationType; }
 
-        public void SetLocationCapacity(int locationCapacity) { this.locationCapacity = locationCapacity; }
+        public void SetLocationCapacity(Int32 locationCapacity) { this.locationCapacity = locationCapacity; }
 
     }
 }

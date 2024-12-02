@@ -3,34 +3,32 @@
     public class StaffObject
     {
         //attributes - feel free to change
-        private int staffID;
-        private string staffName; //might be unneccessary
-        private string staffType;
-        private string[] workableEvents; //maybe certain staff can only work certain events?
+        private Int32 staffID;
+        private String staffName; //might be unneccessary
+        private String staffType;
+        private String[] workableEvents; //maybe certain staff can only work certain events?
 
-        public StaffObject(int ID, string name, string type, string[] workable)
+        public StaffObject(Int32 ID, String name, String type, String[] workable)
         {
             this.staffID = ID;
             this.staffName = name;
             this.staffType = type;
             this.workableEvents = workable;
-            //i think that maybe staff data would be stored in the database so this information
-            //would be pulled from there?
         } //contrsuctor 
 
 
         //gettters
 
 
-        public int getStaffID() { return this.staffID; }
-        public string getStaffName() { return this.staffName; }
+        public Int32 getStaffID() { return this.staffID; }
+        public String getStaffName() { return this.staffName; }
 
-        public string getStaffType() { return this.staffType; }
-        public string[] GetWorkableEvents() { return this.workableEvents; }
+        public String getStaffType() { return this.staffType; }
+        public String[] GetWorkableEvents() { return this.workableEvents; }
         
 
         //setters
-        public void setStaffID(int id) { this.staffID = id; }
+        public void setStaffID(Int32 id) { this.staffID = id; }
 
         public void setStaffName(String name) { this.staffName = name; }
         public void setStaffType(String type) { this.staffType = type; }

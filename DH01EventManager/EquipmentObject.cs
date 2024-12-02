@@ -3,12 +3,12 @@
     public class EquipmentObject
     {
         //attributes - feel free to change
-        private int equipmentID;
-        private string equipmentName;
-        private string equipmentType;
-        private int equipmentQuantity;
+        private Int32 equipmentID;
+        private String equipmentName;
+        private String equipmentType;
+        private Int32 equipmentQuantity;
 
-        public EquipmentObject(int ID, string name, string type, int quantity)
+        public EquipmentObject(Int32 ID, String name, String type, Int32 quantity)
         {
             this.equipmentID = ID;
             this.equipmentName = name; 
@@ -19,17 +19,17 @@
         
         //gettters
 
-        public int getEquipmentID() { return this.equipmentID; }
-        public string getEquipmentName() { return this.equipmentName; }
+        public Int32 getEquipmentID() { return this.equipmentID; }
+        public String getEquipmentName() { return this.equipmentName; }
 
-        public string getEquipmentType() { return this.equipmentType; }
-        public int getEquipmentQuantity() { return this.equipmentQuantity; }
+        public String getEquipmentType() { return this.equipmentType; }
+        public Int32 getEquipmentQuantity() { return this.equipmentQuantity; }
 
 
         //setters
-        public void setEquipmentID(int id) { this.equipmentID = id; }
+        public void setEquipmentID(Int32 id) { this.equipmentID = id; }
         public void setEquipmentName(String name) { this.equipmentName = name; }
         public void setEquipmentType(String type) { this.equipmentType = type; }
-        public void setEquipmentQuantity(int quantity) { this.equipmentQuantity = quantity; }
+        public void setEquipmentQuantity(Int32 quantity) { this.equipmentQuantity = quantity; }
     }
 }

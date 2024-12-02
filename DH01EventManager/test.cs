@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace DH01EventManager
 {
-   class test
+   class user1
     {
         public static void EquipmentObjectTest()
         {
