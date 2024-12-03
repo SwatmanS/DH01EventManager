@@ -76,5 +76,9 @@ namespace DH01EventManager
             testUs.setLoggedIn(true);
             MessageBox.Show("getUsername: " + testUs.getUsername() + "\ngetPassword: " + testUs.getPassword() + "\ngetLoggedIn: " + testUs.getLoggedIn(), "Us Setter with Valid Data Result");
         }
+
+        public static void LogInObjectTest()
+        {
+        }
     }
 }
