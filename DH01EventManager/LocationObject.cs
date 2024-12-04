@@ -7,7 +7,7 @@
         private String locationAddress;
         private Int32 locationCapacity;
 
-        public LocationObject(Int32 locationID, string locationName, string locationAddress, int locationCapacity)
+        public LocationObject(Int32 locationID, String locationName, String locationAddress, int locationCapacity)
         {
             this.locationID = locationID;
             this.locationName = locationName;

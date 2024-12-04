@@ -1,4 +1,6 @@
-﻿namespace DH01EventManager
+﻿using System.Security.Policy;
+
+namespace DH01EventManager
 {
     public class StaffObject
     {
@@ -8,7 +10,7 @@
         private String StaffPhone;
         private String staffPosition;
 
-        public StaffObject(int staffID, string fName, string sName, string staffPhone, string staffPosition)
+        public StaffObject(int staffID, String fName, String sName, String staffPhone, String\ staffPosition)
         {
             this.staffID = staffID;
             this.fName = fName;
