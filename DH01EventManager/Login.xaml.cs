@@ -26,6 +26,8 @@ namespace DH01EventManager
             Settings.loggedIn = false;
             //decides which image to use for the login/logout image
             UpdateLoginImage();
+            UserObject dummy = new UserObject("dummy", "user");
+            UserObject[] userArray = dummy.makeArray();
         }
 
         private void UpdateLoginImage()

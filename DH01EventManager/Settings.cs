@@ -8,7 +8,6 @@ namespace DH01EventManager
 {
     class Settings
     {
-        //has logged in string variable which should be taken from database
         public static Boolean loggedIn = false;
     }
 }
