@@ -62,10 +62,20 @@ namespace DH01EventManager
         private void GoToAddEvent_Click(object sender, RoutedEventArgs e)
         {
             //hides current window and goes to the add event page 
-            AddEvent l_page = new();
-            this.Hide();
-            l_page.ShowDialog();
-            this.Show();
+            if (Settings.loggedIn == true)
+            {
+                AddEvent l_page = new();
+                this.Hide();
+                l_page.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                Login l_page = new();
+                this.Hide();
+                l_page.ShowDialog();
+                this.Show();
+            }
         }
         private void GoToLogin_Click(object sender, RoutedEventArgs e)
         {
