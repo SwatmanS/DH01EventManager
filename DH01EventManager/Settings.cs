@@ -9,5 +9,9 @@ namespace DH01EventManager
     class Settings
     {
         public static Boolean loggedIn = false;
+
+        public static string[] staffList = ["staff number 1", "staff number 2", "staff number 3", "staff number 4", "staff number 5"];
+        public static string[] equipmentList = ["tables", "stuff", "stuff2", "stuff3", "stuff4", "stuff5", "stuff6", "stuff7", "stuff8", "stuff9", "stuff10"];
+
     }
 }
