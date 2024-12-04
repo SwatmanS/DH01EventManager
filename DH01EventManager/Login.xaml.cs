@@ -20,14 +20,21 @@ namespace DH01EventManager
     /// </summary>
     public partial class Login : Window
     {
+
+        public UserObject dummy = new UserObject("dummy", "user");
+        public UserObject[] userArray;
+        public Dictionary<String, String> userDict = new Dictionary<String, String>();
+        
+
         public Login()
         {
             InitializeComponent();
             Settings.loggedIn = false;
             //decides which image to use for the login/logout image
             UpdateLoginImage();
-            UserObject dummy = new UserObject("dummy", "user");
-            UserObject[] userArray = dummy.makeArray();
+
+            userArray = dummy.makeArray();
+            userDict = dummy.makeDictionary(userArray, userDict);
         }
 
         private void UpdateLoginImage()
@@ -88,7 +95,10 @@ namespace DH01EventManager
         }
         private void SubmitLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (passwordBox.Password == "abc" && usernameBox.Text == "12345") //get this from the database
+            //search to see if dictionary contains the inputted username as a key and if that key corresponds to the inputted password
+            //if true, user is logged in
+            //if false, error message
+            if (userDict.ContainsKey(usernameBox.Text) && userDict[usernameBox.Text] == passwordBox.Password)
             {
                 Settings.loggedIn = true;
                 UpdateLoginImage();
@@ -98,19 +108,12 @@ namespace DH01EventManager
                 l_page.ShowDialog();
                 this.Show();
             }
-            else if (passwordBox.Password != "abc" && usernameBox.Text != "12345")
+            
             {
-                MessageBox.Show("both username and password incorrect");
-            }
-            else if (passwordBox.Password == "abc")
-            {
-                MessageBox.Show("password incorrect");
-            }
-            else
-            {
-                MessageBox.Show("username incorrect");
+                MessageBox.Show("incorrect username or password");
             }
         }
+
         private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (passwordBox.Password ==  "") //lets user know to input something if box is empty

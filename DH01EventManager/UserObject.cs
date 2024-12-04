@@ -40,7 +40,7 @@ namespace DH01EventManager
 
             for(int i = 0; i < len; i++)
             {
-                dict.Add(array[i].getPassword(), array[i].getUsername());
+                dict.Add(array[i].getUsername(), array[i].getPassword());
             }
 
             return dict;
