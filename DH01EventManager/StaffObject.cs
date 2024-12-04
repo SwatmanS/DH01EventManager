@@ -10,7 +10,7 @@ namespace DH01EventManager
         private String StaffPhone;
         private String staffPosition;
 
-        public StaffObject(int staffID, String fName, String sName, String staffPhone, String\ staffPosition)
+        public StaffObject(int staffID, String fName, String sName, String staffPhone, String staffPosition)
         {
             this.staffID = staffID;
             this.fName = fName;
