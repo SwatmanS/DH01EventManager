@@ -2,37 +2,33 @@
 {
     public class LocationObject
     {
-        //attributes
         private Int32 locationID;
         private String locationName;
-        private String locationType;
+        private String locationAddress;
         private Int32 locationCapacity;
 
-        public LocationObject(Int32 locationID, String locationName, String locationType, Int32 locationCapacity)
+        public LocationObject(Int32 locationID, String locationName, String locationAddress, int locationCapacity)
         {
             this.locationID = locationID;
             this.locationName = locationName;
-            this.locationType = locationType;
+            this.locationAddress = locationAddress;
             this.locationCapacity = locationCapacity;
-        } //constructor
+        }
 
-        //getters
+        public Int32 getLocationID() { return locationID; } 
+        public String getLocationName() { return locationName;}
+        public String getLocationAddress() { return locationAddress;}
+        public Int32 getLocationCapacity() {  return locationCapacity;}
 
-        public Int32 GetLocationID() { return this.locationID; }
-        public String GetLocationName() {return this.locationName; }  
+        public void setLocationID(Int32 locationID) {  this.locationID = locationID; }
+        public void setLocationName(String locationName) {  this.locationName = locationName; }
+        public void setLocationAddress(String locationAddress) { this.locationAddress = locationAddress; }
+        public void setLoctionCapacity(Int32 locationCapacity) { this.locationCapacity = locationCapacity; }
 
-        public String GetLocationType() { return this.locationType;}
-
-        public Int32 GetLocationCapacity() { return this.locationCapacity;}
-
-        //setters
-
-        public void SetLocationID(Int32 locationID) { this.locationID = locationID; }
-        public void SetLocationName(String locationName) { this.locationName = locationName; }  
-
-        public void SetLocationType(String locationType) { this.locationType = locationType; }
-
-        public void SetLocationCapacity(Int32 locationCapacity) { this.locationCapacity = locationCapacity; }
-
+        public String toString()
+        {
+            return String.Concat("Location: ",this.locationName,"\nID = ",this.locationID,"\nAddress = ",this.locationAddress,"\nCapacity = ",this.locationCapacity);
+        }
+           
     }
 }

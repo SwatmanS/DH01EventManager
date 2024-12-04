@@ -1,40 +1,41 @@
-﻿namespace DH01EventManager
+﻿using System.Security.Policy;
+
+namespace DH01EventManager
 {
     public class StaffObject
     {
-        //attributes - feel free to change
         private Int32 staffID;
-        private String staffName; //might be unneccessary
-        private String staffType;
-        private String[] workableEvents; //maybe certain staff can only work certain events?
+        private String fName;
+        private String sName;
+        private String StaffPhone;
+        private String staffPosition;
 
-        public StaffObject(Int32 ID, String name, String type, String[] workable)
+        public StaffObject(int staffID, String fName, String sName, String staffPhone, String staffPosition)
         {
-            this.staffID = ID;
-            this.staffName = name;
-            this.staffType = type;
-            this.workableEvents = workable;
-        } //contrsuctor 
+            this.staffID = staffID;
+            this.fName = fName;
+            this.sName = sName;
+            StaffPhone = staffPhone;
+            this.staffPosition = staffPosition;
+        }
 
+        public Int32 getStaffID() {  return this.staffID; }
+        public String getfName() { return this.fName; }
+        public String getsName() { return this.sName;}
+        public String getStaffPhone() {  return this.StaffPhone;}
+        public String getStaffPosition() { return this.staffPosition; }
 
-        //gettters
+        public String getStaffName() { return String.Concat(this.fName, this.sName); }
 
-
-        public Int32 getStaffID() { return this.staffID; }
-        public String getStaffName() { return this.staffName; }
-
-        public String getStaffType() { return this.staffType; }
-        public String[] GetWorkableEvents() { return this.workableEvents; }
-        
-
-        //setters
         public void setStaffID(Int32 id) { this.staffID = id; }
+        public void setfName(String fname) {  this.fName = fname; }
+        public void setsName(String sname) { this.sName = sname; }
+        public void setStaffPhone(String phone) { this.StaffPhone = phone; }
+        public void setStaffPosition(String position) {  this.staffPosition = position; }
 
-        public void setStaffName(String name) { this.staffName = name; }
-        public void setStaffType(String type) { this.staffType = type; }
-
-        public void setWorkableEvents(String[] workable) { this.workableEvents = workable; }
-
-   
+        public String toString() 
+        {
+            return String.Concat("Staff: ", this.staffID,"Name = ",this.sName,this.fName,"\nPhone = ",this.StaffPhone,"\nPosition = ",this.staffPosition);
+        }
     }
 }
