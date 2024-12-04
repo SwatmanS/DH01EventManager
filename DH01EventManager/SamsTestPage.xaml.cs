@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,11 @@ namespace DH01EventManager
         public SamsTestPage()
         {
             InitializeComponent();
+            DateTime d = DateTime.Now;
+            String d1 = "03 / 12 / 2024 14:54:08";
+            Debug.WriteLine(d1.Length);
+            DateTime d2 = DateTime.Parse(d1);
+            Debug.WriteLine(d.Subtract(d2));
         }
     }
 }
