@@ -20,7 +20,6 @@ namespace DH01EventManager
     /// </summary>
     public partial class GinasTestPage : Window
     {
-        public Boolean isLoggedIn = false;
         public GinasTestPage()
         {
             InitializeComponent();
@@ -33,7 +32,7 @@ namespace DH01EventManager
         private void UpdateLoginImage()
         {
             //decides on the image that will be shown depending on the state of isloggedin
-            string imagePath = isLoggedIn
+            string imagePath = Settings.loggedIn
         ? "pack://application:,,,/images/Logout.png"
         : "pack://application:,,,/images/Login.png";
 
@@ -50,7 +49,7 @@ namespace DH01EventManager
         private void GoHome_Click(object sender, RoutedEventArgs e)
         {
             //hides current window and goes to the home page 
-            MainWindow l_page = new();
+            GinasTestPage l_page = new();
             this.Hide();
             l_page.ShowDialog();
             this.Show();

@@ -20,20 +20,18 @@ namespace DH01EventManager
     /// </summary>
     public partial class Login : Window
     {
-        //should be taken from user class
-        public static bool isLoggedIn = false;
-
         public Login()
         {
             InitializeComponent();
+            Settings.loggedIn = false;
             //decides which image to use for the login/logout image
             UpdateLoginImage();
         }
 
         private void UpdateLoginImage()
         {
-            //decides on the image that will be shown depending on the state of isloggedin
-            string imagePath = isLoggedIn
+            //decides on the image that will be shown depending on the state of loggedin
+            string imagePath = Settings.loggedIn
         ? "pack://application:,,,/images/Logout.png"
         : "pack://application:,,,/images/Login.png";
 
@@ -50,7 +48,7 @@ namespace DH01EventManager
         private void GoHome_Click(object sender, RoutedEventArgs e)
         {
             //hides current window and goes to the home page 
-            MainWindow l_page = new();
+            GinasTestPage l_page = new();
             this.Hide();
             l_page.ShowDialog();
             this.Show();
@@ -80,10 +78,13 @@ namespace DH01EventManager
         {
             if (passwordBox.Password == "abc" && usernameBox.Text == "12345") //get this from the database
             {
-                isLoggedIn = true;
+                Settings.loggedIn = true;
                 UpdateLoginImage();
                 MessageBox.Show("logged in");
-                this.Close();
+                GinasTestPage l_page = new();
+                this.Hide();
+                l_page.ShowDialog();
+                this.Show();
             }
             else if (passwordBox.Password != "abc" && usernameBox.Text != "12345")
             {
