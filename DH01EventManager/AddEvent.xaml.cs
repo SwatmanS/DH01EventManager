@@ -25,9 +25,8 @@ namespace DH01EventManager
             //decides which image to use for the login/logout image
             UpdateLoginImage();
 
-            string[] choreList = ["Do Dishes", "Fold and Put Away Clothes", "Clean Bathroom", "Cook Tea", "Clean Kitchen", "Make Bed"];
-            ItemsList.ItemsSource = choreList;
-
+            StaffList.ItemsSource = Settings.staffList;
+            EquipmentList.ItemsSource = Settings.equipmentList;
         }
 
         private void UpdateLoginImage()
@@ -55,11 +54,13 @@ namespace DH01EventManager
             l_page.ShowDialog();
             this.Show();
         }
+
         private void GoToEvents_Click(object sender, RoutedEventArgs e)
         {
             //close the current window
             this.Close();
         }
+
         private void GoToLogin_Click(object sender, RoutedEventArgs e)
         {
             //hides current window and goes to the login page 
@@ -68,15 +69,17 @@ namespace DH01EventManager
             l_page.ShowDialog();
             this.Show();
         }
-        public List<string> GetCheckedItems()
+
+        public List<string> GetCheckedItems(ListBox listOfStuff)
         {
             //creates a list for checked items to go into
-            List<string> checkedItems = new List<string>();
+            List<string> checkedList = new List<string>();
+
             //loops through the item list
-            foreach (var item in ItemsList.Items)
+            foreach (var item in listOfStuff.Items)
             {
                 //gets the name of the current item and makes sure its not null
-                var name = ItemsList.ItemContainerGenerator.ContainerFromItem(item) as ListBoxItem;
+                var name = listOfStuff.ItemContainerGenerator.ContainerFromItem(item) as ListBoxItem;
                 if (name != null)
                 {
                     //gets the checkbox linked to the item and if its checked and not null
@@ -84,39 +87,12 @@ namespace DH01EventManager
                     if (checkBox != null && checkBox.IsChecked == true)
                     {
                         //adds item to list
-                        checkedItems.Add(item.ToString());
+                        checkedList.Add(item.ToString());
                     }
                 }
             }
-            return checkedItems;
+            return checkedList;
         }
-
-
-
-        public List<string> GetUncheckedItems()
-        {
-            //creates a list for unchecked items to go into
-            List<string> uncheckedItems = new List<string>();
-            //loops through the item list
-            foreach (var item in ItemsList.Items)
-            {
-                //gets the name of the current item and makes sure its not null
-                var name = ItemsList.ItemContainerGenerator.ContainerFromItem(item) as ListBoxItem;
-                if (name != null)
-                {
-                    //gets the checkbox linked to the item and that its not checked and not null
-                    var checkBox = FindCheckbox<CheckBox>(name);
-                    if (checkBox != null && checkBox.IsChecked == false)
-                    {
-                        //adds item to list
-                        uncheckedItems.Add(item.ToString());
-                    }
-                }
-            }
-            return uncheckedItems;
-        }
-
-
 
         //method to find the checkbox linked with the name in the item list
         public Box FindCheckbox<Box>(DependencyObject list) where Box : DependencyObject
@@ -143,27 +119,12 @@ namespace DH01EventManager
 
         private void SubmitAddEvent_Click(object sender, RoutedEventArgs e)
         {
-
-            //loops though items and disables all checkboxes after submit button is clicked
-            foreach (var item in ItemsList.Items)
-            {
-                var name = ItemsList.ItemContainerGenerator.ContainerFromItem(item) as ListBoxItem;
-                if (name != null)
-                {
-                    var checkBox = FindCheckbox<CheckBox>(name);
-                    if (checkBox != null)
-                    {
-                        checkBox.IsEnabled = false;
-                    }
-                }
-            }
-
-
-
-            //displays the checked asnd unchecked list as a message box which would go into the database
-            List<string> checkedItems = GetCheckedItems();
-            List<string> unCheckedItems = GetUncheckedItems();
-            MessageBox.Show("Checked items:\n" + string.Join(", ", checkedItems) + "\n\nUnchecked items:\n" + string.Join(", ", unCheckedItems));
+            //displays the checked list as a message box which would go into the database
+            List<string> checkedStaff = GetCheckedItems(StaffList);
+            List<string> checkedEquipment = GetCheckedItems(EquipmentList);
+            MessageBox.Show("Checked staff:\n" + string.Join(", ", checkedStaff) + "\n\nChecked Equipment:\n" + string.Join(", ", checkedEquipment));
+            //close the current window
+            this.Close();
 
         }
     }

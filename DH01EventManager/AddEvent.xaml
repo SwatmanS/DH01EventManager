@@ -75,15 +75,12 @@
                     <RowDefinition Height="auto" MinHeight="50"/>
                     <RowDefinition Height="auto" MinHeight="50"/>
                     <RowDefinition Height="auto" MinHeight="50"/>
-                    <RowDefinition Height="auto" MinHeight="50"/>
-                    <RowDefinition Height="auto" MinHeight="50"/>
-                    <RowDefinition Height="auto" MinHeight="50"/>
                     <RowDefinition Height="auto" MinHeight="75"/>
                     <RowDefinition Height="*" MinHeight="150"/>
                 </Grid.RowDefinitions>
 
                 <!--middle block-->
-                <Border BorderThickness="1" Grid.Row="1" Grid.Column="1" Grid.RowSpan="13" Grid.ColumnSpan="3"
+                <Border BorderThickness="1" Grid.Row="1" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="3"
                     CornerRadius="100" BorderBrush="white" Background="#FFFFFF" Height="auto" Width="auto">
                 </Border>
 
@@ -94,77 +91,77 @@
 
                 <!--event title text-->
                 <TextBlock Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="Event Title:"
-                     FontSize="20" FontFamily="Verdana" HorizontalAlignment="right" VerticalAlignment="Center" 
-                     Background="{x:Null}" Foreground="#209ca4"/>
+                           FontSize="24" FontFamily="Verdana" HorizontalAlignment="right" VerticalAlignment="Center" 
+                           Background="{x:Null}" Foreground="#209ca4"/>
 
                 <!--event title input-->
-                <StackPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="left">
-                    <TextBox x:Name="eventTitleBox" Width="175" MaxLength="16" Text="" VerticalAlignment="Center"
-                             SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="20" FontSize="18" FontFamily="Verdana"/>
-                    <TextBlock x:Name="eventTitleText" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="left">
+                    <TextBlock x:Name="eventTitleText"/>
+                    <TextBox x:Name="eventTitleBox" Width="200" MaxLength="28"
+                             SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
                 </StackPanel>
 
                 <!--event date text-->
                 <TextBlock Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text="Event Date:"
-                     FontSize="20" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                     Background="{x:Null}" Foreground="#209ca4"/>
+                           FontSize="24" FontFamily="Verdana" HorizontalAlignment="right" VerticalAlignment="Center" 
+                           Background="{x:Null}" Foreground="#209ca4"/>
 
                 <!--event date input-->
-                <StackPanel Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">
-                    <TextBox x:Name="eventDateBox" Width="150" MaxLength="16" Text="" 
-                             SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="20" FontSize="18" FontFamily="Verdana"/>
-                    <TextBlock x:Name="eventDateText" HorizontalAlignment="Center"/>
+                <StackPanel Grid.Row="3" Grid.Column="2" HorizontalAlignment="left">
+                    <TextBlock x:Name="eventDateText"/>
+                    <TextBox x:Name="eventDateBox" Width="200" MaxLength="28"
+                             SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
                 </StackPanel>
 
                 <!--event start date text-->
                 <TextBlock Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="Event Start Date:"
-                     FontSize="20" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                     Background="{x:Null}" Foreground="#209ca4"/>
+                           FontSize="24" FontFamily="Verdana" HorizontalAlignment="right" VerticalAlignment="Center" 
+                           Background="{x:Null}" Foreground="#209ca4"/>
 
                 <!--event start date input-->
-                <StackPanel Grid.Row="4" Grid.Column="2" VerticalAlignment="Center">
-                    <TextBox x:Name="eventStartDateBox" Width="150" MaxLength="16" Text="" 
-                         SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="20" FontSize="18" FontFamily="Verdana"/>
-                    <TextBlock x:Name="eventStartDateText" HorizontalAlignment="Center"/>
+                <StackPanel Grid.Row="4" Grid.Column="2" HorizontalAlignment="left">
+                    <TextBlock x:Name="eventStartDateText"/>
+                    <TextBox x:Name="eventStartDateBox" Width="200" MaxLength="28"
+                             SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
                 </StackPanel>
 
                 <!--event end date text-->
                 <TextBlock Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text="Event End Date:"
-                     FontSize="20" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                     Background="{x:Null}" Foreground="#209ca4"/>
+                           FontSize="24" FontFamily="Verdana" HorizontalAlignment="right" VerticalAlignment="Center" 
+                           Background="{x:Null}" Foreground="#209ca4"/>
 
                 <!--event end date input-->
-                <StackPanel Grid.Row="5" Grid.Column="2" VerticalAlignment="Center">
-                    <TextBox x:Name="eventEndDateBox" Width="150" MaxLength="16" Text="" 
-                        SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="20" FontSize="18" FontFamily="Verdana"/>
-                    <TextBlock x:Name="eventEndDateText" HorizontalAlignment="Center"/>
+                <StackPanel Grid.Row="5" Grid.Column="2" HorizontalAlignment="left">
+                    <TextBlock x:Name="eventEndDateText" />
+                    <TextBox x:Name="eventEndDateBox" Width="200" MaxLength="28"
+                             SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
                 </StackPanel>
 
                 <!--event capacity text-->
                 <TextBlock Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" Text="Event Capacity:"
-                     FontSize="20" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                     Background="{x:Null}" Foreground="#209ca4"/>
+                           FontSize="24" FontFamily="Verdana" HorizontalAlignment="right" VerticalAlignment="Center" 
+                           Background="{x:Null}" Foreground="#209ca4"/>
 
                 <!--event capacity input-->
-                <StackPanel Grid.Row="6" Grid.Column="2" VerticalAlignment="Center">
-                    <TextBox x:Name="eventCapacityBox" Width="150" MaxLength="16" Text="" 
-                        SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="20" FontSize="18" FontFamily="Verdana"/>
-                    <TextBlock x:Name="eventCapacityText" HorizontalAlignment="Center"/>
+                <StackPanel Grid.Row="6" Grid.Column="2"  HorizontalAlignment="left">
+                    <TextBlock x:Name="eventCapacityText"/>
+                    <TextBox x:Name="eventCapacityBox" Width="200" MaxLength="28"
+                             SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
                 </StackPanel>
 
                 <!--event staff text-->
-                <TextBlock Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Text="Event Staff Amount:"
-                    FontSize="20" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                    Background="{x:Null}" Foreground="#209ca4"/>
+                <TextBlock Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Text="Event Staff:"
+                           FontSize="24" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           Background="{x:Null}" Foreground="#209ca4"/>
 
                 <!--stack panel that holds an item list of checkboxes that are declared in the c# code-->
                 <StackPanel Grid.Column="1" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <ListBox x:Name="ItemsList" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="600" HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" Padding="10,20,20,10" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <ListBox x:Name="StaffList" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxHeight="300" HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" Padding="10,20,20,10" Background="#FF30AAB1" BorderBrush="{x:Null}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox Content="{Binding}" FontFamily="Verdana" FontSize="30" FontWeight="SemiBold"
-                                    Style="{StaticResource CheckBoxStyle}" Foreground="#FF96A96D"/>
+                                    Style="{StaticResource CheckBoxStyle}" Foreground="#FFFFFF"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -172,11 +169,24 @@
 
                 <!--event equipment text-->
                 <TextBlock Grid.Row="7" Grid.Column="2" TextWrapping="Wrap" Text="Event Equipment:"
-                    FontSize="20" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                    Background="{x:Null}" Foreground="#209ca4"/>
+                           FontSize="24" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           Background="{x:Null}" Foreground="#209ca4"/>
+
+                <!--stack panel that holds an item list of checkboxes that are declared in the c# code-->
+                <StackPanel Grid.Column="2" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ListBox x:Name="EquipmentList" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxHeight="300" HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" Padding="10,20,20,10" Background="#FF30AAB1" BorderBrush="{x:Null}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding}" FontFamily="Verdana" FontSize="30" FontWeight="SemiBold"
+                                    Style="{StaticResource CheckBoxStyle}" Foreground="#FFFFFF"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
 
                 <!--creates a submit button-->
-                <Button x:Name="SubmitLogin" Grid.Column="3" Grid.Row="12" Width="150" Height="50"
+                <Button x:Name="SubmitLogin" Grid.Column="3" Grid.Row="9" Width="150" Height="50"
                     Background="#209ca4" Click="SubmitAddEvent_Click"  Foreground="#FFFFFF"
                     Content="Submit" FontSize="25" FontFamily="Verdana">
                     <Button.Resources>
@@ -187,7 +197,7 @@
                 </Button>
 
                 <!--footer-->
-                <Rectangle Grid.Row="15" Grid.ColumnSpan="10" Fill="#FF1A7277"/>
+                <Rectangle Grid.Row="12" Grid.ColumnSpan="10" Fill="#FF1A7277"/>
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto" Width="auto"
                     TextWrapping="Wrap" MinWidth="100" MaxWidth="600" FontSize="20" FontFamily="Verdana"
                     Foreground="#209ca4" Background="{x:Null}" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="10"
