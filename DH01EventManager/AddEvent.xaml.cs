@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace DH01EventManager
 {
@@ -27,6 +28,7 @@ namespace DH01EventManager
 
             StaffList.ItemsSource = Settings.staffList;
             EquipmentList.ItemsSource = Settings.equipmentList;
+            LocationList.ItemsSource = Settings.locationList;
         }
 
         private void UpdateLoginImage()
@@ -94,6 +96,27 @@ namespace DH01EventManager
             return checkedList;
         }
 
+        public void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var currentBox = sender as CheckBox;
+
+            // Uncheck all other checkboxes in the ListBox
+            foreach (var item in LocationList.Items)
+            {
+                // Get the ListBoxItem container
+                var name = LocationList.ItemContainerGenerator.ContainerFromItem(item) as ListBoxItem;
+                if (name != null)
+                {
+                    // Find the CheckBox inside the ListBoxItem container
+                    var checkBox = FindCheckbox<CheckBox>(name);
+                    if (checkBox != null && checkBox != currentBox)
+                    {
+                        checkBox.IsChecked = false; // Uncheck other checkboxes
+                    }
+                }
+            }
+        }
+
         //method to find the checkbox linked with the name in the item list
         public Box FindCheckbox<Box>(DependencyObject list) where Box : DependencyObject
         {
@@ -120,23 +143,32 @@ namespace DH01EventManager
         private void SubmitAddEvent_Click(object sender, RoutedEventArgs e)
         {
             //check that all the boxes are filled in before this
+            if (eventTitleBox.Text != "" && eventDateBox.Text != "" && eventStartTimeBox.Text != "" &&
+                eventEndTimeBox.Text != "" && eventCapacityBox.Text != "")
+            {
+                //makes lists of the staff and equipment 
+                List<string> checkedStaff = GetCheckedItems(StaffList);
+                List<string> checkedEquipment = GetCheckedItems(EquipmentList);
+                List<string> checkedLocation = GetCheckedItems(LocationList);
 
-            //makes lists of the staff and equipment 
-            List<string> checkedStaff = GetCheckedItems(StaffList);
-            List<string> checkedEquipment = GetCheckedItems(EquipmentList);
+                //prints off the add event form which would go into the database
+                MessageBox.Show(
+                    "Event Title:\n" + eventTitleBox.Text +
+                    "\n\nEvent Date:\n" + eventDateBox.Text +
+                    "\n\nEvent Start Time:\n" + eventStartTimeBox.Text +
+                    "\n\nEvent End Time:\n" + eventEndTimeBox.Text +
+                    "\n\nEvent Capacity:\n" + eventCapacityBox.Text +
+                    "\n\nChecked staff:\n" + string.Join(", ", checkedStaff) +
+                    "\n\nChecked Equipment:\n" + string.Join(", ", checkedEquipment) +
+                    "\n\nEvent Location:\n" + string.Join(", ", checkedLocation));
 
-            //prints off the add event form which would go into the database
-            MessageBox.Show(
-                "Event Title:\n" + eventTitleBox.Text +
-                "\n\nEvent Date:\n" + eventDateBox.Text +
-                "\n\nEvent Start Time:\n" + eventStartTimeBox.Text +
-                "\n\nEvent End Time:\n" + eventEndTimeBox.Text +
-                "\n\nEvent Capacity:\n" + eventCapacityBox.Text +
-                "\n\nChecked staff:\n" + string.Join(", ", checkedStaff) + 
-                "\n\nChecked Equipment:\n" + string.Join(", ", checkedEquipment));
-
-            //close the current window
-            this.Close();
+                //close the current window
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("please fill in all the boxes");
+            }
 
         }
     }
