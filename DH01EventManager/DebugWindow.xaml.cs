@@ -31,6 +31,8 @@ namespace DH01EventManager
 
         private void GoToJasmineTest(object sender, RoutedEventArgs e)
         {
+            Window x = new jasmineTest();
+            x.Show();
 
         }
         private void GoToOwenTest(object sender, RoutedEventArgs e)
@@ -39,7 +41,8 @@ namespace DH01EventManager
         }
         private void GoToGinaTest(object sender, RoutedEventArgs e)
         {
-
+            Window x = new GinasTestPage();
+            x.Show();
         }
     }
 }
