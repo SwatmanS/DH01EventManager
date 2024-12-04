@@ -95,12 +95,9 @@ namespace DH01EventManager
         }
         private void SubmitLogin_Click(object sender, RoutedEventArgs e)
         {
-            //search dict for inputted username as key
-            //if no key - username incorrect
-            //if key - see if key's corrosponding value matches inputted password
-            //if no value - password incorrect
-            //if value - password and username correct log user in change bool to true
-            //else - username and password wrong broked bad try again
+            //search to see if dictionary contains the inputted username as a key and if that key corresponds to the inputted password
+            //if true, user is logged in
+            //if false, error message
             if (userDict.ContainsKey(usernameBox.Text) && userDict[usernameBox.Text] == passwordBox.Password)
             {
                 Settings.loggedIn = true;
