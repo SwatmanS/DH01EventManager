@@ -157,6 +157,19 @@
                     FontSize="20" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
                     Background="{x:Null}" Foreground="#209ca4"/>
 
+                <!--stack panel that holds an item list of checkboxes that are declared in the c# code-->
+                <StackPanel Grid.Column="1" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ListBox x:Name="ItemsList" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="600" HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" Padding="10,20,20,10" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding}" FontFamily="Verdana" FontSize="30" FontWeight="SemiBold"
+                                    Style="{StaticResource CheckBoxStyle}" Foreground="#FF96A96D"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+
                 <!--event equipment text-->
                 <TextBlock Grid.Row="7" Grid.Column="2" TextWrapping="Wrap" Text="Event Equipment:"
                     FontSize="20" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 

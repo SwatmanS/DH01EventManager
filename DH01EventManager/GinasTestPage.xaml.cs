@@ -20,6 +20,7 @@ namespace DH01EventManager
     /// </summary>
     public partial class GinasTestPage : Window
     {
+        public Boolean isLoggedIn = false;
         public GinasTestPage()
         {
             InitializeComponent();
