@@ -67,14 +67,21 @@ namespace DH01EventManager
 
         public static void UserObjectTest()
         {
-            var testUs = new UserObject("jasmine", "ilovealucard", false);
-            MessageBox.Show("Constructing user object using parameters: Jasmine, ilovealucard, false\n Result: " + testUs, "Us Constructor Test");
-            MessageBox.Show("getUsername: " + testUs.getUsername() + "\ngetPassword: " + testUs.getPassword() + "\ngetLoggedIn: " + testUs.getLoggedIn(), "Us Getter Test");
-            MessageBox.Show("Using setters to change the following values:\nusername = lawson\npassword = istilllovealucard\nloggedIn = true", "Us Setter Test with Valid Data");
+            var testUs = new UserObject("jasmine", "ilovealucard");
+            UserObject[] testArray = testUs.makeArray();
+            MessageBox.Show("we " + testArray[0].getUsername() + testArray[1], "test");
+            Dictionary<String, String> testDict = new Dictionary<String, String>();
+            MessageBox.Show("we " + testUs.makeDictionary(testArray, testDict));
+            foreach (KeyValuePair<String, String> user in testDict)
+            {
+                MessageBox.Show("we " + user.Key, user.Value);
+            }
+            MessageBox.Show("Constructing user object using parameters: Jasmine, ilovealucard\n Result: " + testUs, "Us Constructor Test");
+            MessageBox.Show("getUsername: " + testUs.getUsername() + "\ngetPassword: " + testUs.getPassword(), "Us Getter Test");
+            MessageBox.Show("Using setters to change the following values:\nusername = lawson\npassword = istilllovealucard", "Us Setter Test with Valid Data");
             testUs.setUsername("lawson");
             testUs.setPassword("istilllovealucard");
-            testUs.setLoggedIn(true);
-            MessageBox.Show("getUsername: " + testUs.getUsername() + "\ngetPassword: " + testUs.getPassword() + "\ngetLoggedIn: " + testUs.getLoggedIn(), "Us Setter with Valid Data Result");
+            MessageBox.Show("getUsername: " + testUs.getUsername() + "\ngetPassword: " + testUs.getPassword(), "Us Setter with Valid Data Result");
         }
 
         public static void LogInObjectTest()

@@ -8,7 +8,6 @@ namespace DH01EventManager
 {
     class Settings
     {
-        //has logged in string variable which should be taken from database
         public static Boolean loggedIn = false;
 
         public static string[] staffList = ["staff number 1", "staff number 2", "staff number 3", "staff number 4", "staff number 5"];
