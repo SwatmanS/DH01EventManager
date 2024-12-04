@@ -119,10 +119,22 @@ namespace DH01EventManager
 
         private void SubmitAddEvent_Click(object sender, RoutedEventArgs e)
         {
-            //displays the checked list as a message box which would go into the database
+            //check that all the boxes are filled in before this
+
+            //makes lists of the staff and equipment 
             List<string> checkedStaff = GetCheckedItems(StaffList);
             List<string> checkedEquipment = GetCheckedItems(EquipmentList);
-            MessageBox.Show("Checked staff:\n" + string.Join(", ", checkedStaff) + "\n\nChecked Equipment:\n" + string.Join(", ", checkedEquipment));
+
+            //prints off the add event form which would go into the database
+            MessageBox.Show(
+                "Event Title:\n" + eventTitleBox.Text +
+                "\n\nEvent Date:\n" + eventDateBox.Text +
+                "\n\nEvent Start Time:\n" + eventStartTimeBox.Text +
+                "\n\nEvent End Time:\n" + eventEndTimeBox.Text +
+                "\n\nEvent Capacity:\n" + eventCapacityBox.Text +
+                "\n\nChecked staff:\n" + string.Join(", ", checkedStaff) + 
+                "\n\nChecked Equipment:\n" + string.Join(", ", checkedEquipment));
+
             //close the current window
             this.Close();
 
