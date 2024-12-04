@@ -25,6 +25,8 @@ namespace DH01EventManager
         public String getStaffPhone() {  return this.StaffPhone;}
         public String getStaffPosition() { return this.staffPosition; }
 
+        public String getStaffName() { return String.Concat(this.fName, this.sName); }
+
         public void setStaffID(Int32 id) { this.staffID = id; }
         public void setfName(String fname) {  this.fName = fname; }
         public void setsName(String sname) { this.sName = sname; }

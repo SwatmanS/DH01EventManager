@@ -31,10 +31,7 @@ namespace DH01EventManager
         {
             PreviousEventList.Add(e);
         }
-        public void parseEvent() 
-        {
-            
-        }
+        
     }
     
 }s

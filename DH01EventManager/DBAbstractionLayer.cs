@@ -34,6 +34,8 @@ namespace DH01EventManager
             return Con.dbConnected();
         }//getDBStatus
 
+
+        //  OWEN TODO
         internal static List<EventObject>? getAllEvents()
         {
             throw new NotImplementedException();
