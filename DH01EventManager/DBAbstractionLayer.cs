@@ -35,8 +35,33 @@ namespace DH01EventManager
         }//getDBStatus
 
 
-        //  OWEN TODO
-        internal static List<EventObject>? getAllEvents()
+        //  OWEN TODO 
+        public static List<EventObject>? getAllEvents()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool isPreviousEvent(Int32 eventID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void removeUpcomingEvent(Int32 eventID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static Boolean addPreviousEvent(EventObject e, Int32 ActualTurnout)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static List<UpcomingEvent>? getUpcomingEvents()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static List<PastEvent>? getPreviousEvents()
         {
             throw new NotImplementedException();
         }

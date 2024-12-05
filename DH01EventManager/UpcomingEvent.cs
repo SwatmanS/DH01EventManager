@@ -5,8 +5,9 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+//using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Xml.Linq;
+//using String = System.Runtime.InteropServices.JavaScript.JSType.String;
 
 namespace DH01EventManager
 {
