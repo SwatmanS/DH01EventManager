@@ -113,27 +113,27 @@
                              SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
                 </StackPanel>
 
-                <!--event start date text-->
-                <TextBlock Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="Event Start Date:"
+                <!--event start time text-->
+                <TextBlock Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="Event Start Time:"
                            FontSize="24" FontFamily="Verdana" HorizontalAlignment="right" VerticalAlignment="Center" 
                            Background="{x:Null}" Foreground="#209ca4"/>
 
-                <!--event start date input-->
+                <!--event start time input-->
                 <StackPanel Grid.Row="4" Grid.Column="2" HorizontalAlignment="left">
-                    <TextBlock x:Name="eventStartDateText"/>
-                    <TextBox x:Name="eventStartDateBox" Width="200" MaxLength="28"
+                    <TextBlock x:Name="eventStartTimeText"/>
+                    <TextBox x:Name="eventStartTimeBox" Width="200" MaxLength="28"
                              SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
                 </StackPanel>
 
-                <!--event end date text-->
-                <TextBlock Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text="Event End Date:"
+                <!--event end time text-->
+                <TextBlock Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text="Event End Time:"
                            FontSize="24" FontFamily="Verdana" HorizontalAlignment="right" VerticalAlignment="Center" 
                            Background="{x:Null}" Foreground="#209ca4"/>
 
-                <!--event end date input-->
+                <!--event end time input-->
                 <StackPanel Grid.Row="5" Grid.Column="2" HorizontalAlignment="left">
-                    <TextBlock x:Name="eventEndDateText" />
-                    <TextBox x:Name="eventEndDateBox" Width="200" MaxLength="28"
+                    <TextBlock x:Name="eventEndTimeText" />
+                    <TextBox x:Name="eventEndTimeBox" Width="200" MaxLength="28"
                              SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
                 </StackPanel>
 
@@ -156,11 +156,12 @@
 
                 <!--stack panel that holds an item list of checkboxes that are declared in the c# code-->
                 <StackPanel Grid.Column="1" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <ListBox x:Name="StaffList" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxHeight="300" HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" Padding="10,20,20,10" Background="#FF30AAB1" BorderBrush="{x:Null}">
+                    <ListBox x:Name="StaffList" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" 
+                             MaxHeight="400" MinHeight="100" MinWidth="300" MaxWidth="600"
+                             VerticalAlignment="Center" Padding="10,20,20,10" Background="#FF30AAB1" BorderBrush="{x:Null}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox Content="{Binding}" FontFamily="Verdana" FontSize="30" FontWeight="SemiBold"
+                                <CheckBox Content="{Binding}" FontFamily="Verdana" FontSize="18"
                                     Style="{StaticResource CheckBoxStyle}" Foreground="#FFFFFF"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -174,11 +175,31 @@
 
                 <!--stack panel that holds an item list of checkboxes that are declared in the c# code-->
                 <StackPanel Grid.Column="2" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <ListBox x:Name="EquipmentList" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxHeight="300" HorizontalAlignment="Center" 
+                    <ListBox x:Name="EquipmentList" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" 
+                             MaxHeight="400" MinHeight="100" MinWidth="300" MaxWidth="600"
                         VerticalAlignment="Center" Padding="10,20,20,10" Background="#FF30AAB1" BorderBrush="{x:Null}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox Content="{Binding}" FontFamily="Verdana" FontSize="30" FontWeight="SemiBold"
+                                <CheckBox Content="{Binding}" FontFamily="Verdana" FontSize="18"
+                                    Style="{StaticResource CheckBoxStyle}" Foreground="#FFFFFF"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+
+                <!--event location text-->
+                <TextBlock Grid.Row="2" Grid.Column="3" TextWrapping="Wrap" Text="Event Location:"
+                           FontSize="24" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           Background="{x:Null}" Foreground="#209ca4"/>
+
+                <!--stack panel that holds an item list of checkboxes that are declared in the c# code-->
+                <StackPanel Grid.Column="3" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="6">
+                    <ListBox x:Name="LocationList" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" 
+                             MaxHeight="600" MinHeight="200" MinWidth="300" MaxWidth="600"
+                             VerticalAlignment="Center" Padding="10,20,20,10" Background="#FF30AAB1" BorderBrush="{x:Null}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding}" FontFamily="Verdana" FontSize="18" Checked="CheckBox_Checked"
                                     Style="{StaticResource CheckBoxStyle}" Foreground="#FFFFFF"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
