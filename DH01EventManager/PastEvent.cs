@@ -17,7 +17,7 @@ namespace DH01EventManager
         {
             this.eventActualTurnout = actual;
         } // PastEvent Constructor from EventObject
-        public Int32 getEstimatedTurnout() { return this.eventActualTurnout; } // GetActualTurnout
-        public void setEstimatedTurnout(Int32 actual) { this.eventActualTurnout = actual; } // SetActualTurnout
+        public Int32 getActualTurnout() { return this.eventActualTurnout; } // GetActualTurnout
+        public void setActualTurnout(Int32 actual) { this.eventActualTurnout = actual; } // SetActualTurnout
     } // PastEvent Object
 }
