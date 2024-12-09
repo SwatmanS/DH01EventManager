@@ -47,7 +47,6 @@ CREATE TABLE IF NOT EXISTS ROSE_Location(
 CREATE TABLE IF NOT EXISTS ROSE_Event(
 	Event_ID INTEGER(32),
 	Location_ID INTEGER(32),
-	Staff_ID INTEGER(32),
 	Event_Name TEXT,
 	Event_Date CHAR(23),
 	Event_Capacity INTEGER(32),
