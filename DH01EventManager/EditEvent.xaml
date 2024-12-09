@@ -109,8 +109,8 @@
                 <!--event date input-->
                 <StackPanel Grid.Row="3" Grid.Column="2" HorizontalAlignment="left">
                     <TextBlock x:Name="eventDateText"/>
-                    <TextBox x:Name="eventDateBox" Width="200" MaxLength="28"
-                             SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
+                    <DatePicker x:Name="eventDateBox" Width="200"
+                             BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
                 </StackPanel>
 
                 <!--event start time text-->
