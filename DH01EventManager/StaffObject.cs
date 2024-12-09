@@ -25,7 +25,7 @@ namespace DH01EventManager
         public String getStaffPhoneNo() {  return this.staffPhoneNo;}
         public String getStaffPosition() { return this.staffPosition; }
 
-        public String getStaffName() { return String.Concat(this.forename, " ", this.surname); }
+        public String getStaffFullName() { return String.Concat(this.forename, " ", this.surname); }
 
         public void setStaffID(Int32 id) { this.staffID = id; }
         public void setForname(String forename) {  this.forename = forename; }
@@ -35,7 +35,7 @@ namespace DH01EventManager
 
         public String toString() 
         {
-            return String.Concat("Staff: ", this.staffID,"\nName = ",this.surname, " ", this.forename,"\nPhone = ",this.staffPhoneNo,"\nPosition = ",this.staffPosition);
+            return String.Concat("Staff ID: ", this.staffID,"\nFull Name: ",this.forename, " ", this.surname,"\nPhone Number: ",this.staffPhoneNo,"\nPosition: ",this.staffPosition);
         }
     }
 }
