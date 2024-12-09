@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,25 @@ namespace DH01EventManager
 
         //  OWEN TODO 
         public static List<EventObject>? getAllEvents()
+        {
+            throw new NotImplementedException();
+            /*
+            List<EventObject> l = new List<EventObject>();
+            SQLiteDataReader? qResults = Con.querySQL("SELECT * From  ROSE_Event;");
+            while (qResults.Read())
+            {
+                l.Add(new EventObject(qResults.GetInt32(0),
+                                      qResults.GetString(1),
+                                      DBAbstractionLayer.getAssociatedLocation(qResults.GetInt32(2)),
+                                      DateTime.Parse(qResults.GetString(3)),
+                                      DBAbstractionLayer.getAssociatedStaff(qResults.GetInt32(4),
+                                      )));
+            }
+
+            return l;
+        */}
+
+        private static LocationObject getAssociatedStaff(int v)
         {
             throw new NotImplementedException();
         }
