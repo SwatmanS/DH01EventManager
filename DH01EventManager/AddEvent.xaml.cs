@@ -19,6 +19,7 @@ namespace DH01EventManager
     /// <summary>
     /// Interaction logic for AddEvent.xaml
     /// </summary>
+    /// 
     public partial class AddEvent : Window
     {
         public AddEvent()
@@ -30,6 +31,7 @@ namespace DH01EventManager
             StaffList.ItemsSource = Settings.staffList;
             EquipmentList.ItemsSource = Settings.equipmentList;
             LocationList.ItemsSource = Settings.locationList;
+
         }
 
         private void UpdateLoginImage()
