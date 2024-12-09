@@ -145,7 +145,7 @@
                 <!--event capacity input-->
                 <StackPanel Grid.Row="6" Grid.Column="2"  HorizontalAlignment="left">
                     <TextBlock x:Name="eventCapacityText"/>
-                    <TextBox x:Name="eventCapacityBox" Width="200" MaxLength="28"
+                    <TextBox x:Name="eventCapacityBox" PreviewTextInput="NumberValidation" Width="200" MaxLength="28"
                              SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
                 </StackPanel>
 
