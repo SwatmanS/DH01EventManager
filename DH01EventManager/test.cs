@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace DH01EventManager
 {
-   class user1
+   class test
     {
         public static void EquipmentObjectTest()
         {
@@ -48,8 +48,12 @@ namespace DH01EventManager
 
         public static void StaffObjectTest()
         {
-            //int32 id, str forename, str surname, str 
-            //int id, str name, str type, str array workable events
+            //int32 id, str forename, str surname, str staffPhoneNo, str staffPosition
+            var testSt = new StaffObject(1, "Ammar", "Raja", "+60167423958", "Nurse");
+            MessageBox.Show("Constructing staff object using parameters: 1, Ammar, Raja, +60167423958, Nurse", "St Constructor Test");
+            MessageBox.Show(testSt.toString(), "Constructor result");
+
+
             //var testSt = new StaffObject(1, "Zara", "Nurse", "Medical", "Information");
             //MessageBox.Show("Constructing staff object using parameters: 1, Zara, Nurse, [Medical, Information]\nResult: " + testSt, "St Constructor Test");
             //MessageBox.Show("getStaffID: " + testSt.getStaffID() + "\ngetStaffName: " + testSt.getStaffName() + "\ngetStaffType: " + testSt.getStaffType() + "\ngetWorkableEvents: " + testSt.GetWorkableEvents(), "St Getter Test");

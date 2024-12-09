@@ -57,7 +57,7 @@ namespace DH01EventManager
         private void GoHome_Click(object sender, RoutedEventArgs e)
         {
             //hides current window and goes to the home page 
-            GinasTestPage l_page = new();
+            MainWindow l_page = new();
             this.Hide();
             l_page.ShowDialog();
             this.Show();
@@ -103,7 +103,7 @@ namespace DH01EventManager
                 Settings.loggedIn = true;
                 UpdateLoginImage();
                 MessageBox.Show("logged in");
-                GinasTestPage l_page = new();
+                MainWindow l_page = new();
                 this.Hide();
                 l_page.ShowDialog();
                 this.Show();

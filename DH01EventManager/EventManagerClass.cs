@@ -49,10 +49,8 @@ namespace DH01EventManager
                         UpcomingEvent Upcoming = DBAbstractionLayer.getUpcommingEventData(e.getEventID());
                         actual = Upcoming.getEstimatedTurnout();
                     }
-
                     DBAbstractionLayer.removeUpcomingEvent(e.getEventID());
-                    
-                    return DBAbstractionLayer.addPreviousEvent(e,-1,actual);
+                    return DBAbstractionLayer.addPreviousEvent(e,(Int32)actual);
                 }
                 
             }
@@ -78,7 +76,7 @@ namespace DH01EventManager
             float average = 0;
             for (int i = 0; i > PastTurnouts.Count;i++)
             {
-                float weight = 1;
+                float weight = 1; // Not Implemented but could weaken the impact of older values
                 average += PastTurnouts[i].getActualTurnout() * weight;
             }
             average = average / PastTurnouts.Count;

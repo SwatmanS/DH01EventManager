@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,18 +15,16 @@ using System.Windows.Shapes;
 namespace DH01EventManager
 {
     /// <summary>
-    /// Interaction logic for GinasTestPage.xaml
+    /// Interaction logic for Events.xaml
     /// </summary>
-    public partial class GinasTestPage : Window
+    public partial class Events : Window
     {
-        public GinasTestPage()
+        public Events()
         {
             InitializeComponent();
-            //creates initial instance of class
             //decides which image to use for the login/logout image
             UpdateLoginImage();
         }
-        //should be taken from user c
 
         private void UpdateLoginImage()
         {
@@ -49,16 +46,12 @@ namespace DH01EventManager
         private void GoHome_Click(object sender, RoutedEventArgs e)
         {
             //hides current window and goes to the home page 
-            GinasTestPage l_page = new();
+            MainWindow l_page = new();
             this.Hide();
             l_page.ShowDialog();
             this.Show();
         }
-        private void GoToEvents_Click(object sender, RoutedEventArgs e)
-        {
-            //close the current window
-            this.Close();
-        }
+
         private void GoToAddEvent_Click(object sender, RoutedEventArgs e)
         {
             //hides current window and goes to the add event page 
@@ -77,6 +70,7 @@ namespace DH01EventManager
                 this.Show();
             }
         }
+
         private void GoToLogin_Click(object sender, RoutedEventArgs e)
         {
             //hides current window and goes to the login page 
