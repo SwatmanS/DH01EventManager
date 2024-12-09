@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -12,16 +13,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Xml.Linq;
 
 namespace DH01EventManager
 {
     /// <summary>
-    /// Interaction logic for AddEvent.xaml
+    /// Interaction logic for EditEvent.xaml
     /// </summary>
-    public partial class AddEvent : Window
+    public partial class EditEvent : Window
     {
-        public AddEvent()
+        public EditEvent()
         {
             InitializeComponent();
             //decides which image to use for the login/logout image
@@ -30,6 +30,16 @@ namespace DH01EventManager
             StaffList.ItemsSource = Settings.staffList;
             EquipmentList.ItemsSource = Settings.equipmentList;
             LocationList.ItemsSource = Settings.locationList;
+
+            eventTitleBox.Text = "hello";
+            eventDateBox.Text = "04.03.6003";
+            eventStartTimeBox.Text = "2pm";
+            eventEndTimeBox.Text = "5pm";
+            eventCapacityBox.Text = "40";
+            string[] DummyStaffList = ["Mia Kiambang", "Rayyan Kesuma", "Amani Wati"];
+            string[] DummyEquipmentList = ["tables", "stuff4", "stuff6"];
+            string[] DummyLocation = ["Medizone Family Clinic"];
+
         }
 
         private void UpdateLoginImage()
@@ -77,24 +87,6 @@ namespace DH01EventManager
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
-        }
-
-        private void DateTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (sender is TextBox textBox)
-            {
-                var text = textBox.Text.Replace(".", "");
-                if (text.Length >= 2 && text.Length < 4)
-                {
-                    textBox.Text = text.Insert(2, ".");
-                    textBox.Select(textBox.Text.Length, 0);
-                }
-                else if (text.Length >= 4)
-                {
-                    textBox.Text = text.Insert(2, ".").Insert(5, ".");
-                    textBox.Select(textBox.Text.Length, 0);
-                }
-            }
         }
 
         public List<string> GetCheckedItems(ListBox listOfStuff)
