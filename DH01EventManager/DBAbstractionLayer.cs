@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -122,7 +123,7 @@ namespace DH01EventManager
                 l.Add(qResults.GetInt32(0));
             }
             Int32 Mx = l.Max() + 1;
-            Con.querySQL($"INSERT INTO Rose_PastEvents (PastEvent_ID,Event_ID,Actual_Turnout) VALUES ({Mx},{e.getEventID()},{ActualTurnout})");
+            Con.querySQL($"INSERT INTO Rose_PastEvents (PastEvent_ID,Event_ID,Actual_Turnout) VALUES ({Mx},{e.getEventID()},{ActualTurnout});");
             return true;
         }
 
@@ -165,7 +166,7 @@ namespace DH01EventManager
         internal static List<PastEvent>? getPreviousEvents()
         {
             /*
-             *  Gets all Past events from the upcoming events table
+             *  Gets all Past events from the past events table
              */
 
             List<PastEvent> l = new List<PastEvent>();
@@ -181,51 +182,45 @@ namespace DH01EventManager
 
         internal static UpcomingEvent getUpcommingEventData(Int32 EventID)
         {
-            LocationObject testLoc = new LocationObject(0, "Location Name", "1 Null Avenue, AA1 1XD", 60);
-            DateTime d = DateTime.Now;
-            StaffObject member1 = new StaffObject(0, "0Foo", "Bar", "+44 1234 123 123", "CEO");
-            StaffObject member2 = new StaffObject(1, "1Foo", "Bar", "+44 2234 123 123", "Manager");
+            UpcomingEvent Up;
+            
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_UpcomingEvents WHERE Event_ID = {EventID};");
+            EventObject e;
+            if (qResults.Read()) 
+            {
+                e = DBAbstractionLayer.getEventByID(qResults.GetInt32(1));
+                Up = new UpcomingEvent(e, qResults.GetInt32(2));
+                return Up;
+            }
+            e = DBAbstractionLayer.getEventByID(qResults.GetInt32(1));
+            return new UpcomingEvent(e,e.getEventLocation().getLocationCapacity());
 
-            EquipmentObject kit1 = new EquipmentObject(0, "Table", "Its a Table");
-            EquipmentObject kit2 = new EquipmentObject(1, "Chair", "Its a Chair");
 
-            List<EquipmentObject> kitList = [kit1, kit2];
-            List<StaffObject> staffList = [member1, member2];
-            List<PastEvent> eventsList = new List<PastEvent>();
-
-            return new UpcomingEvent(0, String.Concat("Event", 0), testLoc, d.AddDays(2), staffList, kitList, 50);
-
-            //throw new NotImplementedException();
         }
 
-        internal static List<PastEvent> getAllPreviousTurnoutsAtLocation(LocationObject Location)
+        internal static List<PastEvent>? getAllPreviousTurnoutsAtLocation(LocationObject Location)
         {
             /*
              *  Using the given location retrieves a list of previous turnouts
-             *  Sorted with recent dates at a lower index
+             *  
              */
-            //    DUMMY DATA BELOW
-            DateTime d = DateTime.Now;
-            StaffObject member1 = new StaffObject(0, "0Foo", "Bar", "+44 1234 123 123", "CEO");
-            StaffObject member2 = new StaffObject(1, "1Foo", "Bar", "+44 2234 123 123", "Manager");
-
-            EquipmentObject kit1 = new EquipmentObject(0, "Table", "Its a Table");
-            EquipmentObject kit2 = new EquipmentObject(1, "Chair", "Its a Chair");
-
-            List<EquipmentObject> kitList = [kit1, kit2];
-            List<StaffObject> staffList = [member1, member2];
-            List<PastEvent> eventsList = new List<PastEvent>();
-            for (int i = 0; i < 10; i++)
+            List<PastEvent> l = new List<PastEvent>();
+            
+            EventObject e;
+            SQLiteDataReader? qResults = Con.querySQL($" SELECT Rose_PastEvents.* FROM Rose_Event JOIN Rose_PastEvents ON Rose_PastEvents.Event_ID = Rose_Event.Event_ID AND (Rose_Event.Location_ID = {Location.getLocationID()});");
+            while (qResults.Read())
             {
-                eventsList.Add(new PastEvent(i, String.Concat("Event", i), Location, d.AddDays(i * 2), staffList, kitList, 50 + i));
+                e = DBAbstractionLayer.getEventByID(qResults.GetInt32(1));
+                l.Add(new PastEvent(e, qResults.GetInt32(2)));
             }
-            return eventsList;
-            throw new NotImplementedException();
+            return l;
+
+
         }
 
         internal static void updateUpcomingEvent(UpcomingEvent upcoming)
         {
-            //throw new NotImplementedException();
+            Con.runSQL($"UPDATE Rose_UpcomingEvent SET Event_ID = {upcoming.getEventID()},Predicted_Turnout = {upcoming.getEstimatedTurnout()} WHERE NewEvent_ID = {upcoming.getEventID()};");
         }
     }// DBAbstractionLayer
 }
