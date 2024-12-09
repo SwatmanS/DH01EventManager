@@ -48,6 +48,7 @@ namespace DH01EventManager
 
         public static void StaffObjectTest()
         {
+            //int32 id, str forename, str surname, str 
             //int id, str name, str type, str array workable events
             //var testSt = new StaffObject(1, "Zara", "Nurse", "Medical", "Information");
             //MessageBox.Show("Constructing staff object using parameters: 1, Zara, Nurse, [Medical, Information]\nResult: " + testSt, "St Constructor Test");

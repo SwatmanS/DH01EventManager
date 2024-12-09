@@ -5,37 +5,37 @@ namespace DH01EventManager
     public class StaffObject
     {
         private Int32 staffID;
-        private String fName;
-        private String sName;
-        private String StaffPhone;
+        private String forename;
+        private String surname;
+        private String staffPhoneNo;
         private String staffPosition;
 
-        public StaffObject(int staffID, String fName, String sName, String staffPhone, String staffPosition)
+        public StaffObject(int staffID, String forename, String surname, String staffPhoneNo, String staffPosition)
         {
             this.staffID = staffID;
-            this.fName = fName;
-            this.sName = sName;
-            StaffPhone = staffPhone;
+            this.forename = forename;
+            this.surname = surname;
+            this.staffPhoneNo = staffPhoneNo; 
             this.staffPosition = staffPosition;
         }
 
         public Int32 getStaffID() {  return this.staffID; }
-        public String getfName() { return this.fName; }
-        public String getsName() { return this.sName;}
-        public String getStaffPhone() {  return this.StaffPhone;}
+        public String getForename() { return this.forename; }
+        public String getSurname() { return this.surname;}
+        public String getStaffPhoneNo() {  return this.staffPhoneNo;}
         public String getStaffPosition() { return this.staffPosition; }
 
-        public String getStaffName() { return String.Concat(this.fName, this.sName); }
+        public String getStaffName() { return String.Concat(this.forename, " ", this.surname); }
 
         public void setStaffID(Int32 id) { this.staffID = id; }
-        public void setfName(String fname) {  this.fName = fname; }
-        public void setsName(String sname) { this.sName = sname; }
-        public void setStaffPhone(String phone) { this.StaffPhone = phone; }
+        public void setForname(String forename) {  this.forename = forename; }
+        public void setSurname(String surname) { this.surname = surname; }
+        public void setStaffPhoneNo(String phone) { this.staffPhoneNo = phone; }
         public void setStaffPosition(String position) {  this.staffPosition = position; }
 
         public String toString() 
         {
-            return String.Concat("Staff: ", this.staffID,"Name = ",this.sName,this.fName,"\nPhone = ",this.StaffPhone,"\nPosition = ",this.staffPosition);
+            return String.Concat("Staff: ", this.staffID,"\nName = ",this.surname, " ", this.forename,"\nPhone = ",this.staffPhoneNo,"\nPosition = ",this.staffPosition);
         }
     }
 }
