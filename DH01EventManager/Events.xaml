@@ -61,18 +61,17 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" MinWidth="75"/>
                     <ColumnDefinition Width="*" MinWidth="100"/>
-                    <ColumnDefinition Width="*" MinWidth="100"/>
                     <ColumnDefinition Width="auto" MinWidth="75"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" MinHeight="75"/>
-                    <RowDefinition Height="auto" MinHeight="600"/>
-                    <RowDefinition Height="auto" MinHeight="200"/>
                     <RowDefinition Height="auto" MinHeight="400"/>
-                    <RowDefinition Height="auto" MinHeight="150"/>
+                    <RowDefinition Height="auto" MinHeight="75"/>
+                    <RowDefinition Height="*" MinHeight="150"/>
                 </Grid.RowDefinitions>
 
-                
+                <Canvas x:Name="canvas"  Grid.Row="1" Grid.Column="1">
+                </Canvas>
 
                 <!--footer-->
                 <Rectangle Grid.Row="4" Grid.ColumnSpan="10" Fill="#FF1A7277"/>
@@ -80,6 +79,8 @@
                     TextWrapping="Wrap" MinWidth="100" MaxWidth="600" FontSize="20" FontFamily="Verdana"
                     Foreground="#209ca4" Background="{x:Null}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="10"
                     Text="Made By DH01" />
+
+
 
 
             </Grid>
