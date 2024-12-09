@@ -222,5 +222,10 @@ namespace DH01EventManager
         {
             Con.runSQL($"UPDATE Rose_UpcomingEvent SET Event_ID = {upcoming.getEventID()},Predicted_Turnout = {upcoming.getEstimatedTurnout()} WHERE NewEvent_ID = {upcoming.getEventID()};");
         }
+
+        internal static List<UserObject> getAllUsers()
+        {
+            throw new NotImplementedException();
+        }
     }// DBAbstractionLayer
 }

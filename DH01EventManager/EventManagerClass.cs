@@ -28,6 +28,7 @@ namespace DH01EventManager
         {
             return this.UpcomingEventList;
         }
+        public List<EventObject> getFullEventList() {return this.getFullEventList(); }
         public void addEventToUList(UpcomingEvent e)
         {
             UpcomingEventList.Add(e);

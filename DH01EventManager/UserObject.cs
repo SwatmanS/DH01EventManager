@@ -30,6 +30,15 @@ namespace DH01EventManager
             UserObject user1 = new UserObject("jasmine", "ilovealucard");
             UserObject user2 = new UserObject("jasmine2", "ilovealucardmore");
 
+            List<UserObject> x = DBAbstractionLayer.getAllUsers();
+            UserObject[] userArray2 = new UserObject[x.Count];
+            
+            for (int i = 0; i > x.Count; i++) 
+            {
+                userArray2[i] = x[i]; 
+            }
+            // UserArray2 Should Return What you need once the DB is initialised! -Sam
+
             UserObject[] userArray = [user1, user2];
             return userArray;
         }

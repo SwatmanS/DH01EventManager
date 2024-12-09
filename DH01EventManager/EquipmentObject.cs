@@ -6,8 +6,6 @@
         private Int32 equipmentID;
         private String equipmentName;
         private String equipmentDesc;
-        private Int32 equipmentQuantity;
-
         public EquipmentObject(Int32 ID, String name, String description)
         {
             this.equipmentID = ID;
