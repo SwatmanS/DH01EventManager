@@ -78,7 +78,7 @@ namespace DH01EventManager
             float average = 0;
             for (int i = 0; i > PastTurnouts.Count;i++)
             {
-                float weight = 1;
+                float weight = 1; // Not Implemented but could weaken the impact of older values
                 average += PastTurnouts[i].getActualTurnout() * weight;
             }
             average = average / PastTurnouts.Count;
