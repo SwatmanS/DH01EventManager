@@ -11,7 +11,8 @@ DROP TABLE IF EXISTS ROSE_Equipment;
 CREATE TABLE IF NOT EXISTS ROSE_Login(
 	Login_ID INTEGER(32),
 	Staff_ID INTEGER(32),
-	Login_Password CHAR(23),
+	User_Name TEXT,
+	Login_Password TEXT,
 	PRIMARY KEY(Login_ID),
 	FOREIGN KEY(Staff_ID) REFERENCES  ROSE_Staff (Staff_ID)
 	);
@@ -89,14 +90,14 @@ CREATE TABLE IF NOT EXISTS ROSE_Equipment(
 	PRIMARY KEY(Equipment_ID)
 	);
 	   
-INSERT INTO ROSE_Login (Login_ID,Staff_ID,Login_Password ) VALUES  
-	(1,1,'Rose1'), 
-	(2,2,'Rose2'),
-	(3,3,'Rose3'),
-	(4,4,'Rose4');
+INSERT INTO ROSE_Login (Login_ID,Staff_ID,User_Name,Login_Password) VALUES  
+	(1,1,'User1','Rose1'),
+	(2,2,'User2','Rose2'),
+	(3,3,'User3','Rose3'),
+	(4,4,'User4','Rose4');
 
 INSERT INTO ROSE_Staff (Staff_ID,Staff_Fname,Staff_Lname,Staff_position,Staff_PhoneNumber) VALUES 
-	(1,'George','Harrison','Event lead','07954500477'),
+	(1,'George','Harrison','Event leader','07954500477'),
 	(2,'John','Lennon','Manager','07954500627'),
 	(3,'Paul','Mcartney','Assiant Manager','07954500657'),
 	(4,'Richard','Starkey','Lab Tech','07954500677');
