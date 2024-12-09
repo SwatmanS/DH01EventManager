@@ -43,8 +43,8 @@ namespace DH01EventManager
             StaffObject member5 = new StaffObject(4, "4Foo", "Bar", "+44 5234 123 123", "Volunteer");
             StaffObject member6 = new StaffObject(5, "5Foo", "Bar", "+44 6234 123 123", "Volunteer");
 
-            EquipmentObject kit1 = new EquipmentObject(0, "Table", "Its a Table", 1);
-            EquipmentObject kit2 = new EquipmentObject(1, "Chair", "Its a Chair", 1);
+            EquipmentObject kit1 = new EquipmentObject(0, "Table", "Its a Table");
+            EquipmentObject kit2 = new EquipmentObject(1, "Chair", "Its a Chair");
 
             List<EquipmentObject> kitList = [kit1, kit2];
             List<StaffObject> staffList = [member1, member2, member3, member4, member5, member6];

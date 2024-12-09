@@ -49,10 +49,8 @@ namespace DH01EventManager
                         UpcomingEvent Upcoming = DBAbstractionLayer.getUpcommingEventData(e.getEventID());
                         actual = Upcoming.getEstimatedTurnout();
                     }
-
                     DBAbstractionLayer.removeUpcomingEvent(e.getEventID());
-                    
-                    return DBAbstractionLayer.addPreviousEvent(e,-1,actual);
+                    return DBAbstractionLayer.addPreviousEvent(e,(Int32)actual);
                 }
                 
             }
