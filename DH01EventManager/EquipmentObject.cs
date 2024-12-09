@@ -31,7 +31,7 @@
 
         public String toString() 
         {
-            return String.Concat("Equipment: ", this.equipmentName, "\nID = ", this.equipmentID, "\nType = ", this.equipmentDesc, "\nQuantity = ", this.equipmentQuantity);
+            return String.Concat("Equipment: ", this.equipmentName, "\nID = ", this.equipmentID, "\nType = ", this.equipmentDesc);
         }
     }
 }
