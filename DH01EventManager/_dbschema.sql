@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS ROSE_Equipment(
 	);
 	   
 INSERT INTO ROSE_Login (Login_ID,Staff_ID,Login_Password ) VALUES  
-	(1,1,'Rose1'),
+	(1,1,'Rose1'), 
 	(2,2,'Rose2'),
 	(3,3,'Rose3'),
 	(4,4,'Rose4');

@@ -24,6 +24,38 @@ namespace DH01EventManager
             InitializeComponent();
             //decides which image to use for the login/logout image
             UpdateLoginImage();
+
+            string[] ListOf = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+
+
+            canvas.Height = ListOf.Length*240;
+
+
+            int width = 800;
+            int height = 400;
+            CornerRadius corner = new CornerRadius(100);
+            int top;
+            int left;
+
+            for (int x = 0; x < 2; x++)
+            {
+                for (int y = 0; y < (ListOf.Length/2); y++)
+                {
+                    Border rec = new Border()
+                    {
+                        Width = width,
+                        Height = height,
+                        Background = Brushes.White,
+                        CornerRadius = corner,
+                    };
+                    left = 50 + width*x + x*75;
+                    top = 50 + height*y + y*75;
+                    canvas.Children.Add(rec);
+                    Canvas.SetTop(rec, top);
+                    Canvas.SetLeft(rec, left);
+                }
+            }
+
         }
 
         private void UpdateLoginImage()
