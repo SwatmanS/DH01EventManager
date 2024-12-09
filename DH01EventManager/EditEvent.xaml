@@ -110,7 +110,7 @@
                 <StackPanel Grid.Row="3" Grid.Column="2" HorizontalAlignment="left">
                     <TextBlock x:Name="eventDateText"/>
                     <DatePicker x:Name="eventDateBox" Width="200"
-                             BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
+                             BorderBrush="#FF209CA4" Height="25" FontSize="16" FontFamily="Verdana"/>
                 </StackPanel>
 
                 <!--event start time text-->
@@ -121,8 +121,30 @@
                 <!--event start time input-->
                 <StackPanel Grid.Row="4" Grid.Column="2" HorizontalAlignment="left">
                     <TextBlock x:Name="eventStartTimeText"/>
-                    <TextBox x:Name="eventStartTimeBox" Width="200" MaxLength="28"
-                             SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
+                    <ComboBox x:Name="eventStartTimeBox" Width="200"
+                              BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana">
+                        <ComboBoxItem>6:00am</ComboBoxItem>
+                        <ComboBoxItem>6:30am</ComboBoxItem>
+                        <ComboBoxItem>7:00am</ComboBoxItem>
+                        <ComboBoxItem>7:30am</ComboBoxItem>
+                        <ComboBoxItem>8:00am</ComboBoxItem>
+                        <ComboBoxItem>8:30am</ComboBoxItem>
+                        <ComboBoxItem>9:00am</ComboBoxItem>
+                        <ComboBoxItem>9:30am</ComboBoxItem>
+                        <ComboBoxItem>10:00am</ComboBoxItem>
+                        <ComboBoxItem>10:30am</ComboBoxItem>
+                        <ComboBoxItem>11:00am</ComboBoxItem>
+                        <ComboBoxItem>11:30am</ComboBoxItem>
+                        <ComboBoxItem>12:00pm</ComboBoxItem>
+                        <ComboBoxItem>12:30pm</ComboBoxItem>
+                        <ComboBoxItem>1:00pm</ComboBoxItem>
+                        <ComboBoxItem>1:30pm</ComboBoxItem>
+                        <ComboBoxItem>2:00pm</ComboBoxItem>
+                        <ComboBoxItem>2:30pm</ComboBoxItem>
+                        <ComboBoxItem>3:00pm</ComboBoxItem>
+                        <ComboBoxItem>3:30pm</ComboBoxItem>
+                        <ComboBoxItem>4:00pm</ComboBoxItem>
+                    </ComboBox>
                 </StackPanel>
 
                 <!--event end time text-->
@@ -133,8 +155,40 @@
                 <!--event end time input-->
                 <StackPanel Grid.Row="5" Grid.Column="2" HorizontalAlignment="left">
                     <TextBlock x:Name="eventEndTimeText" />
-                    <TextBox x:Name="eventEndTimeBox" Width="200" MaxLength="28"
-                             SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
+                    <ComboBox x:Name="eventEndTimeBox" Width="200"
+                             BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana">
+                        <ComboBoxItem>6:00am</ComboBoxItem>
+                        <ComboBoxItem>6:30am</ComboBoxItem>
+                        <ComboBoxItem>7:00am</ComboBoxItem>
+                        <ComboBoxItem>7:30am</ComboBoxItem>
+                        <ComboBoxItem>8:00am</ComboBoxItem>
+                        <ComboBoxItem>8:30am</ComboBoxItem>
+                        <ComboBoxItem>9:00am</ComboBoxItem>
+                        <ComboBoxItem>9:30am</ComboBoxItem>
+                        <ComboBoxItem>10:00am</ComboBoxItem>
+                        <ComboBoxItem>10:30am</ComboBoxItem>
+                        <ComboBoxItem>11:00am</ComboBoxItem>
+                        <ComboBoxItem>11:30am</ComboBoxItem>
+                        <ComboBoxItem>12:00pm</ComboBoxItem>
+                        <ComboBoxItem>12:30pm</ComboBoxItem>
+                        <ComboBoxItem>1:00pm</ComboBoxItem>
+                        <ComboBoxItem>1:30pm</ComboBoxItem>
+                        <ComboBoxItem>2:00pm</ComboBoxItem>
+                        <ComboBoxItem>2:30pm</ComboBoxItem>
+                        <ComboBoxItem>3:00pm</ComboBoxItem>
+                        <ComboBoxItem>3:30pm</ComboBoxItem>
+                        <ComboBoxItem>4:00pm</ComboBoxItem>
+                        <ComboBoxItem>4:30pm</ComboBoxItem>
+                        <ComboBoxItem>5:00pm</ComboBoxItem>
+                        <ComboBoxItem>5:30pm</ComboBoxItem>
+                        <ComboBoxItem>6:00pm</ComboBoxItem>
+                        <ComboBoxItem>6:30pm</ComboBoxItem>
+                        <ComboBoxItem>7:00pm</ComboBoxItem>
+                        <ComboBoxItem>7:30pm</ComboBoxItem>
+                        <ComboBoxItem>8:00pm</ComboBoxItem>
+                        <ComboBoxItem>8:30pm</ComboBoxItem>
+                        <ComboBoxItem>9:00pm</ComboBoxItem>
+                    </ComboBox>
                 </StackPanel>
 
                 <!--event capacity text-->
