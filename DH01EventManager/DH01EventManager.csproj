@@ -29,6 +29,12 @@
 
   <ItemGroup>
     <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
+	 <PropertyGroup> 
+    <ContentSQLiteInteropFiles>true</ContentSQLiteInteropFiles>
+    <CopySQLiteInteropFiles>false</CopySQLiteInteropFiles>
+    <CleanSQLiteInteropFiles>false</CleanSQLiteInteropFiles>
+    <CollectSQLiteInteropFiles>false</CollectSQLiteInteropFiles>
+ </PropertyGroup>
   </ItemGroup>
 
   <ItemGroup>
