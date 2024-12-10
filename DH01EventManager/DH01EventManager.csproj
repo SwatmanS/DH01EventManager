@@ -6,12 +6,12 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-  
-    <ContentSQLiteInteropFiles>true</ContentSQLiteInteropFiles>
+    
+    <!--<ContentSQLiteInteropFiles>true</ContentSQLiteInteropFiles>
     <CopySQLiteInteropFiles>false</CopySQLiteInteropFiles>
     <CleanSQLiteInteropFiles>false</CleanSQLiteInteropFiles>
-    <CollectSQLiteInteropFiles>false</CollectSQLiteInteropFiles>
-
+    <CollectSQLiteInteropFiles>false</CollectSQLiteInteropFiles>-->
+	  
   </PropertyGroup>
 
   <ItemGroup>
