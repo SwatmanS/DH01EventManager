@@ -22,6 +22,7 @@ namespace DH01EventManager
         public jasmineTest()
         {
             InitializeComponent();
+            DBAbstractionLayer.connect();
         }
 
         private void alucard(object sender, RoutedEventArgs e)
@@ -30,8 +31,8 @@ namespace DH01EventManager
 
             //test.EquipmentObjectTest();
             //test.LocationObjectTest();
-            test.StaffObjectTest();
-            //test.UserObjectTest();
+            //test.StaffObjectTest();
+            test.UserObjectTest();
         }
     }
 }
