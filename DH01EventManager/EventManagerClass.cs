@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
@@ -61,6 +62,7 @@ namespace DH01EventManager
         {
             while (!DBAbstractionLayer.getStatus())
             {
+                Debug.WriteLine("EventManager Reconnecting DB...");
                 DBAbstractionLayer.connect();
             }
             this.FullEventList = DBAbstractionLayer.getAllEvents();

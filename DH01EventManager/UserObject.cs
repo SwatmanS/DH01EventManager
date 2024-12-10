@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,15 +33,19 @@ namespace DH01EventManager
 
             List<UserObject> x = DBAbstractionLayer.getAllUsers();
             UserObject[] userArray2 = new UserObject[x.Count];
-
+            /*Debug.WriteLine(userArray2.Length);
+            foreach (UserObject user in x) 
+            {
+                Debug.WriteLine(String.Concat(user.getUsername(), user.getPassword()));
+            }
             for (int i = 0; i > x.Count; i++) 
             { 
                 userArray2[i] = x[i]; 
             }
             // UserArray2 Should Return What you need once the DB is initialised! -Sam
 
-            UserObject[] userArray = [user1, user2];
-            return userArray2;
+            UserObject[] userArray = [user1, user2];*/
+            return x.ToArray();
         }
 
         public Dictionary<String,String> makeDictionary(UserObject[] array, Dictionary<String, String> dict)

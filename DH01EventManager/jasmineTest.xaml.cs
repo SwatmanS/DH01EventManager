@@ -22,7 +22,7 @@ namespace DH01EventManager
         public jasmineTest()
         {
             InitializeComponent();
-            DBAbstractionLayer.connect();
+            
         }
 
         private void alucard(object sender, RoutedEventArgs e)
