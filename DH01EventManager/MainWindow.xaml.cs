@@ -19,12 +19,16 @@ namespace DH01EventManager
         public MainWindow()
         {
             InitializeComponent();
+            
             bool d = true;
             if (d)
             {
+                DBAbstractionLayer.reset();
+                
                 Window debugWindow = new DebugWindow();
                 debugWindow.Show();
             }
+            DBAbstractionLayer.connect();
             UpdateLoginImage();
         }
         

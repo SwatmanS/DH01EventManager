@@ -40,7 +40,7 @@ namespace DH01EventManager
             // UserArray2 Should Return What you need once the DB is initialised! -Sam
 
             UserObject[] userArray = [user1, user2];
-            return userArray;
+            return userArray2;
         }
 
         public Dictionary<String,String> makeDictionary(UserObject[] array, Dictionary<String, String> dict)

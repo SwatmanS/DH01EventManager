@@ -17,7 +17,7 @@ namespace DH01EventManager
 
             try
             {
-                if (!File.Exists(filename)) { throw new Exception($"No Such File : {filename}"); };
+                //if (!File.Exists(filename)) { throw new Exception($"No Such File : {filename}"); };
                 m_sqliteConnection = new SQLiteConnection($"Data Source={filename};foreign_keys=true;");
                 m_sqliteConnection.Open();
                 Debug.WriteLine("Connected");
