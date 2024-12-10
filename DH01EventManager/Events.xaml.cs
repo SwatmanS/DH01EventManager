@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace DH01EventManager
             UpdateLoginImage();
 
             //dummy data of events
-            string[] ListOf = ["Event Number1, Event date: 12.12.1202, event time 12pm to 4am, event capacity 30, event staff, me me and me#, event location is here", "2", "3", "4", "5", "6", "7", "8", "9"];
+            string[] ListOf = ["Event Number1,\n Event date: 12.12.1202,\n event time 12pm to 4am,\n event capacity 30,\n event staff: me me and me#,\n event location is here", "2", "3", "4", "5", "6", "7", "8", "9"];
 
             //makes the canvas height dynamic
             canvas.Height = (ListOf.Length+1)*240;
@@ -40,7 +41,7 @@ namespace DH01EventManager
             int top;
             int left;
             int textIndex = 0;
-           
+
             //loops for each row
             for (int row = 0; row < numRows; row++)
             {
@@ -68,7 +69,10 @@ namespace DH01EventManager
                     Canvas.SetTop(outline, top);
                     Canvas.SetLeft(outline, left);
 
-                    //add text to border
+                    //adds a grid into the canvas to place multiple items
+                    Grid container = new Grid();
+
+                    //makes the textblock
                     TextBlock eventText = new TextBlock()
                     {
                         Text = ListOf[textIndex],
@@ -82,8 +86,37 @@ namespace DH01EventManager
                         Padding = new Thickness(5)
                     };
 
-                    //add text to border as child + adds to index
-                    outline.Child = eventText;
+                    //the image for the edit buttons
+                    Image buttonImage = new Image()
+                    {
+                        Source = new BitmapImage(new Uri("pack://application:,,,/images/Edit.png")),
+                        Width = 50,
+                        Height = 50,
+                        Stretch = Stretch.UniformToFill
+                    };
+
+                    //makes the buttons
+                    Button editButton = new Button()
+                    {
+                        Content = buttonImage,
+                        Height = 60,
+                        Width = 60,
+                        Background = Brushes.Transparent,
+                        Foreground = Brushes.Transparent,
+                        BorderBrush = Brushes.Transparent,
+                        HorizontalAlignment = HorizontalAlignment.Right,
+                        VerticalAlignment = VerticalAlignment.Top,
+                        Margin = new Thickness(30)
+                    };
+
+                    //adds the items to the grid container
+                    container.Children.Add(eventText);
+                    container.Children.Add(editButton);
+
+                    //adds the grid container to the canvas
+                    outline.Child = container;
+
+                    //+1 to index
                     textIndex++;
                 }
             }
