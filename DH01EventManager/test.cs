@@ -89,13 +89,13 @@ namespace DH01EventManager
                 MessageBox.Show("Value: " + user.Value, "Key :" + user.Key);
             }
 
-            MessageBox.Show("value for jasmine: " + testDict["jasmine"]);
-            MessageBox.Show("Constructing user object using parameters: Jasmine, ilovealucard\n Result: " + testUs, "Us Constructor Test");
-            MessageBox.Show("getUsername: " + testUs.getUsername() + "\ngetPassword: " + testUs.getPassword(), "Us Getter Test");
-            MessageBox.Show("Using setters to change the following values:\nusername = lawson\npassword = istilllovealucard", "Us Setter Test with Valid Data");
-            testUs.setUsername("lawson");
-            testUs.setPassword("istilllovealucard");
-            MessageBox.Show("getUsername: " + testUs.getUsername() + "\ngetPassword: " + testUs.getPassword(), "Us Setter with Valid Data Result");
+            //MessageBox.Show("value for jasmine: " + testDict["jasmine"]);
+            //MessageBox.Show("Constructing user object using parameters: Jasmine, ilovealucard\n Result: " + testUs, "Us Constructor Test");
+            //MessageBox.Show("getUsername: " + testUs.getUsername() + "\ngetPassword: " + testUs.getPassword(), "Us Getter Test");
+            //MessageBox.Show("Using setters to change the following values:\nusername = lawson\npassword = istilllovealucard", "Us Setter Test with Valid Data");
+            //testUs.setUsername("lawson");
+            //testUs.setPassword("istilllovealucard");
+            //MessageBox.Show("getUsername: " + testUs.getUsername() + "\ngetPassword: " + testUs.getPassword(), "Us Setter with Valid Data Result");
         }
 
         public static void LogInObjectTest()
