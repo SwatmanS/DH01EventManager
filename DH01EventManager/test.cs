@@ -11,9 +11,6 @@ namespace DH01EventManager
     {
         public static void EquipmentObjectTest()
         {
-            /*
-             * Equipment does not have a quantity sorry !
-             */
             var testE = new EquipmentObject(1, "Swabs", "Medical");
             MessageBox.Show("Constructing equipment object using parameters: 1, swabs, medical, 100\nResult: " + testE, "Eq Constructor Test");
             MessageBox.Show("getEquipmentID: " + testE.getEquipmentID() + "\ngetEquipmentName: " + testE.getEquipmentName() + "\ngetEquipmentType: " + testE.getEquipmentDesc() , "Eq Getter Test");

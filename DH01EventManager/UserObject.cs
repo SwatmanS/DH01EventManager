@@ -32,9 +32,9 @@ namespace DH01EventManager
 
             List<UserObject> x = DBAbstractionLayer.getAllUsers();
             UserObject[] userArray2 = new UserObject[x.Count];
-            
+
             for (int i = 0; i > x.Count; i++) 
-            {
+            { 
                 userArray2[i] = x[i]; 
             }
             // UserArray2 Should Return What you need once the DB is initialised! -Sam
