@@ -77,7 +77,11 @@ namespace DH01EventManager
         {
             var testUs = new UserObject("jasmine", "ilovealucard");
             UserObject[] testArray = testUs.makeArray();
-            MessageBox.Show("we " + testArray[0].getUsername() + testArray[1], "test");
+            foreach (UserObject x in testArray)
+            {
+
+            }
+            MessageBox.Show("we " + testArray[0].getUsername() , "test");
             Dictionary<String, String> testDict = new Dictionary<String, String>();
             MessageBox.Show("we " + testUs.makeDictionary(testArray, testDict));
             foreach (KeyValuePair<String, String> user in testDict)
