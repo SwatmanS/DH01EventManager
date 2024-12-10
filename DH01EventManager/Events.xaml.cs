@@ -26,26 +26,31 @@ namespace DH01EventManager
             UpdateLoginImage();
 
             //dummy data of events
-            string[] ListOf = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+            string[] ListOf = ["Event Number1, Event date: 12.12.1202, event time 12pm to 4am, event capacity 30, event staff, me me and me#, event location is here", "2", "3", "4", "5", "6", "7", "8", "9"];
 
             //makes the canvas height dynamic
             canvas.Height = (ListOf.Length+1)*240;
 
             //variables needed for the canvas
+            int numColumns = 2;
+            int numRows = (int)Math.Ceiling((double)ListOf.Length / numColumns);
             int width = 800;
             int height = 400;
             CornerRadius corner = new CornerRadius(100);
             int top;
             int left;
             int textIndex = 0;
-
-            //creates the two columns
-            for (int x = 0; x < 2; x++) 
+           
+            //loops for each row
+            for (int row = 0; row < numRows; row++)
             {
-                //the rows 
-                for (int y = 0; y < (ListOf.Length / 2 + 1); y++) 
+                //loops for each column
+                for (int col = 0; col < numColumns; col++) 
                 {
-                    // Create the Border
+                    //stops when index reaches length of array
+                    if (textIndex >= ListOf.Length) break;
+
+                    //creates the border
                     Border outline = new Border()
                     {
                         Width = width,
@@ -54,31 +59,32 @@ namespace DH01EventManager
                         CornerRadius = corner,
                     };
 
-                    // Calculate position
-                    left = 50 + width * x + x * 75; 
-                    top = 50 + height * y + y * 75; 
+                    //finds placement of blocks
+                    left = 50 + col * (width + 75);
+                    top = 50 + row * (height + 75);
 
-                    // Add border to canvas
+                    //add border to canvas
                     canvas.Children.Add(outline);
                     Canvas.SetTop(outline, top);
                     Canvas.SetLeft(outline, left);
 
-                    // Add TextBlock to Border
-                    if (textIndex < ListOf.Length) 
+                    //add text to border
+                    TextBlock eventText = new TextBlock()
                     {
-                        TextBlock eventText = new TextBlock()
-                        {
-                            Text = ListOf[textIndex],
-                            Foreground = Brushes.Black,
-                            FontSize = 32,
-                            HorizontalAlignment = HorizontalAlignment.Center,
-                            VerticalAlignment = VerticalAlignment.Center
-                        };
+                        Text = ListOf[textIndex],
+                        Foreground = Brushes.Black,
+                        FontSize = 24,
+                        FontFamily = new FontFamily("Verdana"),
+                        TextWrapping = TextWrapping.Wrap,
+                        TextAlignment = TextAlignment.Center,
+                        HorizontalAlignment = HorizontalAlignment.Stretch,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        Padding = new Thickness(5)
+                    };
 
-                        //add it to the borders and up the index
-                        outline.Child = eventText; 
-                        textIndex++;
-                    }
+                    //add text to border as child + adds to index
+                    outline.Child = eventText;
+                    textIndex++;
                 }
             }
         }
