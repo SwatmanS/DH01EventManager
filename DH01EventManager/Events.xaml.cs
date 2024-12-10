@@ -25,37 +25,62 @@ namespace DH01EventManager
             //decides which image to use for the login/logout image
             UpdateLoginImage();
 
-            string[] ListOf = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+            //dummy data of events
+            string[] ListOf = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
+            //makes the canvas height dynamic
+            canvas.Height = (ListOf.Length+1)*240;
 
-            canvas.Height = ListOf.Length*240;
-
-
+            //variables needed for the canvas
             int width = 800;
             int height = 400;
             CornerRadius corner = new CornerRadius(100);
             int top;
             int left;
+            int textIndex = 0;
 
-            for (int x = 0; x < 2; x++)
+            //creates the two columns
+            for (int x = 0; x < 2; x++) 
             {
-                for (int y = 0; y < (ListOf.Length/2); y++)
+                //the rows 
+                for (int y = 0; y < (ListOf.Length / 2 + 1); y++) 
                 {
-                    Border rec = new Border()
+                    // Create the Border
+                    Border outline = new Border()
                     {
                         Width = width,
                         Height = height,
                         Background = Brushes.White,
                         CornerRadius = corner,
                     };
-                    left = 50 + width*x + x*75;
-                    top = 50 + height*y + y*75;
-                    canvas.Children.Add(rec);
-                    Canvas.SetTop(rec, top);
-                    Canvas.SetLeft(rec, left);
+
+                    // Calculate position
+                    left = 50 + width * x + x * 75; 
+                    top = 50 + height * y + y * 75; 
+
+                    // Add border to canvas
+                    canvas.Children.Add(outline);
+                    Canvas.SetTop(outline, top);
+                    Canvas.SetLeft(outline, left);
+
+                    // Add TextBlock to Border
+                    if (textIndex < ListOf.Length) 
+                    {
+                        TextBlock eventText = new TextBlock()
+                        {
+                            Text = ListOf[textIndex],
+                            Foreground = Brushes.Black,
+                            FontSize = 32,
+                            HorizontalAlignment = HorizontalAlignment.Center,
+                            VerticalAlignment = VerticalAlignment.Center
+                        };
+
+                        //add it to the borders and up the index
+                        outline.Child = eventText; 
+                        textIndex++;
+                    }
                 }
             }
-
         }
 
         private void UpdateLoginImage()
