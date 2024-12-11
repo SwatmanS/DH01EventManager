@@ -103,6 +103,13 @@ namespace DH01EventManager
 
         public static void LogInObjectTest()
         {
+            DateTime time = new DateTime(2024, 12, 12, 11, 40, 40);
+            DateTime date = time.AddMinutes(60);
+            var stime = TimeOnly.FromDateTime(date);
+            MessageBox.Show(stime.ToString());
         }
+
+
+
     }
 }
