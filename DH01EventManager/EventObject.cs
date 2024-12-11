@@ -149,6 +149,20 @@ namespace DH01EventManager
             return end - start;
         }
 
+        public DateTime getStartDate()
+        {
+            return new DateTime(this.getStartDate().Year, this.getStartDate().Month, this.getStartDate().Day);
+        }
+        public String getStartTime()
+        {
+
+            return EventObject.dateTimeToStr(this.getStartDate());
+        }
+        public String getEndTime()
+        {
+
+            return EventObject.dateTimeToStr(this.getStartDate().AddMinutes(this.getEventDuration()));
+        }
 
 
     }// EventObject
