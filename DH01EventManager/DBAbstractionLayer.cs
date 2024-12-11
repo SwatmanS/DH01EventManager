@@ -294,10 +294,6 @@ namespace DH01EventManager
             return check;
     }
 
-        private static object getNewStaffAssignID()
-        {
-            throw new NotImplementedException();
-        }
 
         public static bool AssignEquipment(List<EquipmentObject>? equipmentObjects,Int32 EventID)
         {
@@ -338,22 +334,63 @@ namespace DH01EventManager
 
         public static Boolean isNewEventID(Int32 EventID)
         {
-            throw new NotImplementedException();
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT EquipmentAssign_ID FROM ROSE_EquipmentAssign;");
+            while (qResults.Read())
+            {
+                if (EventID == qResults.GetInt32(0))
+                {
+                    return true;
+                }
+            }
+            
+            return true;
+        }
+        private static Int32 getNewStaffAssignID()
+        {
+            List<Int32> l = new List<Int32>();
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT AssignStaff_ID FROM ROSE_AssignStaff;");
+            while (qResults.Read())
+            {
+                l.Add(qResults.GetInt32(0));
+            }
+            Int32 Mx = l.Max() + 1;
+            return Mx;
         }
 
         public static Boolean validEquipmentCheck(List<EquipmentObject>? equipmentObjects)
         {
-            throw new NotImplementedException();
+            foreach (EquipmentObject q in equipmentObjects)
+            {
+                // Test ID
+                if (null != Con.querySQL($"SELECT * FROM ROSE_Equipment WHERE Equipment_ID = {q.getEquipmentID()};"))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public static Boolean validLocationCheck(LocationObject locationObject)
         {
-            throw new NotImplementedException();
+            // Test ID
+            if (null != Con.querySQL($"SELECT * FROM ROSE_Equipment WHERE Equipment_ID = {locationObject.getLocationID()};"))
+            {
+                return false;
+            }
+            return true;
         }
 
         public static Boolean validStaffCheck(List<StaffObject>? staffObjects)
         {
-            throw new NotImplementedException();
+            foreach (StaffObject s in staffObjects)
+            {
+                // Test ID
+                if (null != Con.querySQL($"SELECT * FROM ROSE_Equipment WHERE Equipment_ID = {s.getStaffID()};"))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }// DBAbstractionLayer
 }
