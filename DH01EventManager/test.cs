@@ -24,9 +24,9 @@ namespace DH01EventManager
 
         public static void EventObjectTest()
         {
-            List<UpcomingEvent> events = new List<UpcomingEvent>();
-            events = DBAbstractionLayer.getUpcomingEvents();
-            MessageBox.Show("rah " + events, "events");
+            List<EventObject> events = new List<EventObject>();
+            events = DBAbstractionLayer.getAllEvents();
+            MessageBox.Show("rah " + events[0].toString(), "events");
         }
 
         public static void LocationObjectTest()
@@ -103,6 +103,13 @@ namespace DH01EventManager
 
         public static void LogInObjectTest()
         {
+            DateTime time = new DateTime(2024, 12, 12, 11, 40, 40);
+            DateTime date = time.AddMinutes(60);
+            var stime = TimeOnly.FromDateTime(date);
+            MessageBox.Show(stime.ToString());
         }
+
+
+
     }
 }

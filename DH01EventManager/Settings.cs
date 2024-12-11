@@ -13,7 +13,7 @@ namespace DH01EventManager
         public static int eventIndex = -1;
 
         public static string[] staffList = ["Ammar Raja", "Syshmi Megat", "Ashraff Tengku", "Damia Jehan", "Zara Shah",
-            "Qaisara Mayang", "Mia Kiambang", "Keisha Joyo ", "Arissa Tam", "Hadif Tuah", "Rayyan Kesuma", "Haziq Som ",
+            "Qaisara Mayang", "Mia Kiambang", "Keisha Joyo", "Arissa Tam", "Hadif Tuah", "Rayyan Kesuma", "Haziq Som",
             "Alya Wira", "Amani Wati", "Aishah Mayang", "Noor Lai", "Balqis Darma", "Aishah Shah", "Qistina Mirza",
             "Hakim Ros", "Alya Tiara", "Batrisyia Orked", "Irfan Kesuma", "Humaira Jehan", "Damia Mayang ", "Amani Wira"];
         public static string[] equipmentList = ["tables", "stuff", "stuff2", "stuff3", "stuff4", "stuff5", "stuff6", "stuff7", "stuff8", "stuff9", "stuff10"];
