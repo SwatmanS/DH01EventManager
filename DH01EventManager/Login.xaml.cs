@@ -64,8 +64,11 @@ namespace DH01EventManager
         }
         private void GoToEvents_Click(object sender, RoutedEventArgs e)
         {
-            //close the current window
-            this.Close();
+            //hides current window and goes to the events page
+            Events l_page = new();
+            this.Hide();
+            l_page.ShowDialog();
+            this.Show();
         }
         private void GoToAddEvent_Click(object sender, RoutedEventArgs e)
         {

@@ -27,6 +27,12 @@ namespace DH01EventManager
             //decides which image to use for the login/logout image
             UpdateLoginImage();
 
+            //displays the list of items
+            StaffList.ItemsSource = Settings.staffList;
+            EquipmentList.ItemsSource = Settings.equipmentList;
+            LocationList.ItemsSource = Settings.locationList;
+
+            //sets form variables as the events fron the database
             SetEvents(Settings.eventIndex);
         }
 
@@ -58,8 +64,11 @@ namespace DH01EventManager
 
         private void GoToEvents_Click(object sender, RoutedEventArgs e)
         {
-            //close the current window
-            this.Close();
+            //hides current window and goes to the events page
+            Events l_page = new();
+            this.Hide();
+            l_page.ShowDialog();
+            this.Show();
         }
 
         private void GoToLogin_Click(object sender, RoutedEventArgs e)
@@ -75,18 +84,11 @@ namespace DH01EventManager
         {
             //depending on index show a different event from the class
 
-            StaffList.ItemsSource = Settings.staffList;
-            EquipmentList.ItemsSource = Settings.equipmentList;
-            LocationList.ItemsSource = Settings.locationList;
-
-            eventTitleBox.Text = "hello";
-            //eventDateBox.SelectedDate = ;
-            eventStartTimeBox.Text = "2pm";
-            eventEndTimeBox.Text = "5pm";
+            eventTitleBox.Text = "Event Title 1";
+            eventDateBox.Text = "12/12/2024";
+            eventStartTimeBox.Text = "8:00am";
+            eventEndTimeBox.Text = "5:00pm";
             eventCapacityBox.Text = "40";
-            string[] DummyStaffList = ["Mia Kiambang", "Rayyan Kesuma", "Amani Wati"];
-            string[] DummyEquipmentList = ["tables", "stuff4", "stuff6"];
-            string[] DummyLocation = ["Medizone Family Clinic"];
         }
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)
