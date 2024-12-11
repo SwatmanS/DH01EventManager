@@ -27,9 +27,13 @@ namespace DH01EventManager
             UpdateLoginImage();
 
             //dummy data of events
-            
 
-            string[] ListOf = ["Event Number1,\n Event date: 12.12.1202,\n event time 12pm to 4am,\n event capacity 30,\n event staff: me me and me#,\n event location is here", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+            string[] ListOf = ["Event Title: 1st Event\n Event date: 01.01.2001,\n Event starts at 6am and ends at 5pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",
+                "Event Title: 2nd Event\n Event date: 02.02.2002,\n Event starts at 7am and ends at 12pm,\n Event Capacity: 60 people,\n Event Staff: a, b, c, d,\n Event Location: Family Clinic Seventeen",
+                "Event Title: 3rd Event\n Event date: 03.03.2003,\n Event starts at 9am and ends at 9pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",
+                "Event Title: 4th Event\n Event date: 04.04.2004,\n Event starts at 6am and ends at 5pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",
+                "Event Title: 5th Event\n Event date: 05.05.2005,\n Event starts at 6am and ends at 5pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",];
 
             //makes the canvas height dynamic
             canvas.Height = (ListOf.Length + 1) * 240;
