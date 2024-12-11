@@ -27,6 +27,8 @@ namespace DH01EventManager
             UpdateLoginImage();
 
             //dummy data of events
+            
+
             string[] ListOf = ["Event Number1,\n Event date: 12.12.1202,\n event time 12pm to 4am,\n event capacity 30,\n event staff: me me and me#,\n event location is here", "2", "3", "4", "5", "6", "7", "8", "9"];
 
             //makes the canvas height dynamic
