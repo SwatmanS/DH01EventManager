@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,16 +63,48 @@ namespace DH01EventManager
         public void setEventStaff(List<StaffObject> staff) { this.eventStaff = staff; } // SetEventStaff
         public void addEventEquipment(List<EquipmentObject> equipment) { this.eventEquipment = equipment; } // SetEventEquipment
 
+
+        public String staffString()
+        {
+            String[] sArray;
+            String sString = "";
+            foreach (StaffObject staff in eventStaff)
+            {
+                sString = (String.Concat(staff.getForename(), " ", staff.getSurname()));
+            }
+            return sString;
+        }
+
+        public String equipmentString()
+        {
+            String[] eArray;
+            String eString = "";
+            foreach (EquipmentObject equip in eventEquipment)
+            {
+                eString = (String.Concat(equip.getEquipmentName()));
+            }
+            return eString;
+        }
+
         public String toString() 
         {
-            return string.Concat("EventObject: ", this.eventname,"\nID: ",this.eventID,"\nLocation: NOT IMPLEMENTED");
+            var date = DateOnly.FromDateTime(eventDate);
+            var sTime = TimeOnly.FromDateTime(eventDate);
+            DateTime d = eventDate.AddMinutes(eventDuration);
+            var eTime = TimeOnly.FromDateTime(d);
+            return string.Concat("Event Name: ", this.eventname, "\nDate: ", date.ToString(), "\nStart Time: ", sTime.ToString(), "\nEnd Time: ", eTime.ToString(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
         }
 
         public Int32 getEventDuration()
         {
             return this.eventDuration;
         }
-        public void setEventDuration(Int32 duration) { this.eventDuration = duration; }
+        public void setEventDuration(Int32 duration) 
+        { 
+            this.eventDuration = duration;
+        }
+
+
 
         public static DateTime parseStartDate(DateTime startDate, String startTime)
         {
@@ -104,6 +137,8 @@ namespace DH01EventManager
         {
             return DateTime.Now;
         }
+
+
 
     }// EventObject
 }

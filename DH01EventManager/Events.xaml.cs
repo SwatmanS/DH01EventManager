@@ -27,16 +27,31 @@ namespace DH01EventManager
             UpdateLoginImage();
 
             //dummy data of events
+
+            List<EventObject> events = new List<EventObject>();
+            events = DBAbstractionLayer.getAllEvents();
             
+            List<String> ListOf = new List<String>();
+            String evString;
 
-            string[] ListOf = ["Event Number1,\n Event date: 12.12.1202,\n event time 12pm to 4am,\n event capacity 30,\n event staff: me me and me#,\n event location is here", "2", "3", "4", "5", "6", "7", "8", "9"];
+            foreach (EventObject ev in events)
+            {
+                ListOf.Add(ev.toString());
+            }
 
+
+            /*string[] ListOf = ["Event Title: 1st Event\n Event date: 01.01.2001,\n Event starts at 6am and ends at 5pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",
+                "Event Title: 2nd Event\n Event date: 02.02.2002,\n Event starts at 7am and ends at 12pm,\n Event Capacity: 60 people,\n Event Staff: a, b, c, d,\n Event Location: Family Clinic Seventeen",
+                "Event Title: 3rd Event\n Event date: 03.03.2003,\n Event starts at 9am and ends at 9pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",
+                "Event Title: 4th Event\n Event date: 04.04.2004,\n Event starts at 6am and ends at 5pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",
+                "Event Title: 5th Event\n Event date: 05.05.2005,\n Event starts at 6am and ends at 5pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",];
+            */
             //makes the canvas height dynamic
-            canvas.Height = (ListOf.Length + 1) * 240;
+            canvas.Height = (ListOf.Count + 1) * 240;
 
             //variables needed for the canvas
             int numColumns = 2;
-            int numRows = (int)Math.Ceiling((double)ListOf.Length / numColumns);
+            int numRows = (int)Math.Ceiling((double)ListOf.Count / numColumns);
             int width = 800;
             int height = 400;
             CornerRadius corner = new CornerRadius(100);
@@ -51,7 +66,7 @@ namespace DH01EventManager
                 for (int col = 0; col < numColumns; col++)
                 {
                     //stops when index reaches length of array
-                    if (textIndex >= ListOf.Length) break;
+                    if (textIndex >= ListOf.Count) break;
 
                     //creates the border
                     Border outline = new Border()
