@@ -12,16 +12,18 @@ namespace DH01EventManager
         private Int32 eventID;
         private String  eventname;
         private LocationObject eventlocation;
+        private int eventDuration;
         private List<StaffObject>? eventStaff;
         private List<EquipmentObject>? eventEquipment;
         private DateTime eventDate;
-        public  EventObject(Int32 id, String name, LocationObject location,DateTime date,List<StaffObject>? staff, List<EquipmentObject>? eventEquipment) 
+        public  EventObject(Int32 id, String name, LocationObject location,DateTime date,Int32 duration = 60,List<StaffObject>? staff, List<EquipmentObject>? eventEquipment) 
         {
             // Creates a new EventObject
             this.eventID = id;
             this.eventname = name;
             this.eventDate = date;  
             this.eventlocation = location;
+            this.eventDuration = duration;
             // Below can be Null
             this.eventStaff = staff;
             this.eventEquipment = eventEquipment;
@@ -47,5 +49,11 @@ namespace DH01EventManager
         {
             return string.Concat("EventObject: ", this.eventname,"\nID: ",this.eventID,"\nLocation: NOT IMPLEMENTED");
         }
+
+        public Int32 getEventDuration()
+        {
+            return this.eventDuration;
+        }
+        public void setEventDuration(Int32 duration) { this.eventDuration = duration; }
     }// EventObject
 }

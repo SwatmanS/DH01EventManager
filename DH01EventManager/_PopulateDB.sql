@@ -22,11 +22,11 @@ INSERT INTO ROSE_Location (Location_ID,Location_name,Location_address,Location_C
 	(3,'Cullercoats','Cullercoats beach',40),
 	(4,'Heaton','Simonside Terrace',50);
 	
-INSERT INTO ROSE_Event (Event_ID,Location_ID,Event_Name,Event_Date,Event_Capacity,Event_Duration) VALUES 
-	(1,1,'Cervical Screenings','09/12/2024 11:40:40',50,60),
-	(2,2,'Cervical Screenings','09/12/2024 11:40:40',50,60),
-	(3,3,'Cervical Screenings','09/12/2024 11:40:40',50,60),
-	(4,4,'Cervical Screenings','09/12/2024 11:40:40',50,60);
+INSERT INTO ROSE_Event (Event_ID,Location_ID,Event_Name,Event_Date,Event_Duration) VALUES 
+	(1,1,'Cervical Screenings','09/12/2024 11:40:40',60),
+	(2,2,'Cervical Screenings','09/12/2024 11:40:40',60),
+	(3,3,'Cervical Screenings','09/12/2024 11:40:40',60),
+	(4,4,'Cervical Screenings','09/12/2024 11:40:40',60);
 	
 INSERT INTO ROSE_PastEvents(PastEvent_ID,Event_ID,Actual_Turnout) VALUES 
 	(1,1,100),
