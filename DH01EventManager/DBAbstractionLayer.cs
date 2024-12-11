@@ -77,7 +77,7 @@ namespace DH01EventManager
         private static List<EquipmentObject>? getAssociatedEquipment(Int32 EventID)
         {
             List<EquipmentObject> l = new List<EquipmentObject>();
-            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_EquipmentAssign WHERE Event_ID = {EventID} LEFT JOIN Rose_Equipment ON Rose_Equipment.Equipment_ID = Rose_EquipmentAssign.Equipment_ID;");
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_EquipmentAssign JOIN Rose_Equipment ON Rose_Equipment.Equipment_ID = Rose_EquipmentAssign.Equipment_ID AND (ROSE_EquipmemtAssign.Event_ID = {EventID});");
             while (qResults.Read())
             {
                 
@@ -89,7 +89,7 @@ namespace DH01EventManager
         private static List<StaffObject>? getAssociatedStaff(Int32 EventID)
         {
             List<StaffObject> l = new List<StaffObject>();
-            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_AssignStaff WHERE Event_ID = {EventID} LEFT JOIN Rose_Staff ON Rose_Staff.Staff_ID = ROSE_AssignStaff.Staff_ID;");
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_AssignStaff  JOIN Rose_Staff ON Rose_Staff.Staff_ID = ROSE_AssignStaff.Staff_ID  AND (ROSE_AssignStaff.Event_ID = {EventID});");
             while (qResults.Read())
             {
 
