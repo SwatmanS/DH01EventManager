@@ -71,5 +71,15 @@ namespace DH01EventManager
             return this.eventDuration;
         }
         public void setEventDuration(Int32 duration) { this.eventDuration = duration; }
+
+        public static DateTime parseStartDate(DateTime startDate, String startTime)
+        {
+            return DateTime.Now;
+        }
+        public static DateTime parseDuration(DateTime startDate,String StartTime, String EndTime)
+        {
+            return DateTime.Now;
+        }
+
     }// EventObject
 }

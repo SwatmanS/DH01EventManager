@@ -276,10 +276,7 @@ namespace DH01EventManager
             {
                 return false;
             }
-            else if (!DBAbstractionLayer.isValidDate())
-            {
-                return false;
-            }
+            
             Boolean a = Con.runSQL($"PRAGMA foreign_keys = 0; INSERT INTO ROSE_Event (Event_ID,Location_ID,Event_Name,Event_Date,Event_Duration) VALUES ({e.getEventID()},{e.getEventLocation().getLocationID()},'{e.getEventName()}','{e.getEventDate()}',{e.getEventDuration()});");
             Boolean b = DBAbstractionLayer.AssignEquipment(e.getEventEquipment(),e.getEventID());
             Boolean c = DBAbstractionLayer.AssignStaff(e.getEventStaff(),e.getEventID());
@@ -315,12 +312,28 @@ namespace DH01EventManager
 
         private static object getNewEquipmentAssignID()
         {
-            throw new NotImplementedException();
+            List<Int32> l = new List<Int32>();
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT EquipmentAssign_ID FROM ROSE_EquipmentAssign;");
+            while (qResults.Read())
+            {
+                l.Add(qResults.GetInt32(0));
+            }
+            Int32 Mx = l.Max() + 1;
+            return Mx;
         }
 
-        public static bool isValidDate()
+        public static bool isValidDate(String d)
         {
-            throw new NotImplementedException();
+            try
+                
+            {
+                DateTime.Parse(d);
+                return true;
+            }
+            catch (Exception e) 
+            {
+                return false;
+            }
         }
 
         public static Boolean isNewEventID(Int32 EventID)
