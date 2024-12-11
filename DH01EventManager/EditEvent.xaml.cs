@@ -27,19 +27,7 @@ namespace DH01EventManager
             //decides which image to use for the login/logout image
             UpdateLoginImage();
 
-            StaffList.ItemsSource = Settings.staffList;
-            EquipmentList.ItemsSource = Settings.equipmentList;
-            LocationList.ItemsSource = Settings.locationList;
-
-            eventTitleBox.Text = "hello";
-            eventDateBox.Text = "04.03.6003";
-            eventStartTimeBox.Text = "2pm";
-            eventEndTimeBox.Text = "5pm";
-            eventCapacityBox.Text = "40";
-            string[] DummyStaffList = ["Mia Kiambang", "Rayyan Kesuma", "Amani Wati"];
-            string[] DummyEquipmentList = ["tables", "stuff4", "stuff6"];
-            string[] DummyLocation = ["Medizone Family Clinic"];
-
+            SetEvents(Settings.eventIndex);
         }
 
         private void UpdateLoginImage()
@@ -81,6 +69,24 @@ namespace DH01EventManager
             this.Hide();
             l_page.ShowDialog();
             this.Show();
+        }
+
+        private void SetEvents(int index)
+        {
+            //depending on index show a different event from the class
+
+            StaffList.ItemsSource = Settings.staffList;
+            EquipmentList.ItemsSource = Settings.equipmentList;
+            LocationList.ItemsSource = Settings.locationList;
+
+            eventTitleBox.Text = "hello";
+            //eventDateBox.SelectedDate = ;
+            eventStartTimeBox.Text = "2pm";
+            eventEndTimeBox.Text = "5pm";
+            eventCapacityBox.Text = "40";
+            string[] DummyStaffList = ["Mia Kiambang", "Rayyan Kesuma", "Amani Wati"];
+            string[] DummyEquipmentList = ["tables", "stuff4", "stuff6"];
+            string[] DummyLocation = ["Medizone Family Clinic"];
         }
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)

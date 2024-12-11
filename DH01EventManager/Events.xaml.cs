@@ -30,7 +30,7 @@ namespace DH01EventManager
             string[] ListOf = ["Event Number1,\n Event date: 12.12.1202,\n event time 12pm to 4am,\n event capacity 30,\n event staff: me me and me#,\n event location is here", "2", "3", "4", "5", "6", "7", "8", "9"];
 
             //makes the canvas height dynamic
-            canvas.Height = (ListOf.Length+1)*240;
+            canvas.Height = (ListOf.Length + 1) * 240;
 
             //variables needed for the canvas
             int numColumns = 2;
@@ -46,7 +46,7 @@ namespace DH01EventManager
             for (int row = 0; row < numRows; row++)
             {
                 //loops for each column
-                for (int col = 0; col < numColumns; col++) 
+                for (int col = 0; col < numColumns; col++)
                 {
                     //stops when index reaches length of array
                     if (textIndex >= ListOf.Length) break;
@@ -108,6 +108,9 @@ namespace DH01EventManager
                         VerticalAlignment = VerticalAlignment.Top,
                         Margin = new Thickness(30)
                     };
+
+                    //button clicked method
+                    editButton.Click += (s, e) => OpenEditPage(textIndex);
 
                     //adds the items to the grid container
                     container.Children.Add(eventText);
@@ -171,6 +174,18 @@ namespace DH01EventManager
         {
             //hides current window and goes to the login page 
             Login l_page = new();
+            this.Hide();
+            l_page.ShowDialog();
+            this.Show();
+        }
+
+
+
+        private void OpenEditPage(int eventNum)
+        {
+            Settings.eventIndex = eventNum;
+            //hides current window and goes to the login page 
+            EditEvent l_page = new();
             this.Hide();
             l_page.ShowDialog();
             this.Show();
