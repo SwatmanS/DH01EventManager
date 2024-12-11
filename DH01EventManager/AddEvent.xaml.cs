@@ -28,6 +28,7 @@ namespace DH01EventManager
             //decides which image to use for the login/logout image
             UpdateLoginImage();
 
+            //displays the list of items
             StaffList.ItemsSource = Settings.staffList;
             EquipmentList.ItemsSource = Settings.equipmentList;
             LocationList.ItemsSource = Settings.locationList;
@@ -62,8 +63,11 @@ namespace DH01EventManager
 
         private void GoToEvents_Click(object sender, RoutedEventArgs e)
         {
-            //close the current window
-            this.Close();
+            //hides current window and goes to the events page
+            Events l_page = new();
+            this.Hide();
+            l_page.ShowDialog();
+            this.Show();
         }
 
         private void GoToLogin_Click(object sender, RoutedEventArgs e)

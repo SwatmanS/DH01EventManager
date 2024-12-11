@@ -109,7 +109,7 @@
                 <!--event date input-->
                 <StackPanel Grid.Row="3" Grid.Column="2" HorizontalAlignment="left">
                     <TextBlock x:Name="eventDateText"/>
-                    <DatePicker x:Name="eventDateBox" Width="200" SelectedDate="12/12/2024"
+                    <DatePicker x:Name="eventDateBox" Width="200"
                              BorderBrush="#FF209CA4" Height="25" FontSize="16" FontFamily="Verdana"/>
                 </StackPanel>
 
