@@ -10,6 +10,8 @@ namespace DH01EventManager
     {
         public static Boolean loggedIn = false;
 
+        public static int eventIndex = -1;
+
         public static string[] staffList = ["Ammar Raja", "Syshmi Megat", "Ashraff Tengku", "Damia Jehan", "Zara Shah",
             "Qaisara Mayang", "Mia Kiambang", "Keisha Joyo ", "Arissa Tam", "Hadif Tuah", "Rayyan Kesuma", "Haziq Som ",
             "Alya Wira", "Amani Wati", "Aishah Mayang", "Noor Lai", "Balqis Darma", "Aishah Shah", "Qistina Mirza",

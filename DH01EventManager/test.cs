@@ -24,6 +24,9 @@ namespace DH01EventManager
 
         public static void EventObjectTest()
         {
+            List<UpcomingEvent> events = new List<UpcomingEvent>();
+            events = DBAbstractionLayer.getUpcomingEvents();
+            MessageBox.Show("rah " + events, "events");
         }
 
         public static void LocationObjectTest()
