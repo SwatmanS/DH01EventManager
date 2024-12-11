@@ -87,7 +87,11 @@ namespace DH01EventManager
 
         public String toString() 
         {
-            return string.Concat("EventObject: ", this.eventname,"\nID: ",this.eventID,"\nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(), "\nEvent Date: ", this.eventDate, "\nEquipment: ", equipmentString());
+            var date = DateOnly.FromDateTime(eventDate);
+            var sTime = TimeOnly.FromDateTime(eventDate);
+            DateTime d = eventDate.AddMinutes(eventDuration);
+            var eTime = TimeOnly.FromDateTime(d);
+            return string.Concat("Event Name: ", this.eventname, "\nDate: ", date.ToString(), "\nStart Time: ", sTime.ToString(), "\nEnd Time: ", eTime.ToString(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
         }
 
         public Int32 getEventDuration()
