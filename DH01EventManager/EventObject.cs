@@ -16,7 +16,13 @@ namespace DH01EventManager
         private List<StaffObject>? eventStaff;
         private List<EquipmentObject>? eventEquipment;
         private DateTime eventDate;
-        public  EventObject(Int32 id, String name, LocationObject location,DateTime date,Int32 duration = 60,List<StaffObject>? staff, List<EquipmentObject>? eventEquipment) 
+        private int id;
+        private string name;
+        private LocationObject location;
+        private DateTime date;
+        private List<StaffObject>? staff;
+
+        public  EventObject(Int32 id, String name, LocationObject location,DateTime date,Int32 duration,List<StaffObject>? staff, List<EquipmentObject>? eventEquipment) 
         {
             // Creates a new EventObject
             this.eventID = id;
@@ -28,7 +34,17 @@ namespace DH01EventManager
             this.eventStaff = staff;
             this.eventEquipment = eventEquipment;
         }// EventObject - Constructor
-        
+
+        public EventObject(int id, string name, LocationObject location, DateTime date, List<StaffObject>? staff, List<EquipmentObject>? eventEquipment)
+        {
+            this.id = id;
+            this.name = name;
+            this.location = location;
+            this.date = date;
+            this.staff = staff;
+            this.eventEquipment = eventEquipment;
+        }
+
         // Event Getters
         public Int32 getEventID() { return this.eventID; }// GetEventID
         public String getEventName() { return this.eventname; } // GetEventName
