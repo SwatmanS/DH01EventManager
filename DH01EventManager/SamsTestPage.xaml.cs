@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,13 @@ namespace DH01EventManager
         public SamsTestPage()
         {
             InitializeComponent();
-            
+            var d = DateTime.Now.Minute;
+            var d2 = DateTime.Now.Hour;
+            Debug.WriteLine(d);
+            Debug.WriteLine(d2);
+            Debug.WriteLine(EventObject.dateTimeToStr(DateTime.Now));
+            Debug.WriteLine(EventObject.strTimeToInt("6:30am"));
+
         }
     }
 } 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xaml.Schema;
@@ -22,6 +23,7 @@ namespace DH01EventManager
         private LocationObject location;
         private DateTime date;
         private List<StaffObject>? staff;
+        static List<String> timeList= new List<String>() { "6:00am", "6:30am", "7:00am", "7:30am", "8:00am", "8:30am", "9:00am", "9:30am", "10:00am", "10:30am", "11:00am", "11:30am", "12:00pm", "12:30pm", "1:00pm", "1:30pm", "2:00pm", "2:30pm", "3:00pm", "3:30pm", "4:00pm", "4:30pm", "5:00pm", "5:30pm", "6:00pm", "6:30pm", "7:00pm", "7:30pm", "8:00pm", "8:30pm", "9:00pm" };
 
         public  EventObject(Int32 id, String name, LocationObject location,DateTime date,Int32 duration,List<StaffObject>? staff, List<EquipmentObject>? eventEquipment) 
         {
@@ -102,16 +104,48 @@ namespace DH01EventManager
         { 
             this.eventDuration = duration;
         }
-
-
+        //6AM - 9PM (21)
+        //6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 #31
+        public static Int32 strTimeToInt(String s)
+        {
+            Int32 x = 0;
+            for (int i = 0; i > EventObject.timeList.Count;i++)
+            {
+                if (s == EventObject.timeList[i])
+                {
+                    x = i;
+                }
+            }
+            
+            Int32 halfPast = x +1 % 2;//16 Hours
+            Int32 hour = x - (halfPast) / 2;
+            return ((hour+6)*60)+(halfPast*30);
+        }
+        public static String dateTimeToStr(DateTime d)
+        {
+            
+            Int32 Hour = Int32.Parse(d.Hour.ToString());
+            Int32 Minutes = Int32.Parse(d.Minute.ToString());
+            Int32 index = 0;
+            Int32 hasMinute = 0;
+            if (Minutes != 0 )
+            {
+                hasMinute = 1;
+            }
+            index = (Hour - 6) * 2 + hasMinute;
+            return EventObject.timeList[index];
+        }
 
         public static DateTime parseStartDate(DateTime startDate, String startTime)
         {
-            return DateTime.Now;
+            
+            return startDate.AddMinutes(EventObject.strTimeToInt(startTime));
         }
-        public static DateTime parseDuration(DateTime startDate,String StartTime, String EndTime)
+        public static Int32 parseDuration(DateTime startDate,String StartTime, String EndTime)
         {
-            return DateTime.Now;
+            int start = EventObject.strTimeToInt(StartTime);
+            int end = EventObject.strTimeToInt(EndTime);
+            return end - start;
         }
 
 
