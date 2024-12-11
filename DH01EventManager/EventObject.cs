@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Xaml.Schema;
 
 namespace DH01EventManager
@@ -74,7 +75,30 @@ namespace DH01EventManager
 
         public static DateTime parseStartDate(DateTime startDate, String startTime)
         {
-            return DateTime.Now;
+            DateTime date1 = new DateTime(2024, 12, 25).AddHours(1);
+            DateTime date2 = new DateTime(2024, 12, 25, 06, 30;
+            DateTime date3 = new DateTime(2024, 12, 25, 07, 00;
+            DateTime date4 = new DateTime(2024, 12, 25, 07, 30;
+            DateTime date5 = new DateTime(2024, 12, 25, 08, 00;
+            DateTime date6 = new DateTime(2024, 12, 25, 08, 30;
+            DateTime date7 = new DateTime(2024, 12, 25, 09,00;
+            DateTime date8 = new DateTime(2024, 12, 25, 09, 30;
+            DateTime date9 = new DateTime(2024, 12, 25, 10, 00;
+            DateTime date10 = new DateTime(2024, 12, 25, 10, 30;
+            DateTime date11 = new DateTime(2024, 12, 25, 11, 00;
+            DateTime date12 = new DateTime(2024, 12, 25, 11, 30;
+            DateTime date13 = new DateTime(2024, 12, 25, 12, 00;
+            DateTime date14 = new DateTime(2024, 12, 25, 12, 30;
+            DateTime date15 = new DateTime(2024, 12, 25, 01, 00;
+            DateTime date16 = new DateTime(2024, 12, 25, 01, 30;
+            DateTime date17 = new DateTime(2024, 12, 25, 02, 00;
+            DateTime date18 = new DateTime(2024, 12, 25, 02, 30;
+            DateTime date19 = new DateTime(2024, 12, 25, 03, 00;
+            DateTime date20 = new DateTime(2024, 12, 25, 03, 30;
+            DateTime date21 = new DateTime(2024, 12, 25, 04, 00;
+            Console.WriteLine(date1.ToString()); // 12/25/2024 12:00:00 Am
+
+        return DateTime.Now;
         }
         public static DateTime parseDuration(DateTime startDate,String StartTime, String EndTime)
         {
