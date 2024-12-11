@@ -63,7 +63,7 @@ namespace DH01EventManager
 
         public String toString() 
         {
-            return string.Concat("EventObject: ", this.eventname,"\nID: ",this.eventID,"\nLocation: NOT IMPLEMENTED");
+            return string.Concat("EventObject: ", this.eventname,"\nID: ",this.eventID,"\nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", this.eventStaff[0].getForename(), "\nEvent Date: ", this.eventDate, "\nEquipment: ", this.eventEquipment[0].getEquipmentName());
         }
 
         public Int32 getEventDuration()
