@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,16 +62,44 @@ namespace DH01EventManager
         public void setEventStaff(List<StaffObject> staff) { this.eventStaff = staff; } // SetEventStaff
         public void addEventEquipment(List<EquipmentObject> equipment) { this.eventEquipment = equipment; } // SetEventEquipment
 
+
+        public String staffString()
+        {
+            String[] sArray;
+            String sString = "";
+            foreach (StaffObject staff in eventStaff)
+            {
+                sString = (String.Concat(staff.getForename(), " ", staff.getSurname()));
+            }
+            return sString;
+        }
+
+        public String equipmentString()
+        {
+            String[] eArray;
+            String eString = "";
+            foreach (EquipmentObject equip in eventEquipment)
+            {
+                eString = (String.Concat(equip.getEquipmentName()));
+            }
+            return eString;
+        }
+
         public String toString() 
         {
-            return string.Concat("EventObject: ", this.eventname,"\nID: ",this.eventID,"\nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", this.eventStaff[0].getForename(), "\nEvent Date: ", this.eventDate, "\nEquipment: ", this.eventEquipment[0].getEquipmentName());
+            return string.Concat("EventObject: ", this.eventname,"\nID: ",this.eventID,"\nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(), "\nEvent Date: ", this.eventDate, "\nEquipment: ", equipmentString());
         }
 
         public Int32 getEventDuration()
         {
             return this.eventDuration;
         }
-        public void setEventDuration(Int32 duration) { this.eventDuration = duration; }
+        public void setEventDuration(Int32 duration) 
+        { 
+            this.eventDuration = duration;
+        }
+
+
 
         public static DateTime parseStartDate(DateTime startDate, String startTime)
         {
@@ -80,6 +109,8 @@ namespace DH01EventManager
         {
             return DateTime.Now;
         }
+
+
 
     }// EventObject
 }
