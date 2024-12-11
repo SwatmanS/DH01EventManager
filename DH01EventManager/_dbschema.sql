@@ -49,7 +49,6 @@ CREATE TABLE IF NOT EXISTS ROSE_Event(
 	Location_ID INTEGER(32),
 	Event_Name TEXT,
 	Event_Date CHAR(23),
-	Event_Capacity INTEGER(32),
 	Event_Duration INTEGER(32),
 	PRIMARY KEY(Event_ID),
 	FOREIGN KEY (Location_ID) REFERENCES  ROSE_Location (Location_ID)                       
