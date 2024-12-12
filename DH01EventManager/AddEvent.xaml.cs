@@ -195,8 +195,17 @@ namespace DH01EventManager
 
                 //EventObject nEvent = new EventObject(rand1, eventTitleBox.Text, checkedLocation, startTime, dur, checkedStaff, checkedEquipment);
 
-
-
+                /*to future jasmine: need to make checkedstaff, checkedequipmnet, and checkedlocation into objects. need database search method
+                 * once obtained will need to use location search on location and save as locationobject which can be passed into the construct
+                 * equipment and staff will require a loop (foreach?) that will convert each item in list to an object using the db search method and will save
+                 * the result into the relevant object list which can then be passed into the constructor
+                 * once this is done, the addevent method will hopefully work. should be testable by checking the events page
+                 * id is currently random, could possibly make a list of events, get last id in list and add 1
+                 * currently no estimated turn out functionality have to standby and wait to see if that is the case
+                 * but we would do a similar thing hopefully of adding the turn out to the upcoming events table w a new id and corresponding event id.
+                 * to get the newid would probs do a similar thing of making a list of ids and outputting them.
+                 * maybe make new methods to just return ids.
+                */
                 //prints off the add event form which would go into the database
                 MessageBox.Show(
                     "Event Title:\n" + eventTitleBox.Text +
