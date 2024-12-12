@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace DH01EventManager
 {
@@ -16,7 +17,9 @@ namespace DH01EventManager
             "Qaisara Mayang", "Mia Kiambang", "Keisha Joyo", "Arissa Tam", "Hadif Tuah", "Rayyan Kesuma", "Haziq Som",
             "Alya Wira", "Amani Wati", "Aishah Mayang", "Noor Lai", "Balqis Darma", "Aishah Shah", "Qistina Mirza",
             "Hakim Ros", "Alya Tiara", "Batrisyia Orked", "Irfan Kesuma", "Humaira Jehan", "Damia Mayang ", "Amani Wira"];
+
         public static string[] equipmentList = ["tables", "stuff", "stuff2", "stuff3", "stuff4", "stuff5", "stuff6", "stuff7", "stuff8", "stuff9", "stuff10"];
+
         public static string[] locationList = ["Bangsar South Medical Clinic", "Klinik Primary Care 4U", "BeHealth Clinic",
             "Perdana Medical Clinic", "Klinik Dr.Prevents", "Medhope Family Clinic", "Qualitas SV Care Clinic",
             "Wellcare Clinic", "Klinik Mediviron Metropark", "Klinik Primaria", "Medizone Family Clinic", 

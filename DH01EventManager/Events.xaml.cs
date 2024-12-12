@@ -126,12 +126,15 @@ namespace DH01EventManager
                         Margin = new Thickness(30)
                     };
 
-                    //button clicked method
-                    editButton.Click += (s, e) => OpenEditPage(textIndex);
-
                     //adds the items to the grid container
                     container.Children.Add(eventText);
-                    container.Children.Add(editButton);
+
+                    if (Settings.loggedIn == true)
+                    {
+                        //button clicked method
+                        editButton.Click += (s, e) => OpenEditPage(textIndex);
+                        container.Children.Add(editButton);
+                    }
 
                     //adds the grid container to the canvas
                     outline.Child = container;

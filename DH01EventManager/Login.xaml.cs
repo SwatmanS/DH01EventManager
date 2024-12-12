@@ -106,12 +106,13 @@ namespace DH01EventManager
                 Settings.loggedIn = true;
                 UpdateLoginImage();
                 MessageBox.Show("logged in");
+
                 MainWindow l_page = new();
                 this.Hide();
                 l_page.ShowDialog();
                 this.Show();
             }
-            
+            else
             {
                 MessageBox.Show("incorrect username or password");
             }
