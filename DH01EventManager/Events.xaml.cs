@@ -39,13 +39,14 @@ namespace DH01EventManager
                 ListOf.Add(ev.toString());
             }
 
-
-            /*string[] ListOf = ["Event Title: 1st Event\n Event date: 01.01.2001,\n Event starts at 6am and ends at 5pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",
+            /*
+             * string[] ListOf = ["Event Title: 1st Event\n Event date: 01.01.2001,\n Event starts at 6am and ends at 5pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",
                 "Event Title: 2nd Event\n Event date: 02.02.2002,\n Event starts at 7am and ends at 12pm,\n Event Capacity: 60 people,\n Event Staff: a, b, c, d,\n Event Location: Family Clinic Seventeen",
                 "Event Title: 3rd Event\n Event date: 03.03.2003,\n Event starts at 9am and ends at 9pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",
                 "Event Title: 4th Event\n Event date: 04.04.2004,\n Event starts at 6am and ends at 5pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",
                 "Event Title: 5th Event\n Event date: 05.05.2005,\n Event starts at 6am and ends at 5pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",];
             */
+
             //makes the canvas height dynamic
             canvas.Height = (ListOf.Count + 1) * 240;
 
@@ -126,12 +127,15 @@ namespace DH01EventManager
                         Margin = new Thickness(30)
                     };
 
-                    //button clicked method
-                    editButton.Click += (s, e) => OpenEditPage(textIndex);
-
                     //adds the items to the grid container
                     container.Children.Add(eventText);
-                    container.Children.Add(editButton);
+
+                    if (Settings.loggedIn == true)
+                    {
+                        //button clicked method
+                        editButton.Click += (s, e) => OpenEditPage(textIndex);
+                        container.Children.Add(editButton);
+                    }
 
                     //adds the grid container to the canvas
                     outline.Child = container;
