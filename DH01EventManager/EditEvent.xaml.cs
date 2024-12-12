@@ -84,11 +84,17 @@ namespace DH01EventManager
         {
             //depending on index show a different event from the class
 
-            eventTitleBox.Text = "Event Title 1";
-            eventDateBox.Text = "12/12/2024";
-            eventStartTimeBox.Text = "8:00am";
-            eventEndTimeBox.Text = "5:00pm";
+            EventObject edit = DBAbstractionLayer.getEventByID(index);
+
+            DateTime datetime = edit.getStartDate();
+
+
+            /*eventTitleBox.Text = edit.getEventName();
+            eventDateBox.Text = datetime.ToString();
+            eventStartTimeBox.Text = edit.getStartTime();
+            eventEndTimeBox.Text = edit.getEndTime();
             eventCapacityBox.Text = "40";
+            */
         }
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)

@@ -57,7 +57,7 @@ namespace DH01EventManager
             CornerRadius corner = new CornerRadius(100);
             int top;
             int left;
-            int textIndex = 0;
+            int textIndex = 1;
 
             //loops for each row
             for (int row = 0; row < numRows; row++)
@@ -66,7 +66,7 @@ namespace DH01EventManager
                 for (int col = 0; col < numColumns; col++)
                 {
                     //stops when index reaches length of array
-                    if (textIndex >= ListOf.Count) break;
+                    if (textIndex - 1 >= ListOf.Count) break;
 
                     //creates the border
                     Border outline = new Border()
@@ -92,7 +92,7 @@ namespace DH01EventManager
                     //makes the textblock
                     TextBlock eventText = new TextBlock()
                     {
-                        Text = ListOf[textIndex],
+                        Text = ListOf[textIndex - 1],
                         Foreground = Brushes.Black,
                         FontSize = 24,
                         FontFamily = new FontFamily("Verdana"),

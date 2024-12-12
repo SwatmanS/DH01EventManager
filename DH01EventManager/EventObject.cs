@@ -90,10 +90,6 @@ namespace DH01EventManager
 
        public String toString() 
         {
-            var date = DateOnly.FromDateTime(eventDate);
-            var sTime = TimeOnly.FromDateTime(eventDate);
-            DateTime d = eventDate.AddMinutes(eventDuration);
-            var eTime = TimeOnly.FromDateTime(d);
             return string.Concat("Event Name: ", this.eventname, "\nDate: ", getStartDate(), "\nStart Time: ", getStartTime(), "\nEnd Time: ", getEndTime(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
         }
 
