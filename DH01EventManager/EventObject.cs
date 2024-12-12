@@ -88,7 +88,7 @@ namespace DH01EventManager
             return eString;
         }
 
-        public String toString() 
+       public String toString() 
         {
             var date = DateOnly.FromDateTime(eventDate);
             var sTime = TimeOnly.FromDateTime(eventDate);

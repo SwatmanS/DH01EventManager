@@ -14,11 +14,9 @@ namespace DH01EventManager
     public class UpcomingEvent : EventObject
     {
         private Int32 eventEstimatedTurnout;
-        public UpcomingEvent(Int32 id, string name, LocationObject location, DateTime date, List<StaffObject>? staff, List<EquipmentObject>? eventEquipment,Int32 estimate) : base(id, name, location, date, staff, eventEquipment)
+        public UpcomingEvent(Int32 id, String name, LocationObject location, DateTime date, List<StaffObject>? staff, List<EquipmentObject>? eventEquipment,Int32 estimate) : base(id, name, location, date, staff, eventEquipment)
         {
             this.eventEstimatedTurnout = estimate;
-            //do we not need to calculate the estimated turnout using flyers handed out, info from 
-            //community leaders, and previous event data?
         } // Upcoming Event Constructor 
         public UpcomingEvent(EventObject e,Int32 estimate) : base(e.getEventID(), e.getEventName(), e.getEventLocation(), e.getEventDate(), e.getEventStaff(), e.getEventEquipment())
         {
@@ -26,5 +24,10 @@ namespace DH01EventManager
         } // Upcoming Event Constructor from EventObject
         public Int32 getEstimatedTurnout() {  return this.eventEstimatedTurnout; } // GetEstimatedTurnout
         public void setEstimatedTurnout(Int32 estimate) { this.eventEstimatedTurnout = estimate; } // SetEstimatedTurnout
+
+        public String addString(String a)
+        {
+            return a = String.Concat(a + "\nEstimated turnout: ", this.eventEstimatedTurnout);
+        }
     } // Upcoming Event Object
 }
