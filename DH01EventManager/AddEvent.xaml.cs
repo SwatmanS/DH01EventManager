@@ -182,6 +182,21 @@ namespace DH01EventManager
                 List<string> checkedEquipment = GetCheckedItems(EquipmentList);
                 List<string> checkedLocation = GetCheckedItems(LocationList);
 
+                Random rng = new Random();
+                int rand1 = rng.Next(10,100);
+                DateTime startDate = DateTime.Parse(eventDateBox.Text);
+                TimeSpan startTime = TimeSpan.Parse(eventStartTimeBox.Text);
+                TimeSpan endTime = TimeSpan.Parse(eventEndTimeBox.Text);
+
+                endTime = endTime.Subtract(startTime);
+                int dur = (int)endTime.TotalMinutes;
+
+                startDate = startDate.Add(startTime);
+
+                //EventObject nEvent = new EventObject(rand1, eventTitleBox.Text, checkedLocation, startTime, dur, checkedStaff, checkedEquipment);
+
+
+
                 //prints off the add event form which would go into the database
                 MessageBox.Show(
                     "Event Title:\n" + eventTitleBox.Text +
