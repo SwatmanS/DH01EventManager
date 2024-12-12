@@ -94,7 +94,7 @@ namespace DH01EventManager
             var sTime = TimeOnly.FromDateTime(eventDate);
             DateTime d = eventDate.AddMinutes(eventDuration);
             var eTime = TimeOnly.FromDateTime(d);
-            return string.Concat("Event Name: ", this.eventname, "\nDate: ", date.ToString(), "\nStart Time: ", sTime.ToString(), "\nEnd Time: ", eTime.ToString(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
+            return string.Concat("Event Name: ", this.eventname, "\nDate: ", getStartDate(), "\nStart Time: ", getStartTime(), "\nEnd Time: ", getEndTime(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
         }
 
         public Int32 getEventDuration()
@@ -151,17 +151,17 @@ namespace DH01EventManager
 
         public DateTime getStartDate()
         {
-            return new DateTime(this.getStartDate().Year, this.getStartDate().Month, this.getStartDate().Day);
+            return new DateTime(eventDate.Year, eventDate.Month, eventDate.Day);
         }
         public String getStartTime()
         {
 
-            return EventObject.dateTimeToStr(this.getStartDate());
+            return EventObject.dateTimeToStr(eventDate);
         }
         public String getEndTime()
         {
 
-            return EventObject.dateTimeToStr(this.getStartDate().AddMinutes(this.getEventDuration()));
+            return EventObject.dateTimeToStr(eventDate.AddMinutes(eventDuration));
         }
 
 
