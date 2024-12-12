@@ -30,14 +30,34 @@ namespace DH01EventManager
 
             List<EventObject> events = new List<EventObject>();
             events = DBAbstractionLayer.getAllEvents();
+            List < UpcomingEvent > upEvent = new List<UpcomingEvent>();
+            upEvent = DBAbstractionLayer.getUpcomingEvents();
+
             
             List<String> ListOf = new List<String>();
             String evString;
+            String temp;
 
-            foreach (EventObject ev in events)
+
+            for(int i =0; i < upEvent.Count; i++)
             {
-                ListOf.Add(ev.toString());
+                evString = events[i].toString();
+                evString = upEvent[i].addString(evString);
+                ListOf.Add(evString);
+
             }
+
+            /*foreach (EventObject ev in events)
+            {
+                temp = ev.toString();
+                foreach (UpcomingEvent ups in upEvent)
+                {
+       
+                    temp = ups.addString(temp);
+                    ListOf.Add(temp);
+
+                }
+            }*/
 
 
             /*string[] ListOf = ["Event Title: 1st Event\n Event date: 01.01.2001,\n Event starts at 6am and ends at 5pm,\n Event Capacity: 120 people,\n Event Staff: Batrisyia Orked, Irfan Kesuma, Haziq Som, Mia Kiambang,\n Event Location: Family Clinic Seventeen",
