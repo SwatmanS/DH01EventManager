@@ -136,6 +136,7 @@
                         <ComboBoxItem>10:30am</ComboBoxItem>
                         <ComboBoxItem>11:00am</ComboBoxItem>
                         <ComboBoxItem>11:30am</ComboBoxItem>
+                        <ComboBoxItem>11:40am</ComboBoxItem>
                         <ComboBoxItem>12:00pm</ComboBoxItem>
                         <ComboBoxItem>12:30pm</ComboBoxItem>
                         <ComboBoxItem>1:00pm</ComboBoxItem>
@@ -160,6 +161,7 @@
                         <ComboBoxItem>11:30am</ComboBoxItem>
                         <ComboBoxItem>12:00pm</ComboBoxItem>
                         <ComboBoxItem>12:30pm</ComboBoxItem>
+                        <ComboBoxItem>12:40am</ComboBoxItem>
                         <ComboBoxItem>1:00pm</ComboBoxItem>
                         <ComboBoxItem>1:30pm</ComboBoxItem>
                         <ComboBoxItem>2:00pm</ComboBoxItem>
