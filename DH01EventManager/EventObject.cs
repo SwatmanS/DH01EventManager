@@ -145,19 +145,19 @@ namespace DH01EventManager
             return end - start;
         }
 
-        public DateTime getStartDate()
+        public String getStartDate()
         {
-            return new DateTime(eventDate.Year, eventDate.Month, eventDate.Day);
+            return eventDate.ToString("dddd dd MMMM yyyy");
         }
         public String getStartTime()
-        {
-
-            return EventObject.dateTimeToStr(eventDate);
+        { 
+            return eventDate.ToString("hh:mm tt");
+            //return EventObject.dateTimeToStr(eventDate);
         }
         public String getEndTime()
         {
-
-            return EventObject.dateTimeToStr(eventDate.AddMinutes(eventDuration));
+            eventDate = eventDate.AddMinutes(eventDuration);
+            return eventDate.ToString("hh:mm tt");
         }
 
 

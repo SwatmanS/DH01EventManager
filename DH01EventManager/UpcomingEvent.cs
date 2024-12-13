@@ -27,7 +27,7 @@ namespace DH01EventManager
 
         public String addString(String a)
         {
-            return a = String.Concat(a + "\nEstimated turnout: ", this.eventEstimatedTurnout);
+            return a = String.Concat(a + "\nEstimated turnout: ", this.eventEstimatedTurnout, " attendees");
         }
     } // Upcoming Event Object
 }
