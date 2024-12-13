@@ -439,10 +439,13 @@ namespace DH01EventManager
 
         public static EventObject getEventByName(String Name)
         {
-            return DBAbstractionLayer.getEventIDByName(Name);
-
+            return DBAbstractionLayer.getEventByID(DBAbstractionLayer.getEventIDByName(Name));
         }
-
+        public static LocationObject getLocationByName(String Name)
+        {
+            return DBAbstractionLayer.getLocationByID(DBAbstractionLayer.getLocationByName(Name));
+        }
+        
 
 
     }// DBAbstractionLayer
