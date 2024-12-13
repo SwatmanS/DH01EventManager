@@ -395,26 +395,18 @@ namespace DH01EventManager
         // could there be a way to get the information for a location, staff, and equipment from the name
         // And then do the same thing for staff and equipment
         // I also need to be able to update an event
-        public static void getEventIDByName(String Name)
+        
+        public static Int32 getEventIDByName(String Name)
         {
             SQLiteDataReader? qResults = Con.querySQL($"SELECT Event_ID From  ROSE_Event WHERE Event_Name = '{Name}';");
             if (qResults.Read()) // (Event_ID,Location_ID,Event_Name,Event_Date,Event_Duration)
             {
-                /*return new EventObject(qResults.GetInt32(0),
-                                   qResults.GetString(2),
-                                   DBAbstractionLayer.getAssociatedLocation(qResults.GetInt32(1)),
-                                   DateTime.Parse(qResults.GetString(3)),
-                                   qResults.GetInt32(4),
-                                   DBAbstractionLayer.getAssociatedStaff(qResults.GetInt32(0)),
-                                   DBAbstractionLayer.getAssociatedEquipment(qResults.GetInt32(0))
-                                   ); ; ; ; ;*/
+                return qResults.GetInt32(0);
             }
-            /*return new EventObject(EventID,
-                                   "Unknown Event",
-                                   new LocationObject(-1, "Missing Location Please Add", "Unknown", 0),
-                                   new DateTime(), 0, null, null);*/
+            return -1;
 
         }
+
 
 
 
