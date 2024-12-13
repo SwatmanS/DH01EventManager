@@ -37,7 +37,8 @@ namespace DH01EventManager
         }
         private void GoToOwenTest(object sender, RoutedEventArgs e)
         {
-
+            Window x = new OwenTestPage();
+            x.Show();
         }
         private void GoToGinaTest(object sender, RoutedEventArgs e)
         {

@@ -146,7 +146,7 @@ namespace DH01EventManager
             return true;
         }
 
-        internal static List<UpcomingEvent>? getUpcomingEvents()
+        public static List<UpcomingEvent>? getUpcomingEvents()
         {
             /*
              *  Gets all upcoming events from the upcoming events table
@@ -241,7 +241,7 @@ namespace DH01EventManager
         return new EquipmentObject(EquipmentID,"Unknown Equipment","unkown Description");
         }
 
-        internal static List<PastEvent>? getPreviousEvents()
+        public static List<PastEvent>? getPreviousEvents()
         {
             /*
              *  Gets all Past events from the past events table
@@ -258,7 +258,7 @@ namespace DH01EventManager
             return l;
         }
 
-        internal static UpcomingEvent getUpcommingEventData(Int32 EventID)
+        public static UpcomingEvent getUpcommingEventData(Int32 EventID)
         {
             UpcomingEvent Up;
             
@@ -276,7 +276,7 @@ namespace DH01EventManager
 
         }
 
-        internal static List<PastEvent>? getAllPreviousTurnoutsAtLocation(LocationObject Location)
+        public static List<PastEvent>? getAllPreviousTurnoutsAtLocation(LocationObject Location)
         {
             /*
              *  Using the given location retrieves a list of previous turnouts
@@ -296,12 +296,12 @@ namespace DH01EventManager
 
         }
 
-        internal static void updateUpcomingEvent(UpcomingEvent upcoming)
+        public static void updateUpcomingEvent(UpcomingEvent upcoming)
         {
             Con.runSQL($"UPDATE Rose_UpcomingEvent SET Event_ID = {upcoming.getEventID()},Predicted_Turnout = {upcoming.getEstimatedTurnout()} WHERE NewEvent_ID = {upcoming.getEventID()};");
         }
 
-        internal static List<UserObject> getAllUsers()
+        public static List<UserObject> getAllUsers()
         {
             List<UserObject> l = new List<UserObject>();
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From ROSE_Login");
@@ -312,7 +312,7 @@ namespace DH01EventManager
             }
             return l;
         }
-        internal static Boolean addNewEvent(EventObject e)
+        public static Boolean addNewEvent(EventObject e)
         {
             /*
              * Returns True If Written to DB
@@ -547,8 +547,6 @@ namespace DH01EventManager
             }
             return check;
         }
-
-
         public static bool updateAssignedEquipment(List<EquipmentObject>? equipmentObjects, Int32 EventID)
         {
             DBAbstractionLayer.ensureStatus();
