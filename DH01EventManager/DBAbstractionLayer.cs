@@ -75,7 +75,7 @@ namespace DH01EventManager
             return l;
         }
 
-        private static List<EquipmentObject>? getAssociatedEquipment(Int32 EventID)
+        public static List<EquipmentObject>? getAssociatedEquipment(Int32 EventID)
         {
             List<EquipmentObject> l = new List<EquipmentObject>();
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_EquipmentAssign INNER JOIN Rose_Equipment ON Rose_Equipment.Equipment_ID = Rose_EquipmentAssign.Equipment_ID AND (ROSE_EquipmentAssign.Event_ID = {EventID});");
@@ -87,7 +87,7 @@ namespace DH01EventManager
             return l;
         }
 
-        private static List<StaffObject>? getAssociatedStaff(Int32 EventID)
+        public static List<StaffObject>? getAssociatedStaff(Int32 EventID)
         {
             List<StaffObject> l = new List<StaffObject>();
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_AssignStaff INNER JOIN Rose_Staff ON Rose_Staff.Staff_ID = ROSE_AssignStaff.Staff_ID  AND (ROSE_AssignStaff.Event_ID = {EventID});");
@@ -99,7 +99,7 @@ namespace DH01EventManager
             return l;
         }
 
-        private static LocationObject getAssociatedLocation(Int32 LocationID)
+        public static LocationObject getAssociatedLocation(Int32 LocationID)
         {
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Location WHERE Location_ID = {LocationID};");
             if (!qResults.Read())
@@ -392,7 +392,7 @@ namespace DH01EventManager
             return check;
         }
 
-        private static object getNewEquipmentAssignID()
+        public static object getNewEquipmentAssignID()
         {
             List<Int32> l = new List<Int32>();
             SQLiteDataReader? qResults = Con.querySQL($"SELECT EquipmentAssign_ID FROM ROSE_EquipmentAssign;");
@@ -431,7 +431,7 @@ namespace DH01EventManager
             
             return true;
         }
-        private static Int32 getNewStaffAssignID()
+        public static Int32 getNewStaffAssignID()
         {
             List<Int32> l = new List<Int32>();
             SQLiteDataReader? qResults = Con.querySQL($"SELECT AssignStaff_ID FROM ROSE_AssignStaff;");
@@ -471,12 +471,76 @@ namespace DH01EventManager
             foreach (StaffObject s in staffObjects)
             {
                 // Test ID
-                if (null != Con.querySQL($"SELECT * FROM ROSE_Equipment WHERE Equipment_ID = {s.getStaffID()};"))
+                if (null != Con.querySQL($"SELECT * FROM ROSE_Staff WHERE Staff_ID = {s.getStaffID()};"))
                 {
                     return false;
                 }
             }
             return true;
         }
+        // could there be a way to get the information for a location, staff, and equipment from the name
+        // And then do the same thing for staff and equipment
+        // I also need to be able to update an event
+        public static Int32 getEquipmentIDByName(String Name)
+        {
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT Equipment_ID From  ROSE_Equipment WHERE Equipment_Name = '{Name}';");
+            if (qResults.Read())
+            {
+                return qResults.GetInt32(0);
+            }
+            return -1;
+
+        }
+        public static Int32 getStaffIDByNames(String fName,String lName)
+        {
+            /*  First and Last Names  */
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT Staff_ID From  ROSE_Staff WHERE Staff_Fname = '{fName}' AND Staff_Lname = '{lName}';");
+            if (qResults.Read()) 
+            {
+                return qResults.GetInt32(0);
+            }
+            return -1;
+
+        }
+        public static Int32 getLocationIDByName(String Name)
+        {
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT Location_ID From  ROSE_Location WHERE Location_Name = '{Name}';");
+            if (qResults.Read()) 
+            {
+                return qResults.GetInt32(0);
+            }
+            return -1;
+
+        }
+        public static Int32 getEventIDByName(String Name)
+        {
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT Event_ID From  ROSE_Event WHERE Event_Name = '{Name}';");
+            if (qResults.Read()) 
+            {
+                return qResults.GetInt32(0);
+            }
+            return -1;
+
+        }
+
+        public static EventObject getEventByName(String Name)
+        {
+            return DBAbstractionLayer.getEventByID(DBAbstractionLayer.getEventIDByName(Name));
+        }
+        /*
+        public static LocationObject getLocationByName(String Name)
+        {
+            return DBAbstractionLayer.getLocationByID(DBAbstractionLayer.getLocationByName(Name));
+        }
+        public static StaffObject getStaffByName()
+        {
+            return DBAbstractionLayer.getStaffByID(DBAbstractionLayer.getStaffByName());
+        }
+        public static StaffObject getEquipmentByName()
+        {
+            return DBAbstractionLayer.getEquipmentByID(DBAbstractionLayer.getEquipmentByName());
+        }
+        */
+
     }// DBAbstractionLayer
 }
