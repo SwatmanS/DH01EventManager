@@ -86,7 +86,7 @@ namespace DH01EventManager
 
             EventObject edit = DBAbstractionLayer.getEventByID(index);
 
-            DateTime datetime = edit.getStartDate();
+            DateTime datetime = edit.getEventDate();
 
 
             /*eventTitleBox.Text = edit.getEventName();
