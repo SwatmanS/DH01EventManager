@@ -9,7 +9,7 @@
 
     <Grid Background="#FF30AAB1">
 
-        <!--this creates the Grid layout-->
+        <!--this creates the grid layout-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" MinWidth="50"/>
             <ColumnDefinition Width="auto" MinWidth="150"/>
@@ -55,7 +55,7 @@
 
             <Grid>
 
-                <!--this creates the Grid layout-->
+                <!--this creates the internal grid layout-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" MinWidth="75"/>
                     <ColumnDefinition Width="*" MinWidth="75"/>
@@ -75,17 +75,18 @@
                     <RowDefinition Height="auto" MinHeight="50"/>
                     <RowDefinition Height="auto" MinHeight="50"/>
                     <RowDefinition Height="auto" MinHeight="50"/>
+                    <RowDefinition Height="auto" MinHeight="50"/>
                     <RowDefinition Height="auto" MinHeight="75"/>
                     <RowDefinition Height="*" MinHeight="150"/>
                 </Grid.RowDefinitions>
 
                 <!--middle block-->
-                <Border BorderThickness="1" Grid.Row="1" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="3"
+                <Border BorderThickness="1" Grid.Row="1" Grid.Column="1" Grid.RowSpan="11" Grid.ColumnSpan="3"
                     CornerRadius="100" BorderBrush="white" Background="#FFFFFF" Height="auto" Width="auto">
                 </Border>
 
                 <!--add event header-->
-                <TextBlock Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="Add Event" Grid.ColumnSpan="3"
+                <TextBlock Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="Edit Event" Grid.ColumnSpan="3"
                          FontSize="40" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
                          Background="{x:Null}" Foreground="#209ca4"/>
 
@@ -140,10 +141,6 @@
                         <ComboBoxItem>1:00pm</ComboBoxItem>
                         <ComboBoxItem>1:30pm</ComboBoxItem>
                         <ComboBoxItem>2:00pm</ComboBoxItem>
-                        <ComboBoxItem>2:30pm</ComboBoxItem>
-                        <ComboBoxItem>3:00pm</ComboBoxItem>
-                        <ComboBoxItem>3:30pm</ComboBoxItem>
-                        <ComboBoxItem>4:00pm</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
 
@@ -157,14 +154,6 @@
                     <TextBlock x:Name="eventEndTimeText" />
                     <ComboBox x:Name="eventEndTimeBox" Width="200"
                              BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana">
-                        <ComboBoxItem>6:00am</ComboBoxItem>
-                        <ComboBoxItem>6:30am</ComboBoxItem>
-                        <ComboBoxItem>7:00am</ComboBoxItem>
-                        <ComboBoxItem>7:30am</ComboBoxItem>
-                        <ComboBoxItem>8:00am</ComboBoxItem>
-                        <ComboBoxItem>8:30am</ComboBoxItem>
-                        <ComboBoxItem>9:00am</ComboBoxItem>
-                        <ComboBoxItem>9:30am</ComboBoxItem>
                         <ComboBoxItem>10:00am</ComboBoxItem>
                         <ComboBoxItem>10:30am</ComboBoxItem>
                         <ComboBoxItem>11:00am</ComboBoxItem>
@@ -202,14 +191,26 @@
                     <TextBox x:Name="eventCapacityBox" PreviewTextInput="NumberValidation" Width="200" MaxLength="6"
                              SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
                 </StackPanel>
+                
+                <!--event expected turnout text-->
+                <TextBlock Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Text="Event Expected Turnout:"
+                           FontSize="24" FontFamily="Verdana" HorizontalAlignment="right" VerticalAlignment="Center" 
+                           Background="{x:Null}" Foreground="#209ca4"/>
+
+                <!--event expected turnout input-->
+                <StackPanel Grid.Row="7" Grid.Column="2"  HorizontalAlignment="left">
+                    <TextBlock x:Name="eventTurnoutText"/>
+                    <TextBox x:Name="eventTurnoutBox" PreviewTextInput="NumberValidation" Width="200" MaxLength="6"
+                             SelectionBrush="#209ca4" BorderBrush="#FF209CA4" Height="25" FontSize="18" FontFamily="Verdana"/>
+                </StackPanel>
 
                 <!--event staff text-->
-                <TextBlock Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Text="Event Staff:"
+                <TextBlock Grid.Row="8" Grid.Column="1" TextWrapping="Wrap" Text="Event Staff:"
                            FontSize="24" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
                            Background="{x:Null}" Foreground="#209ca4"/>
 
                 <!--stack panel that holds an item list of checkboxes that are declared in the c# code-->
-                <StackPanel Grid.Column="1" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Grid.Column="1" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <ListBox x:Name="StaffList" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" 
                              MaxHeight="400" MinHeight="100" MinWidth="300" MaxWidth="600"
                              VerticalAlignment="Center" Padding="10,20,20,10" Background="#FF30AAB1" BorderBrush="{x:Null}">
@@ -223,12 +224,12 @@
                 </StackPanel>
 
                 <!--event equipment text-->
-                <TextBlock Grid.Row="7" Grid.Column="2" TextWrapping="Wrap" Text="Event Equipment:"
+                <TextBlock Grid.Row="8" Grid.Column="2" TextWrapping="Wrap" Text="Event Equipment:"
                            FontSize="24" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
                            Background="{x:Null}" Foreground="#209ca4"/>
 
                 <!--stack panel that holds an item list of checkboxes that are declared in the c# code-->
-                <StackPanel Grid.Column="2" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Grid.Column="2" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <ListBox x:Name="EquipmentList" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" 
                              MaxHeight="400" MinHeight="100" MinWidth="300" MaxWidth="600"
                         VerticalAlignment="Center" Padding="10,20,20,10" Background="#FF30AAB1" BorderBrush="{x:Null}">
@@ -247,7 +248,7 @@
                            Background="{x:Null}" Foreground="#209ca4"/>
 
                 <!--stack panel that holds an item list of checkboxes that are declared in the c# code-->
-                <StackPanel Grid.Column="3" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="6">
+                <StackPanel Grid.Column="3" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="7">
                     <ListBox x:Name="LocationList" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" 
                              MaxHeight="600" MinHeight="200" MinWidth="300" MaxWidth="600"
                              VerticalAlignment="Center" Padding="10,20,20,10" Background="#FF30AAB1" BorderBrush="{x:Null}">
@@ -261,7 +262,7 @@
                 </StackPanel>
 
                 <!--creates a submit button-->
-                <Button x:Name="SubmitLogin" Grid.Column="3" Grid.Row="9" Width="150" Height="50"
+                <Button x:Name="SubmitLogin" Grid.Column="3" Grid.Row="10" Width="150" Height="50"
                     Background="#209ca4" Click="SubmitAddEvent_Click"  Foreground="#FFFFFF"
                     Content="Submit" FontSize="25" FontFamily="Verdana">
                     <Button.Resources>
@@ -272,7 +273,7 @@
                 </Button>
 
                 <!--footer-->
-                <Rectangle Grid.Row="12" Grid.ColumnSpan="10" Fill="#FF1A7277"/>
+                <Rectangle Grid.Row="13" Grid.ColumnSpan="10" Fill="#FF1A7277"/>
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto" Width="auto"
                     TextWrapping="Wrap" MinWidth="100" MaxWidth="600" FontSize="20" FontFamily="Verdana"
                     Foreground="#209ca4" Background="{x:Null}" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="10"

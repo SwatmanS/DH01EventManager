@@ -16,15 +16,12 @@ using System.Xml.Linq;
 
 namespace DH01EventManager
 {
-    /// <summary>
-    /// Interaction logic for AddEvent.xaml
-    /// </summary>
-    /// 
     public partial class AddEvent : Window
     {
         public AddEvent()
         {
             InitializeComponent();
+
             //decides which image to use for the login/logout image
             UpdateLoginImage();
 
@@ -32,7 +29,6 @@ namespace DH01EventManager
             StaffList.ItemsSource = Settings.staffList;
             EquipmentList.ItemsSource = Settings.equipmentList;
             LocationList.ItemsSource = Settings.locationList;
-
         }
 
         private void UpdateLoginImage()
@@ -42,7 +38,7 @@ namespace DH01EventManager
         ? "pack://application:,,,/images/Logout.png"
         : "pack://application:,,,/images/Login.png";
 
-            //shows the image as a bitmap
+            //changes image source to the corret image path
             LoginLogoutImage.Source = new BitmapImage(new Uri(imagePath));
         }
 
@@ -81,26 +77,9 @@ namespace DH01EventManager
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)
         {
+            //makes sure the input can only be numbers
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
-        }
-
-        private void DateTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (sender is TextBox textBox)
-            {
-                var text = textBox.Text.Replace(".", "");
-                if (text.Length >= 2 && text.Length < 4)
-                {
-                    textBox.Text = text.Insert(2, ".");
-                    textBox.Select(textBox.Text.Length, 0);
-                }
-                else if (text.Length >= 4)
-                {
-                    textBox.Text = text.Insert(2, ".").Insert(5, ".");
-                    textBox.Select(textBox.Text.Length, 0);
-                }
-            }
         }
 
         public List<string> GetCheckedItems(ListBox listOfStuff)
@@ -175,7 +154,7 @@ namespace DH01EventManager
         {
             //check that all the boxes are filled in before this
             if (eventTitleBox.Text != "" && eventDateBox.Text != "" && eventStartTimeBox.Text != "" &&
-                eventEndTimeBox.Text != "" && eventCapacityBox.Text != "")
+                eventEndTimeBox.Text != "" && eventCapacityBox.Text != "" && eventTurnoutBox.Text != "")
             {
                 //makes lists of the staff and equipment 
                 List<string> checkedStaff = GetCheckedItems(StaffList);
@@ -213,6 +192,7 @@ namespace DH01EventManager
                     "\n\nEvent Start Time:\n" + eventStartTimeBox.Text +
                     "\n\nEvent End Time:\n" + eventEndTimeBox.Text +
                     "\n\nEvent Capacity:\n" + eventCapacityBox.Text +
+                    "\n\nEvent Expected Turnout:\n" + eventTurnoutBox.Text +
                     "\n\nChecked staff:\n" + string.Join(", ", checkedStaff) +
                     "\n\nChecked Equipment:\n" + string.Join(", ", checkedEquipment) +
                     "\n\nEvent Location:\n" + string.Join(", ", checkedLocation));
@@ -222,6 +202,7 @@ namespace DH01EventManager
             }
             else
             {
+                //if all boxes are not filled in show a message
                 MessageBox.Show("please fill in all the boxes");
             }
 
