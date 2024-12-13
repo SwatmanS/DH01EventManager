@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -182,6 +183,91 @@ namespace DH01EventManager
                                    new DateTime(), 0, null, null);
             
         }
+
+        public static StaffObject getStaffByID(Int32 StaffID)
+        {
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Staff WHERE Staff_ID = {StaffID};");
+            if (qResults.Read()) // (Staff_ID,Staff_Fname,Staff_Lname,Staff_Position_Staff_Phonenumber)
+            {
+                return new StaffObject(qResults.GetInt32(0), qResults.GetString(1), qResults.GetString(2), qResults.GetString(4), qResults.GetString(3)
+
+                                   ); 
+            }
+            return new StaffObject(StaffID, "Unknown First name ", "unkown Second name", "unkown phone number", "unkown position");
+                                   
+
+      
+        }
+
+        public static LocationObject getLocationByID(Int32 LocationID)
+        {
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Location WHERE Location_ID = {LocationID};");
+            if (qResults.Read()) // (Location_ID,Location_Name,Location_Address,Location_Capacity)
+            {
+                return new LocationObject(qResults.GetInt32(0), qResults.GetString(1), qResults.GetString(2), qResults.GetInt32(3));
+                                  
+            }
+            return new LocationObject(-1, "Missing Location Please Add", "Unknown", 0);
+        }
+
+        //public static PastEventsObject getPastEventsByID(Int32 PastEventsID)
+      //  {
+         //   SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Login WHERE Login_ID = {LoginID};");
+          //  if (qResults.Read()) // (Login_ID,Staff_ID,User_Name,Login_Password)
+          //  {
+              //  return new LoginObject(qResults.GetInt32(0),
+                             //      qResults.GetString(2),
+                             //      DBAbstractionLayer.getAssociatedLocation(qResults.GetInt32(1)),
+                              //     DateTime.Parse(qResults.GetString(3)),
+                             //      qResults.GetInt32(4),
+                             //      DBAbstractionLayer.getAssociatedStaff(qResults.GetInt32(0)),
+                              //     DBAbstractionLayer.getAssociatedEquipment(qResults.GetInt32(0))
+                                   //); 
+           // }
+          // return new LoginObject(LoginID,
+                                //   "Unknown Login",
+                               //    new LocationObject(-1, "Missing Location Please Add", "Unknown", 0),
+                                //   new DateTime(), 0, null, null);
+       // }
+
+
+        
+
+        public static EquipmentObject getEquipmentByID(Int32 EquipmentID)
+        {
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Equipment WHERE Equipment_ID = {EquipmentID};");
+            if (qResults.Read()) // (Equipment_ID,Equipment_Name,Equipment_Description)
+            {
+                return new EquipmentObject(qResults.GetInt32(0), qResults.GetString(1), qResults.GetString(2)); 
+            }
+        return new EquipmentObject(EquipmentID,"Unknown Equipment","unkown Description");
+        }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         internal static List<PastEvent>? getPreviousEvents()
         {
