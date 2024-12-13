@@ -395,6 +395,16 @@ namespace DH01EventManager
         // could there be a way to get the information for a location, staff, and equipment from the name
         // And then do the same thing for staff and equipment
         // I also need to be able to update an event
+        public static Int32 getEquipmentIDByName(String Name)
+        {
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT Equipment_ID From  ROSE_Equipment WHERE Equipment_Name = '{Name}';");
+            if (qResults.Read())
+            {
+                return qResults.GetInt32(0);
+            }
+            return -1;
+
+        }
         public static Int32 getStaffIDByNames(String fName,String lName)
         {
             /*  First and Last Names  */
