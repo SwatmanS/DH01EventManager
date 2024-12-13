@@ -396,6 +396,16 @@ namespace DH01EventManager
         // And then do the same thing for staff and equipment
         // I also need to be able to update an event
         
+        public static Int32 getLocationIDByName(String Name)
+        {
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT Location_ID From  ROSE_Location WHERE Location_Name = '{Name}';");
+            if (qResults.Read()) // (Event_ID,Location_ID,Event_Name,Event_Date,Event_Duration)
+            {
+                return qResults.GetInt32(0);
+            }
+            return -1;
+
+        }
         public static Int32 getEventIDByName(String Name)
         {
             SQLiteDataReader? qResults = Con.querySQL($"SELECT Event_ID From  ROSE_Event WHERE Event_Name = '{Name}';");
