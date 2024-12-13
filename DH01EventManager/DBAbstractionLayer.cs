@@ -437,6 +437,11 @@ namespace DH01EventManager
 
         }
 
+        public static EventObject getEventByName(String Name)
+        {
+            return DBAbstractionLayer.getEventIDByName(Name);
+
+        }
 
 
 
