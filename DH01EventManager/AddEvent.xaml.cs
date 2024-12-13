@@ -16,15 +16,12 @@ using System.Xml.Linq;
 
 namespace DH01EventManager
 {
-    /// <summary>
-    /// Interaction logic for AddEvent.xaml
-    /// </summary>
-    /// 
     public partial class AddEvent : Window
     {
         public AddEvent()
         {
             InitializeComponent();
+
             //decides which image to use for the login/logout image
             UpdateLoginImage();
 
@@ -32,7 +29,6 @@ namespace DH01EventManager
             StaffList.ItemsSource = Settings.staffList;
             EquipmentList.ItemsSource = Settings.equipmentList;
             LocationList.ItemsSource = Settings.locationList;
-
         }
 
         private void UpdateLoginImage()
@@ -42,7 +38,7 @@ namespace DH01EventManager
         ? "pack://application:,,,/images/Logout.png"
         : "pack://application:,,,/images/Login.png";
 
-            //shows the image as a bitmap
+            //changes image source to the corret image path
             LoginLogoutImage.Source = new BitmapImage(new Uri(imagePath));
         }
 
@@ -81,26 +77,9 @@ namespace DH01EventManager
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)
         {
+            //makes sure the input can only be numbers
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
-        }
-
-        private void DateTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (sender is TextBox textBox)
-            {
-                var text = textBox.Text.Replace(".", "");
-                if (text.Length >= 2 && text.Length < 4)
-                {
-                    textBox.Text = text.Insert(2, ".");
-                    textBox.Select(textBox.Text.Length, 0);
-                }
-                else if (text.Length >= 4)
-                {
-                    textBox.Text = text.Insert(2, ".").Insert(5, ".");
-                    textBox.Select(textBox.Text.Length, 0);
-                }
-            }
         }
 
         public List<string> GetCheckedItems(ListBox listOfStuff)
@@ -175,20 +154,44 @@ namespace DH01EventManager
         {
             //check that all the boxes are filled in before this
             if (eventTitleBox.Text != "" && eventDateBox.Text != "" && eventStartTimeBox.Text != "" &&
-                eventEndTimeBox.Text != "" && eventCapacityBox.Text != "")
+                eventEndTimeBox.Text != "" && eventTurnoutBox.Text != "")
             {
                 //makes lists of the staff and equipment 
                 List<string> checkedStaff = GetCheckedItems(StaffList);
                 List<string> checkedEquipment = GetCheckedItems(EquipmentList);
                 List<string> checkedLocation = GetCheckedItems(LocationList);
 
+                Random rng = new Random();
+                int rand1 = rng.Next(10,100);
+                DateTime startDate = DateTime.Parse(eventDateBox.Text);
+                TimeSpan startTime = TimeSpan.Parse(eventStartTimeBox.Text);
+                TimeSpan endTime = TimeSpan.Parse(eventEndTimeBox.Text);
+
+                endTime = endTime.Subtract(startTime);
+                int dur = (int)endTime.TotalMinutes;
+
+                startDate = startDate.Add(startTime);
+
+                //EventObject nEvent = new EventObject(rand1, eventTitleBox.Text, checkedLocation, startTime, dur, checkedStaff, checkedEquipment);
+
+                /*to future jasmine: need to make checkedstaff, checkedequipmnet, and checkedlocation into objects. need database search method
+                 * once obtained will need to use location search on location and save as locationobject which can be passed into the construct
+                 * equipment and staff will require a loop (foreach?) that will convert each item in list to an object using the db search method and will save
+                 * the result into the relevant object list which can then be passed into the constructor
+                 * once this is done, the addevent method will hopefully work. should be testable by checking the events page
+                 * id is currently random, could possibly make a list of events, get last id in list and add 1
+                 * currently no estimated turn out functionality have to standby and wait to see if that is the case
+                 * but we would do a similar thing hopefully of adding the turn out to the upcoming events table w a new id and corresponding event id.
+                 * to get the newid would probs do a similar thing of making a list of ids and outputting them.
+                 * maybe make new methods to just return ids.
+                */
                 //prints off the add event form which would go into the database
                 MessageBox.Show(
                     "Event Title:\n" + eventTitleBox.Text +
                     "\n\nEvent Date:\n" + eventDateBox.Text +
                     "\n\nEvent Start Time:\n" + eventStartTimeBox.Text +
                     "\n\nEvent End Time:\n" + eventEndTimeBox.Text +
-                    "\n\nEvent Capacity:\n" + eventCapacityBox.Text +
+                    "\n\nEvent Expected Turnout:\n" + eventTurnoutBox.Text +
                     "\n\nChecked staff:\n" + string.Join(", ", checkedStaff) +
                     "\n\nChecked Equipment:\n" + string.Join(", ", checkedEquipment) +
                     "\n\nEvent Location:\n" + string.Join(", ", checkedLocation));
@@ -198,6 +201,7 @@ namespace DH01EventManager
             }
             else
             {
+                //if all boxes are not filled in show a message
                 MessageBox.Show("please fill in all the boxes");
             }
 

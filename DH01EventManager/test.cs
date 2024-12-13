@@ -109,6 +109,12 @@ namespace DH01EventManager
             MessageBox.Show(stime.ToString());
         }
 
+        public static void EventManagerTest()
+        {
+            var testEM = new EventManagerClass();
+            MessageBox.Show("ack" + testEM.getFullEventList());
+        }
+
 
 
     }

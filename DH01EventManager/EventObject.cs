@@ -88,13 +88,9 @@ namespace DH01EventManager
             return eString;
         }
 
-        public String toString() 
+       public String toString() 
         {
-            var date = DateOnly.FromDateTime(eventDate);
-            var sTime = TimeOnly.FromDateTime(eventDate);
-            DateTime d = eventDate.AddMinutes(eventDuration);
-            var eTime = TimeOnly.FromDateTime(d);
-            return string.Concat("Event Name: ", this.eventname, "\nDate: ", date.ToString(), "\nStart Time: ", sTime.ToString(), "\nEnd Time: ", eTime.ToString(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
+            return string.Concat("Event Name: ", this.eventname, "\nDate: ", getStartDate(), "\nStart Time: ", getStartTime(), "\nEnd Time: ", getEndTime(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
         }
 
         public Int32 getEventDuration()
@@ -149,19 +145,19 @@ namespace DH01EventManager
             return end - start;
         }
 
-        public DateTime getStartDate()
+        public String getStartDate()
         {
-            return new DateTime(this.getStartDate().Year, this.getStartDate().Month, this.getStartDate().Day);
+            return eventDate.ToString("dddd dd MMMM yyyy");
         }
         public String getStartTime()
-        {
-
-            return EventObject.dateTimeToStr(this.getStartDate());
+        { 
+            return eventDate.ToString("hh:mm tt");
+            //return EventObject.dateTimeToStr(eventDate);
         }
         public String getEndTime()
         {
-
-            return EventObject.dateTimeToStr(this.getStartDate().AddMinutes(this.getEventDuration()));
+            eventDate = eventDate.AddMinutes(eventDuration);
+            return eventDate.ToString("hh:mm tt");
         }
 
 

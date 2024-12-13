@@ -8,7 +8,7 @@
         Title="MainWindow" WindowState="Maximized">
     <Grid Background="#FF30AAB1">
 
-        <!--this creates the Grid layout-->
+        <!--this creates the grid layout-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" MinWidth="50"/>
             <ColumnDefinition Width="auto" MinWidth="150"/>
@@ -61,7 +61,7 @@
 
             <Grid>
 
-                <!--this creates the Grid layout-->
+                <!--this creates the internal grid layout-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" MinWidth="75"/>
                     <ColumnDefinition Width="*" MinWidth="100"/>
@@ -97,7 +97,7 @@
                 <Image Source="/images/HomePageImage.jpg" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" 
                     Width="800" Height="500"/>
 
-                <!--creates an events button-->
+                <!--creates a veiw events button-->
                 <Button x:Name="GoToEventsBig" Grid.Column="1" Grid.Row="3" Width="300" Height="120"
                 Background="#FFFFFF" Click="GoToEvents_Click"  Foreground="#209ca4"
                 Content="View Events" FontSize="40" FontFamily="Verdana">
@@ -108,7 +108,7 @@
                     </Button.Resources>
                 </Button>
 
-                <!--creates an add button-->
+                <!--creates an add event button-->
                 <Button x:Name="GoToAddEventBig" Grid.Column="2" Grid.Row="3" Width="300" Height="120"
                 Background="#FFFFFF" Click="GoToAddEvent_Click" Foreground="#209ca4"
                 Content="Add Event" FontSize="40" FontFamily="Verdana">

@@ -24,6 +24,7 @@ namespace DH01EventManager
         public EditEvent()
         {
             InitializeComponent();
+
             //decides which image to use for the login/logout image
             UpdateLoginImage();
 
@@ -43,7 +44,7 @@ namespace DH01EventManager
         ? "pack://application:,,,/images/Logout.png"
         : "pack://application:,,,/images/Login.png";
 
-            //shows the image as a bitmap
+            //changes image source to the corret image path
             LoginLogoutImage.Source = new BitmapImage(new Uri(imagePath));
         }
 
@@ -84,15 +85,20 @@ namespace DH01EventManager
         {
             //depending on index show a different event from the class
 
-            eventTitleBox.Text = "Event Title 1";
-            eventDateBox.Text = "12/12/2024";
-            eventStartTimeBox.Text = "8:00am";
-            eventEndTimeBox.Text = "5:00pm";
-            eventCapacityBox.Text = "40";
+            EventObject edit = DBAbstractionLayer.getEventByID(1);
+
+            DateTime datetime = edit.getEventDate();
+
+            eventTitleBox.Text = edit.getEventName();
+            eventDateBox.Text = datetime.ToString();
+            eventStartTimeBox.Text = (edit.getStartTime()).ToString();
+            eventEndTimeBox.Text = (edit.getEndTime()).ToString();
+            eventTurnoutBox.Text = "120";
         }
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)
         {
+            //makes sure the input can only be numbers
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
@@ -169,7 +175,7 @@ namespace DH01EventManager
         {
             //check that all the boxes are filled in before this
             if (eventTitleBox.Text != "" && eventDateBox.Text != "" && eventStartTimeBox.Text != "" &&
-                eventEndTimeBox.Text != "" && eventCapacityBox.Text != "")
+                eventEndTimeBox.Text != "" && eventTurnoutBox.Text != "")
             {
                 //makes lists of the staff and equipment 
                 List<string> checkedStaff = GetCheckedItems(StaffList);
@@ -182,7 +188,7 @@ namespace DH01EventManager
                     "\n\nEvent Date:\n" + eventDateBox.Text +
                     "\n\nEvent Start Time:\n" + eventStartTimeBox.Text +
                     "\n\nEvent End Time:\n" + eventEndTimeBox.Text +
-                    "\n\nEvent Capacity:\n" + eventCapacityBox.Text +
+                    "\n\nEvent Expected Turnout:\n" + eventTurnoutBox.Text +
                     "\n\nChecked staff:\n" + string.Join(", ", checkedStaff) +
                     "\n\nChecked Equipment:\n" + string.Join(", ", checkedEquipment) +
                     "\n\nEvent Location:\n" + string.Join(", ", checkedLocation));
@@ -192,6 +198,7 @@ namespace DH01EventManager
             }
             else
             {
+                //if all boxes are not filled in show a message
                 MessageBox.Show("please fill in all the boxes");
             }
 

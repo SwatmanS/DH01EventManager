@@ -162,7 +162,7 @@ namespace DH01EventManager
 
         }
 
-        public static EventObject getEventByID(Int32 EventID)  
+        public static EventObject getEventByID(Int32 EventID)
         {
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Event WHERE Event_ID = {EventID};");
             if (qResults.Read()) // (Event_ID,Location_ID,Event_Name,Event_Date,Event_Duration)

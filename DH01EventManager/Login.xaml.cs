@@ -20,7 +20,7 @@ namespace DH01EventManager
     /// </summary>
     public partial class Login : Window
     {
-
+        //creates the user
         public UserObject dummy = new UserObject("dummy", "user");
         public UserObject[] userArray;
         public Dictionary<String, String> userDict = new Dictionary<String, String>();
@@ -29,10 +29,14 @@ namespace DH01EventManager
         public Login()
         {
             InitializeComponent();
+
+            //automatically sets user to being logged out when clicking ontp this page
             Settings.loggedIn = false;
+
             //decides which image to use for the login/logout image
             UpdateLoginImage();
 
+            //creates a dictionary of the users username and password
             userArray = dummy.makeArray();
             userDict = dummy.makeDictionary(userArray, userDict);
         }
@@ -44,7 +48,7 @@ namespace DH01EventManager
         ? "pack://application:,,,/images/Logout.png"
         : "pack://application:,,,/images/Login.png";
 
-            //shows the image as a bitmap
+            //changes image source to the corret image path
             LoginLogoutImage.Source = new BitmapImage(new Uri(imagePath));
         }
 
@@ -72,9 +76,10 @@ namespace DH01EventManager
         }
         private void GoToAddEvent_Click(object sender, RoutedEventArgs e)
         {
-            //hides current window and goes to the add event page 
+            //checks to see if the user is logged in or not
             if (Settings.loggedIn == true)
             {
+                // hides current window and goes to the add event page
                 AddEvent l_page = new();
                 this.Hide();
                 l_page.ShowDialog();
@@ -82,6 +87,7 @@ namespace DH01EventManager
             }
             else
             {
+                //if not logged in the user is sent to the login page
                 Login l_page = new();
                 this.Hide();
                 l_page.ShowDialog();
@@ -99,27 +105,30 @@ namespace DH01EventManager
         private void SubmitLogin_Click(object sender, RoutedEventArgs e)
         {
             //search to see if dictionary contains the inputted username as a key and if that key corresponds to the inputted password
-            //if true, user is logged in
-            //if false, error message
             if (userDict.ContainsKey(usernameBox.Text) && userDict[usernameBox.Text] == passwordBox.Password)
             {
+                //sets loggedin to be true and updates the login image
                 Settings.loggedIn = true;
                 UpdateLoginImage();
                 MessageBox.Show("logged in");
+
+                //sends the user to the main window after logging in
                 MainWindow l_page = new();
                 this.Hide();
                 l_page.ShowDialog();
                 this.Show();
             }
-            
+            else
             {
+                //shows error message if wrong username or password
                 MessageBox.Show("incorrect username or password");
             }
         }
 
         private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (passwordBox.Password ==  "") //lets user know to input something if box is empty
+            //if the password box is empty a message appears to let the user know to input something
+            if (passwordBox.Password ==  "")
             {
                 PasswordText.Text = "Please input your Password!";
             }
