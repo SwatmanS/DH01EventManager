@@ -85,17 +85,16 @@ namespace DH01EventManager
         {
             //depending on index show a different event from the class
 
-            EventObject edit = DBAbstractionLayer.getEventByID(index);
+            EventObject edit = DBAbstractionLayer.getEventByID(1);
 
             DateTime datetime = edit.getEventDate();
 
 
-            /*eventTitleBox.Text = edit.getEventName();
+            eventTitleBox.Text = edit.getEventName();
             eventDateBox.Text = datetime.ToString();
             eventStartTimeBox.Text = edit.getStartTime();
             eventEndTimeBox.Text = edit.getEndTime();
             eventCapacityBox.Text = "40";
-            */
         }
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)
