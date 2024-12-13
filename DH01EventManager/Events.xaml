@@ -11,7 +11,7 @@
 
     <Grid Background="#FF30AAB1">
 
-        <!--this creates the Grid layout-->
+        <!--this creates the grid layout-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" MinWidth="50"/>
             <ColumnDefinition Width="auto" MinWidth="150"/>
@@ -57,7 +57,7 @@
 
             <Grid>
 
-                <!--this creates the Grid layout-->
+                <!--this creates the internal grid layout-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" MinWidth="75"/>
                     <ColumnDefinition Width="*" MinWidth="100"/>
@@ -70,6 +70,7 @@
                     <RowDefinition Height="*" MinHeight="150"/>
                 </Grid.RowDefinitions>
 
+                <!--creates the canvas to place all of the events onto via the c# file--> 
                 <Canvas x:Name="canvas"  Grid.Row="1" Grid.Column="1">
                 </Canvas>
 

@@ -9,6 +9,7 @@ namespace DH01EventManager
 {
     class Settings
     {
+        //the public logged in value which is set to false when the application is opened
         public static Boolean loggedIn = false;
 
         public static int eventIndex = -1;

@@ -11,9 +11,6 @@ using System.Windows.Shapes;
 
 namespace DH01EventManager
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -28,7 +25,11 @@ namespace DH01EventManager
                 Window debugWindow = new DebugWindow();
                 debugWindow.Show();
             }
+
+            //connects to the database
             DBAbstractionLayer.connect();
+
+            //updates the logged in image 
             UpdateLoginImage();
         }
         
@@ -39,7 +40,7 @@ namespace DH01EventManager
         ? "pack://application:,,,/images/Logout.png"
         : "pack://application:,,,/images/Login.png";
 
-            //shows the image as a bitmap
+            //changes image source to the corret image path
             LoginLogoutImage.Source = new BitmapImage(new Uri(imagePath));
         }
 
@@ -59,7 +60,7 @@ namespace DH01EventManager
         }
         private void GoToEvents_Click(object sender, RoutedEventArgs e)
         {
-            //hides current window and goes to the home page 
+            //hides current window and goes to the veiw events page 
             Events l_page = new();
             this.Hide();
             l_page.ShowDialog();
@@ -67,9 +68,10 @@ namespace DH01EventManager
         }
         private void GoToAddEvent_Click(object sender, RoutedEventArgs e)
         {
-            //hides current window and goes to the add event page 
+            //checks to see if the user is logged in or not
             if (Settings.loggedIn == true)
             {
+                // hides current window and goes to the add event page
                 AddEvent l_page = new();
                 this.Hide();
                 l_page.ShowDialog();
@@ -77,6 +79,7 @@ namespace DH01EventManager
             }
             else
             {
+                //if not logged in the user is sent to the login page
                 Login l_page = new();
                 this.Hide();
                 l_page.ShowDialog();

@@ -23,10 +23,9 @@ namespace DH01EventManager
         public Events()
         {
             InitializeComponent();
+
             //decides which image to use for the login/logout image
             UpdateLoginImage();
-
-            //dummy data of events
 
             List<EventObject> events = new List<EventObject>();
             events = DBAbstractionLayer.getAllEvents();
@@ -173,9 +172,10 @@ namespace DH01EventManager
 
         private void GoToAddEvent_Click(object sender, RoutedEventArgs e)
         {
-            //hides current window and goes to the add event page 
+            //checks to see if the user is logged in or not
             if (Settings.loggedIn == true)
             {
+                // hides current window and goes to the add event page
                 AddEvent l_page = new();
                 this.Hide();
                 l_page.ShowDialog();
@@ -183,6 +183,7 @@ namespace DH01EventManager
             }
             else
             {
+                //if not logged in the user is sent to the login page
                 Login l_page = new();
                 this.Hide();
                 l_page.ShowDialog();
@@ -203,8 +204,9 @@ namespace DH01EventManager
 
         private void OpenEditPage(int eventNum)
         {
+            //creates a public variable for the index 
             Settings.eventIndex = eventNum;
-            //hides current window and goes to the login page 
+            //hides current window and goes to the edit event page 
             EditEvent l_page = new();
             this.Hide();
             l_page.ShowDialog();
