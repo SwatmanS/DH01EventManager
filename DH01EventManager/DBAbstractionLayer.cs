@@ -74,7 +74,7 @@ namespace DH01EventManager
             return l;
         }
 
-        private static List<EquipmentObject>? getAssociatedEquipment(Int32 EventID)
+        public static List<EquipmentObject>? getAssociatedEquipment(Int32 EventID)
         {
             List<EquipmentObject> l = new List<EquipmentObject>();
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_EquipmentAssign INNER JOIN Rose_Equipment ON Rose_Equipment.Equipment_ID = Rose_EquipmentAssign.Equipment_ID AND (ROSE_EquipmentAssign.Event_ID = {EventID});");
@@ -86,7 +86,7 @@ namespace DH01EventManager
             return l;
         }
 
-        private static List<StaffObject>? getAssociatedStaff(Int32 EventID)
+        public static List<StaffObject>? getAssociatedStaff(Int32 EventID)
         {
             List<StaffObject> l = new List<StaffObject>();
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_AssignStaff INNER JOIN Rose_Staff ON Rose_Staff.Staff_ID = ROSE_AssignStaff.Staff_ID  AND (ROSE_AssignStaff.Event_ID = {EventID});");
@@ -98,7 +98,7 @@ namespace DH01EventManager
             return l;
         }
 
-        private static LocationObject getAssociatedLocation(Int32 LocationID)
+        public static LocationObject getAssociatedLocation(Int32 LocationID)
         {
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Location WHERE Location_ID = {LocationID};");
             if (!qResults.Read())
@@ -162,7 +162,7 @@ namespace DH01EventManager
 
         }
 
-        private static EventObject getEventByID(Int32 EventID)  
+        public static EventObject getEventByID(Int32 EventID)  
         {
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Event WHERE Event_ID = {EventID};");
             if (qResults.Read()) // (Event_ID,Location_ID,Event_Name,Event_Date,Event_Duration)
@@ -306,7 +306,7 @@ namespace DH01EventManager
             return check;
         }
 
-        private static object getNewEquipmentAssignID()
+        public static object getNewEquipmentAssignID()
         {
             List<Int32> l = new List<Int32>();
             SQLiteDataReader? qResults = Con.querySQL($"SELECT EquipmentAssign_ID FROM ROSE_EquipmentAssign;");
@@ -345,7 +345,7 @@ namespace DH01EventManager
             
             return true;
         }
-        private static Int32 getNewStaffAssignID()
+        public static Int32 getNewStaffAssignID()
         {
             List<Int32> l = new List<Int32>();
             SQLiteDataReader? qResults = Con.querySQL($"SELECT AssignStaff_ID FROM ROSE_AssignStaff;");
@@ -393,8 +393,29 @@ namespace DH01EventManager
             return true;
         }
         // could there be a way to get the information for a location, staff, and equipment from the name
-        // 
+        // And then do the same thing for staff and equipment
         // I also need to be able to update an event
+        public static void getEventIDByName(String Name)
+        {
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT Event_ID From  ROSE_Event WHERE Event_Name = '{Name}';");
+            if (qResults.Read()) // (Event_ID,Location_ID,Event_Name,Event_Date,Event_Duration)
+            {
+                /*return new EventObject(qResults.GetInt32(0),
+                                   qResults.GetString(2),
+                                   DBAbstractionLayer.getAssociatedLocation(qResults.GetInt32(1)),
+                                   DateTime.Parse(qResults.GetString(3)),
+                                   qResults.GetInt32(4),
+                                   DBAbstractionLayer.getAssociatedStaff(qResults.GetInt32(0)),
+                                   DBAbstractionLayer.getAssociatedEquipment(qResults.GetInt32(0))
+                                   ); ; ; ; ;*/
+            }
+            /*return new EventObject(EventID,
+                                   "Unknown Event",
+                                   new LocationObject(-1, "Missing Location Please Add", "Unknown", 0),
+                                   new DateTime(), 0, null, null);*/
+
+        }
+
 
 
     }// DBAbstractionLayer
