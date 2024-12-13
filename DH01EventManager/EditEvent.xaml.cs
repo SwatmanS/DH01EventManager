@@ -92,8 +92,8 @@ namespace DH01EventManager
 
             eventTitleBox.Text = edit.getEventName();
             eventDateBox.Text = datetime.ToString();
-            eventStartTimeBox.Text = edit.getStartTime();
-            eventEndTimeBox.Text = edit.getEndTime();
+            //eventStartTimeBox.Text = edit.getStartTime();
+            //eventEndTimeBox.Text = edit.getEndTime();
             eventCapacityBox.Text = "40";
         }
 
