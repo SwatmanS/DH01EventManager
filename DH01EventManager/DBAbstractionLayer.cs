@@ -162,7 +162,7 @@ namespace DH01EventManager
 
         }
 
-        private static EventObject getEventByID(Int32 EventID)
+        private static EventObject getEventByID(Int32 EventID)  
         {
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Event WHERE Event_ID = {EventID};");
             if (qResults.Read()) // (Event_ID,Location_ID,Event_Name,Event_Date,Event_Duration)
@@ -385,12 +385,17 @@ namespace DH01EventManager
             foreach (StaffObject s in staffObjects)
             {
                 // Test ID
-                if (null != Con.querySQL($"SELECT * FROM ROSE_Equipment WHERE Equipment_ID = {s.getStaffID()};"))
+                if (null != Con.querySQL($"SELECT * FROM ROSE_Staff WHERE Staff_ID = {s.getStaffID()};"))
                 {
                     return false;
                 }
             }
             return true;
         }
+        // could there be a way to get the information for a location, staff, and equipment from the name
+        // 
+        // I also need to be able to update an event
+
+
     }// DBAbstractionLayer
 }
