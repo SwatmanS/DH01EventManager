@@ -85,14 +85,16 @@ namespace DH01EventManager
         {
             //depending on index show a different event from the class
 
-            EventObject edit = DBAbstractionLayer.getEventByID(1);
+            EventObject edit = DBAbstractionLayer.getEventByID(5);
 
             DateTime datetime = edit.getEventDate();
+
+            string va = edit.getStartTime();
 
 
             eventTitleBox.Text = edit.getEventName();
             eventDateBox.Text = datetime.ToString();
-            eventStartTimeBox.Text = edit.getStartTime();
+            eventStartTimeBox.Text = va;
             eventEndTimeBox.Text = edit.getEndTime();
             eventCapacityBox.Text = "40";
         }

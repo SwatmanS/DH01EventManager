@@ -178,7 +178,7 @@
                         <ComboBoxItem>8:30 PM</ComboBoxItem>
                         <ComboBoxItem>9:00 PM</ComboBoxItem>
                     </ComboBox>
-                </StackPanel> el>
+                </StackPanel>
 
                 <!--event capacity text-->
                 <TextBlock Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" Text="Event Capacity:"
