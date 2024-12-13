@@ -339,7 +339,7 @@ namespace DH01EventManager
             {
                 if (EventID == qResults.GetInt32(0))
                 {
-                    return true;
+                    return false;
                 }
             }
             
@@ -455,6 +455,16 @@ namespace DH01EventManager
             return DBAbstractionLayer.getEquipmentByID(DBAbstractionLayer.getEquipmentByName());
         }
         */
+        public Boolean updateEvent(EventObject e)
+        {
+            if (DBAbstractionLayer.isNewEventID(e.getEventID()))
+            {
+                return DBAbstractionLayer.addNewEvent(e);
+            }
+            bool a = Con.runSQL($"UPDATE Rose_Event SET Event_Name = '{e.getEventName()}, Location_ID = {e.getEventLocation().getLocationID()},Event_Date = '{e.getEventDate()}',Event_Duration = {e.getEventDuration()} WHERE Event_ID = {e.getEventID()}");
+            return a;
+        }
+
 
     }// DBAbstractionLayer
 }
