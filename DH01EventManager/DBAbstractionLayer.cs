@@ -231,8 +231,6 @@ namespace DH01EventManager
        // }
 
 
-        
-
         public static EquipmentObject getEquipmentByID(Int32 EquipmentID)
         {
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Equipment WHERE Equipment_ID = {EquipmentID};");
@@ -242,32 +240,6 @@ namespace DH01EventManager
             }
         return new EquipmentObject(EquipmentID,"Unknown Equipment","unkown Description");
         }
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         internal static List<PastEvent>? getPreviousEvents()
         {
@@ -527,20 +499,20 @@ namespace DH01EventManager
         {
             return DBAbstractionLayer.getEventByID(DBAbstractionLayer.getEventIDByName(Name));
         }
-        /*
+        
         public static LocationObject getLocationByName(String Name)
         {
-            return DBAbstractionLayer.getLocationByID(DBAbstractionLayer.getLocationByName(Name));
+            return DBAbstractionLayer.getLocationByID(DBAbstractionLayer.getLocationIDByName(Name));
         }
-        public static StaffObject getStaffByName()
+        public static StaffObject getStaffByName(String firstName,String secondName)
         {
-            return DBAbstractionLayer.getStaffByID(DBAbstractionLayer.getStaffByName());
+            return DBAbstractionLayer.getStaffByID(DBAbstractionLayer.getStaffIDByNames(firstName,secondName));
         }
-        public static StaffObject getEquipmentByName()
+        public static EquipmentObject getEquipmentByName(String Name)
         {
-            return DBAbstractionLayer.getEquipmentByID(DBAbstractionLayer.getEquipmentByName());
+            return DBAbstractionLayer.getEquipmentByID(DBAbstractionLayer.getEquipmentIDByName(Name));
         }
-        */
+        
         public Boolean updateEvent(EventObject e)
         {
             if (DBAbstractionLayer.isNewEventID(e.getEventID()))
@@ -548,7 +520,33 @@ namespace DH01EventManager
                 return DBAbstractionLayer.addNewEvent(e);
             }
             bool a = Con.runSQL($"UPDATE Rose_Event SET Event_Name = '{e.getEventName()}, Location_ID = {e.getEventLocation().getLocationID()},Event_Date = '{e.getEventDate()}',Event_Duration = {e.getEventDuration()} WHERE Event_ID = {e.getEventID()}");
-            return a;
+            Boolean b = DBAbstractionLayer.updateAssignedEquipment(e.getEventEquipment(), e.getEventID());
+            Boolean c = DBAbstractionLayer.updateAssignedStaff(e.getEventStaff(), e.getEventID());
+            return a && b && c;
+        }
+        public static bool updateAssignedStaff(List<StaffObject> staffObjects, Int32 EventID)
+        {
+            DBAbstractionLayer.ensureStatus();
+            Boolean check = true;
+            Con.runSQL($"Delete From Rose_AssignStaff where Event_ID = {EventID}");
+            foreach (StaffObject s in staffObjects)
+            {
+                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES ({DBAbstractionLayer.getNewStaffAssignID()},{EventID},{s.getStaffID()});");
+            }
+            return check;
+        }
+
+
+        public static bool updateAssignedEquipment(List<EquipmentObject>? equipmentObjects, Int32 EventID)
+        {
+            DBAbstractionLayer.ensureStatus();
+            Boolean check = true;
+            Con.runSQL($"Delete From Rose_EquipmentAssign where Event_ID = {EventID}");
+            foreach (EquipmentObject q in equipmentObjects)
+            {
+                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES ({DBAbstractionLayer.getNewEquipmentAssignID()},{EventID},{q.getEquipmentID()});");
+            }
+            return check;
         }
 
 
