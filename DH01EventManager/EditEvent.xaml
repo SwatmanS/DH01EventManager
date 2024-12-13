@@ -142,7 +142,7 @@
                         <ComboBoxItem>1:30 PM</ComboBoxItem>
                         <ComboBoxItem>2:00 PM</ComboBoxItem>
                     </ComboBox>
-                </StackPanel> el>
+                </StackPanel> 
 
                 <!--event end time text-->
                 <TextBlock Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text="Event End Time:"
