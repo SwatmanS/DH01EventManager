@@ -441,12 +441,20 @@ namespace DH01EventManager
         {
             return DBAbstractionLayer.getEventByID(DBAbstractionLayer.getEventIDByName(Name));
         }
+        /*
         public static LocationObject getLocationByName(String Name)
         {
             return DBAbstractionLayer.getLocationByID(DBAbstractionLayer.getLocationByName(Name));
         }
-        
-
+        public static StaffObject getStaffByName()
+        {
+            return DBAbstractionLayer.getStaffByID(DBAbstractionLayer.getStaffByName());
+        }
+        public static StaffObject getEquipmentByName()
+        {
+            return DBAbstractionLayer.getEquipmentByID(DBAbstractionLayer.getEquipmentByName());
+        }
+        */
 
     }// DBAbstractionLayer
 }
