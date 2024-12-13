@@ -154,7 +154,7 @@ namespace DH01EventManager
         {
             //check that all the boxes are filled in before this
             if (eventTitleBox.Text != "" && eventDateBox.Text != "" && eventStartTimeBox.Text != "" &&
-                eventEndTimeBox.Text != "" && eventCapacityBox.Text != "" && eventTurnoutBox.Text != "")
+                eventEndTimeBox.Text != "" && eventTurnoutBox.Text != "")
             {
                 //makes lists of the staff and equipment 
                 List<string> checkedStaff = GetCheckedItems(StaffList);
@@ -191,7 +191,6 @@ namespace DH01EventManager
                     "\n\nEvent Date:\n" + eventDateBox.Text +
                     "\n\nEvent Start Time:\n" + eventStartTimeBox.Text +
                     "\n\nEvent End Time:\n" + eventEndTimeBox.Text +
-                    "\n\nEvent Capacity:\n" + eventCapacityBox.Text +
                     "\n\nEvent Expected Turnout:\n" + eventTurnoutBox.Text +
                     "\n\nChecked staff:\n" + string.Join(", ", checkedStaff) +
                     "\n\nChecked Equipment:\n" + string.Join(", ", checkedEquipment) +
