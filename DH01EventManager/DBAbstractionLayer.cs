@@ -115,7 +115,7 @@ namespace DH01EventManager
              *  Checks DB if there is an entry in the previous event table at eventID
              */
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_PastEvents WHERE Event_ID = {eventID};");
-            if (!qResults.Read())
+            if (qResults.Read() == null)
             {
                 return false;
             }
@@ -212,7 +212,7 @@ namespace DH01EventManager
 
         public static PastEvent getPastEventsByID(Int32 PastEventsID)
         {
-            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_PastEvents WHERE Login_ID = {LoginID};");
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_PastEvents WHERE PastEvent_ID = {PastEventsID};");
             if (qResults.Read()) // (Login_ID,Staff_ID,User_Name,Login_Password)
             {
                 EventObject e = DBAbstractionLayer.getEventByID(qResults.GetInt32(1));
