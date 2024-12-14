@@ -210,25 +210,16 @@ namespace DH01EventManager
             return new LocationObject(-1, "Missing Location Please Add", "Unknown", 0);
         }
 
-        //public static PastEventsObject getPastEventsByID(Int32 PastEventsID)
-      //  {
-         //   SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Login WHERE Login_ID = {LoginID};");
-          //  if (qResults.Read()) // (Login_ID,Staff_ID,User_Name,Login_Password)
-          //  {
-              //  return new LoginObject(qResults.GetInt32(0),
-                             //      qResults.GetString(2),
-                             //      DBAbstractionLayer.getAssociatedLocation(qResults.GetInt32(1)),
-                              //     DateTime.Parse(qResults.GetString(3)),
-                             //      qResults.GetInt32(4),
-                             //      DBAbstractionLayer.getAssociatedStaff(qResults.GetInt32(0)),
-                              //     DBAbstractionLayer.getAssociatedEquipment(qResults.GetInt32(0))
-                                   //); 
-           // }
-          // return new LoginObject(LoginID,
-                                //   "Unknown Login",
-                               //    new LocationObject(-1, "Missing Location Please Add", "Unknown", 0),
-                                //   new DateTime(), 0, null, null);
-       // }
+        public static PastEvent getPastEventsByID(Int32 PastEventsID)
+        {
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_PastEvents WHERE Login_ID = {LoginID};");
+            if (qResults.Read()) // (Login_ID,Staff_ID,User_Name,Login_Password)
+            {
+                EventObject e = DBAbstractionLayer.getEventByID(qResults.GetInt32(1));
+                return new PastEvent(e,qResults.GetInt32(2));
+            }
+            return new PastEvent(DBAbstractionLayer.getEventByID(-1), 0);
+        }
 
 
         public static EquipmentObject getEquipmentByID(Int32 EquipmentID)

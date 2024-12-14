@@ -43,6 +43,7 @@ namespace DH01EventManager
                 m_sqliteConnection.Close();
                 m_sqliteConnection = null;
             }
+            Debug.WriteLine("Disconnected");
         }// dbDisconnect
         public bool dbConnected()
         {

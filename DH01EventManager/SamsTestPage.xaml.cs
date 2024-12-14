@@ -24,12 +24,33 @@ namespace DH01EventManager
         public SamsTestPage()
         {
             InitializeComponent();
-            var d = DateTime.Now.Minute;
-            var d2 = DateTime.Now.Hour;
-            Debug.WriteLine(d);
-            Debug.WriteLine(d2);
-            Debug.WriteLine(EventObject.dateTimeToStr(DateTime.Now));
-            Debug.WriteLine(EventObject.strTimeToInt("6:30am"));
+            Debug.WriteLine("    #################\n****####Sam Tests####****\n    #################");
+
+            Debug.WriteLine("\nTest DBAL-01 DBAL Connection test");
+            DBAbstractionLayer.connect();
+
+            Debug.WriteLine("\nTest DBAL-02 DBAL Disconnection test");
+            DBAbstractionLayer.disconnect();
+
+            Debug.WriteLine("\nTest DBAL-03 DBAL Reset test");
+            DBAbstractionLayer.reset();
+
+            Debug.WriteLine("\nTest DBAL-04 DBAL Get status when connected");
+            DBAbstractionLayer.connect();
+            Debug.WriteLine(DBAbstractionLayer.getStatus());
+            DBAbstractionLayer.disconnect();
+
+            Debug.WriteLine("\nTest DBAL-05DBAL Get status when disconnected");
+            Debug.WriteLine(DBAbstractionLayer.getStatus());
+
+            Debug.WriteLine("\nTest DBAL-06 DBAL DBAL Ensure status when connected");
+            DBAbstractionLayer.connect();
+            DBAbstractionLayer.ensureStatus();
+            DBAbstractionLayer.disconnect();
+
+            Debug.WriteLine("\nTest DBAL-07 DBAL DBAL Ensure status when disconnected");
+            DBAbstractionLayer.ensureStatus();
+            DBAbstractionLayer.disconnect();
 
         }
     }
