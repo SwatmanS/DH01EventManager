@@ -43,14 +43,21 @@ namespace DH01EventManager
             Debug.WriteLine("\nTest DBAL-05DBAL Get status when disconnected");
             Debug.WriteLine(DBAbstractionLayer.getStatus());
 
-            Debug.WriteLine("\nTest DBAL-06 DBAL DBAL Ensure status when connected");
+            Debug.WriteLine("\nTest DBAL-06 DBAL Ensure status when connected");
             DBAbstractionLayer.connect();
             DBAbstractionLayer.ensureStatus();
             DBAbstractionLayer.disconnect();
 
-            Debug.WriteLine("\nTest DBAL-07 DBAL DBAL Ensure status when disconnected");
+            Debug.WriteLine("\nTest DBAL-07 DBAL Ensure status when disconnected");
             DBAbstractionLayer.ensureStatus();
             DBAbstractionLayer.disconnect();
+
+            DBAbstractionLayer.ensureStatus();
+            Debug.WriteLine("\nTest DBAL-08 DBAL Is previous event with valid event");
+            Debug.WriteLine(DBAbstractionLayer.isPreviousEvent(1));
+
+            Debug.WriteLine("\nTest DBAL-09 DBAL Is previous event with invalid event");
+            Debug.WriteLine(DBAbstractionLayer.isPreviousEvent(-1));
 
         }
     }

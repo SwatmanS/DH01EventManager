@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -115,11 +116,13 @@ namespace DH01EventManager
              *  Checks DB if there is an entry in the previous event table at eventID
              */
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_PastEvents WHERE Event_ID = {eventID};");
-            if (qResults.Read() == null)
+            var x = qResults.Read();
+            //Debug.WriteLine(String.Concat(qResults.Read().ToString(),"<-qResults"));
+            if (x)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
         public static void removeUpcomingEvent(Int32 eventID)
