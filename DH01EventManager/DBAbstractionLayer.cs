@@ -554,6 +554,43 @@ namespace DH01EventManager
             return check;
         }
 
+        public static List<EquipmentObject>? getAllEquipment()
+        {
+            {
+                List<EquipmentObject> l = new List<EquipmentObject>();
+                SQLiteDataReader? qResults = Con.querySQL($"SELECT * From ROSE_Equipment");
+                while (qResults.Read())
+                {
 
+                    l.Add(new EquipmentObject(qResults.GetInt32(0),qResults.GetString(1), qResults.GetString(2)));
+                }
+                return l;
+            }
+            
+        }
+
+        public static List<LocationObject>? getAllLocations()
+        {
+            List<LocationObject> l = new List<LocationObject>();
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From ROSE_Location");
+            while (qResults.Read())
+            {
+
+                l.Add(new LocationObject(qResults.GetInt32(0), qResults.GetString(1), qResults.GetString(2), qResults.GetInt32(3)));
+            }
+            return l; 
+        }
+
+        internal static List<StaffObject>? getAllStaff()
+        {
+            List<StaffObject> l = new List<StaffObject>();
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From ROSE_Staff");
+            while (qResults.Read())
+            {
+
+                l.Add(new StaffObject(qResults.GetInt32(0), qResults.GetString(1), qResults.GetString(2), qResults.GetString(3), qResults.GetString(4)));
+            }
+            return l;
+        }
     }// DBAbstractionLayer
 }

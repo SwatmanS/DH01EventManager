@@ -138,7 +138,7 @@ namespace DH01EventManager
             
             return startDate.AddMinutes(EventObject.strTimeToInt(startTime));
         }
-        public static Int32 parseDuration(DateTime startDate,String StartTime, String EndTime)
+        public static Int32 parseDuration(String StartTime, String EndTime)
         {
             int start = EventObject.strTimeToInt(StartTime);
             int end = EventObject.strTimeToInt(EndTime);

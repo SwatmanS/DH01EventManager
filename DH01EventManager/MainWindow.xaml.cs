@@ -25,10 +25,11 @@ namespace DH01EventManager
                 Window debugWindow = new DebugWindow();
                 debugWindow.Show();
             }
-
+            
             //connects to the database
             DBAbstractionLayer.connect();
-
+            //Gets Info for frontend
+            Settings.getDBData();
             //updates the logged in image 
             UpdateLoginImage();
         }

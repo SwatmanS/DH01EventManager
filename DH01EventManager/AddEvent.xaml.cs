@@ -164,13 +164,13 @@ namespace DH01EventManager
                 Random rng = new Random();
                 int rand1 = rng.Next(10,100);
                 DateTime startDate = DateTime.Parse(eventDateBox.Text);
-                TimeSpan startTime = TimeSpan.Parse(eventStartTimeBox.Text);
-                TimeSpan endTime = TimeSpan.Parse(eventEndTimeBox.Text);
+                String startTime = eventStartTimeBox.Text;
+                String endTime = eventEndTimeBox.Text;
 
-                endTime = endTime.Subtract(startTime);
-                int dur = (int)endTime.TotalMinutes;
+                //endTime = endTime.Subtract(startTime);
+                int dur = EventObject.parseDuration(startTime, endTime);
 
-                startDate = startDate.Add(startTime);
+                startDate = EventObject.parseStartDate(startDate,startTime);
 
                 //EventObject nEvent = new EventObject(rand1, eventTitleBox.Text, checkedLocation, startTime, dur, checkedStaff, checkedEquipment);
 
