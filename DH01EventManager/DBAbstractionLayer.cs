@@ -193,6 +193,7 @@ namespace DH01EventManager
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Staff WHERE Staff_ID = {StaffID};");
             if (qResults.Read()) // (Staff_ID,Staff_Fname,Staff_Lname,Staff_Position_Staff_Phonenumber)
             {
+                Debug.WriteLine($"getStaffByID {StaffID} - {qResults.GetString(1)}");
                 return new StaffObject(qResults.GetInt32(0), qResults.GetString(1), qResults.GetString(2), qResults.GetString(4), qResults.GetString(3)); 
             }
             return new StaffObject(StaffID, "Unknown First name ", "unkown Second name", "unkown phone number", "unkown position");
@@ -297,7 +298,7 @@ namespace DH01EventManager
         public static Int32 getNewEventID()
         {
             List<Int32> l = new List<Int32>();
-            SQLiteDataReader? qResults = Con.querySQL($"SELECT Event_ID FROM ROSE_Events;");
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT Event_ID FROM ROSE_Event;");
             while (qResults.Read())
             {
                 l.Add(qResults.GetInt32(0));
@@ -324,18 +325,27 @@ namespace DH01EventManager
             DBAbstractionLayer.ensureStatus();
             if (!DBAbstractionLayer.validStaffCheck(e.getEventStaff()))
             {
+                Debug.WriteLine("Add New Event Failure - Invalid Staff");
                 return false;
             }
             else if (!DBAbstractionLayer.validLocationCheck(e.getEventLocation()))
             {
+                Debug.WriteLine("Add New Event Failure - Invalid Location");
                 return false;
             }
             else if (!DBAbstractionLayer.validEquipmentCheck(e.getEventEquipment()))
             {
+                Debug.WriteLine("Add New Event Failure - Invalid Equipment");
                 return false;
             }
-            else if (!DBAbstractionLayer.isNewEventID(e.getEventID()))
+            else if (DBAbstractionLayer.isNewEventID(e.getEventID()))
             {
+                Debug.WriteLine("Add New Event Failure - Invalid Event ID");
+                return false;
+            }
+            else if (e.getEventDuration() <= 0)
+            {
+                Debug.WriteLine("Add New Event Failure - Invalid Duration");
                 return false;
             }
             
@@ -425,7 +435,7 @@ namespace DH01EventManager
             foreach (EquipmentObject q in equipmentObjects)
             {
                 // Test ID
-                if (null != Con.querySQL($"SELECT * FROM ROSE_Equipment WHERE Equipment_ID = {q.getEquipmentID()};"))
+                if (!(Con.querySQL($"SELECT * FROM ROSE_Equipment WHERE Equipment_ID = {q.getEquipmentID()};").Read()))
                 {
                     return false;
                 }
@@ -436,7 +446,7 @@ namespace DH01EventManager
         public static Boolean validLocationCheck(LocationObject locationObject)
         {
             // Test ID
-            if (null != Con.querySQL($"SELECT * FROM ROSE_Equipment WHERE Equipment_ID = {locationObject.getLocationID()};"))
+            if (!(Con.querySQL($"SELECT * FROM ROSE_Location WHERE Location_ID = {locationObject.getLocationID()};").Read()))
             {
                 return false;
             }
@@ -448,7 +458,7 @@ namespace DH01EventManager
             foreach (StaffObject s in staffObjects)
             {
                 // Test ID
-                if (null != Con.querySQL($"SELECT * FROM ROSE_Staff WHERE Staff_ID = {s.getStaffID()};"))
+                if (!Con.querySQL($"SELECT * FROM ROSE_Staff WHERE Staff_ID = {s.getStaffID()};").Read())
                 {
                     return false;
                 }

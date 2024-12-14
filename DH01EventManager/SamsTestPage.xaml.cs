@@ -65,6 +65,23 @@ namespace DH01EventManager
             Debug.WriteLine("\nTest DBAL-11");
             Debug.WriteLine(DBAbstractionLayer.removeUpcomingEvent(1));
 
+            Debug.WriteLine("Testing Writing New Event to DB");
+            List<StaffObject> staffList = new List<StaffObject>();
+            Debug.WriteLine(DBAbstractionLayer.getStaffByID(1));
+            staffList.Add(DBAbstractionLayer.getStaffByID(1));
+            EventObject newEvent = new EventObject(
+                DBAbstractionLayer.getNewEventID(),
+                "TestEvent :)",
+                DBAbstractionLayer.getLocationByID(1),
+                new DateTime(2024,12,31),
+                60,
+                staffList,
+                new List<EquipmentObject>() {DBAbstractionLayer.getEquipmentByID(1), DBAbstractionLayer.getEquipmentByID(2)}
+                );
+            Debug.WriteLine(newEvent.toString());
+            Debug.WriteLine(DBAbstractionLayer.addNewEvent(newEvent));
+            Debug.WriteLine("Testing Writing New Event to DB");
+
         }
     }
 } 

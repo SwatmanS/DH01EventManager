@@ -41,11 +41,11 @@ namespace DH01EventManager
 
         public EventObject(int id, string name, LocationObject location, DateTime date, List<StaffObject>? staff, List<EquipmentObject>? eventEquipment)
         {
-            this.id = id;
-            this.name = name;
-            this.location = location;
-            this.date = date;
-            this.staff = staff;
+            this.eventID = id;
+            this.eventname = name;
+            this.eventlocation = location;
+            this.eventDate = date;
+            this.eventStaff = staff;
             this.eventEquipment = eventEquipment;
         }
 
@@ -90,7 +90,7 @@ namespace DH01EventManager
 
        public String toString() 
         {
-            return string.Concat("Event Name: ", this.eventname, "\nDate: ", getStartDate(), "\nStart Time: ", getStartTime(), "\nEnd Time: ", getEndTime(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
+            return string.Concat($"EventID: {this.eventID}\n Event Name: ", this.eventname, "\nDate: ", getStartDate(), "\nStart Time: ", getStartTime(), "\nEnd Time: ", getEndTime(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
         }
 
         public Int32 getEventDuration()
