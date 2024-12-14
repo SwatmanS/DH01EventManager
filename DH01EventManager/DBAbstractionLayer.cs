@@ -179,7 +179,7 @@ namespace DH01EventManager
                                    qResults.GetInt32(4),
                                    DBAbstractionLayer.getAssociatedStaff(qResults.GetInt32(0)),
                                    DBAbstractionLayer.getAssociatedEquipment(qResults.GetInt32(0))
-                                   ); ; ; ; ;
+                                   ); 
             }
             return new EventObject(EventID,
                                    "Unknown Event",
@@ -193,9 +193,7 @@ namespace DH01EventManager
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Staff WHERE Staff_ID = {StaffID};");
             if (qResults.Read()) // (Staff_ID,Staff_Fname,Staff_Lname,Staff_Position_Staff_Phonenumber)
             {
-                return new StaffObject(qResults.GetInt32(0), qResults.GetString(1), qResults.GetString(2), qResults.GetString(4), qResults.GetString(3)
-
-                                   ); 
+                return new StaffObject(qResults.GetInt32(0), qResults.GetString(1), qResults.GetString(2), qResults.GetString(4), qResults.GetString(3)); 
             }
             return new StaffObject(StaffID, "Unknown First name ", "unkown Second name", "unkown phone number", "unkown position");
                                    
@@ -296,6 +294,17 @@ namespace DH01EventManager
             Con.runSQL($"UPDATE Rose_UpcomingEvent SET Event_ID = {upcoming.getEventID()},Predicted_Turnout = {upcoming.getEstimatedTurnout()} WHERE NewEvent_ID = {upcoming.getEventID()};");
         }
 
+        public static Int32 getNewEventID()
+        {
+            List<Int32> l = new List<Int32>();
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT Event_ID FROM ROSE_Events;");
+            while (qResults.Read())
+            {
+                l.Add(qResults.GetInt32(0));
+            }
+            Int32 Mx = l.Max() + 1;
+            return Mx;
+        }
         public static List<UserObject> getAllUsers()
         {
             List<UserObject> l = new List<UserObject>();
@@ -340,12 +349,13 @@ namespace DH01EventManager
         {
             DBAbstractionLayer.ensureStatus();
             Boolean check = true;
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  Rose_Equipment WHERE Event_ID = {EventID};");
             foreach (StaffObject s in staffObjects)
             {
                 check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES ({DBAbstractionLayer.getNewStaffAssignID()},{EventID},{s.getStaffID()});");
             }
             return check;
-    }
+        }
 
 
         public static bool AssignEquipment(List<EquipmentObject>? equipmentObjects,Int32 EventID)
