@@ -27,6 +27,10 @@ namespace DH01EventManager
             "Klinik Family E-Medic", "Klinik Careclinics Al-Amin", "My Family Clinic", "REN.CLINIC", "RIIYYAH MEDICAL CLINIC",
             "Muthu's Clinic and Surgery", "X Care Clinic", "Family Clinic Seventeen", "SV Care Clinic", "Emerald Clinic Rawang",
             "Nlee Family Clinic", "MCare Clinic", "TMC Health Centre", "Clinic Medi-Genesis", "One Med Clinic"];
+        public static void getDBData()
+        {
+
+        }
 
     }
 }

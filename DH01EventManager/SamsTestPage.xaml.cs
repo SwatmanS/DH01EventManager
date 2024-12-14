@@ -59,6 +59,12 @@ namespace DH01EventManager
             Debug.WriteLine("\nTest DBAL-09 DBAL Is previous event with invalid event");
             Debug.WriteLine(DBAbstractionLayer.isPreviousEvent(-1));
 
+            Debug.WriteLine("\nTest DBAL-10");
+            Debug.WriteLine(DBAbstractionLayer.removeUpcomingEvent(1));
+
+            Debug.WriteLine("\nTest DBAL-11");
+            Debug.WriteLine(DBAbstractionLayer.removeUpcomingEvent(1));
+
         }
     }
 } 
