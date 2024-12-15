@@ -29,6 +29,15 @@
         {
             return String.Concat("Location: ",this.locationName,"\nID = ",this.locationID,"\nAddress = ",this.locationAddress,"\nCapacity = ",this.locationCapacity);
         }
+
+        public List<LocationObject> objListBuilder(List<String> loc,List<LocationObject> locOb)
+        {
+            foreach (String s in loc)
+            {
+                locOb.Add(DBAbstractionLayer.getLocationByName(s)); //gets the locationObject for each item in the list by their name
+            }
+            return locOb;
+        }
            
     }
 }
