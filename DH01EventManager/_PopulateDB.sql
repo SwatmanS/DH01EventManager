@@ -34,18 +34,18 @@ INSERT INTO ROSE_Staff (Staff_ID,Staff_Fname,Staff_Lname,Staff_position,Staff_Ph
 
 		
 INSERT INTO ROSE_Equipment(Equipment_ID,Equipment_Name,Equipment_Description) VALUES 
-	(1,'tables','Wooden Table for leaflets'),
-	(2,'Chairs','Chair for sitting'),
-	(3,'stuff','some generic helpful stuff'),
-	(4,'stuff2','some generic helpful stuff'),
-	(5,'stuff3','some generic helpful stuff'),
-	(6,'stuff4','some generic helpful stuff'),
-	(7,'stuff5','some generic helpful stuff'),
-	(8,'stuff6','some generic helpful stuff'),
-	(9,'stuff7','some generic helpful stuff'),
-	(10,'stuff8','some generic helpful stuff'),
-	(11,'stuff9','some generic helpful stuff'),
-	(12,'stuff10','some generic helpful stuff');
+	(1,'Furniture','Additional furniture required to run event that isnt included in the location'),
+	(2, 'PPE', 'Equipment for medical staff to stay safe and sanitary during a screening'),
+	(3, 'Speculum Size 1', 'Holds vaginal walls apart for screening; size 1'),
+	(4, 'Speculum Size 2', 'Holds vaginal walls apart for screening; size 2'),
+	(5, 'Speculum Size 3', 'Holds vaginal walls apart for screening; size 3'),
+	(6, 'Speculum Size 4', 'Holds vaginal walls apart for screening; size 4'),
+	(8, 'Lubricant', 'Aids with the insertion of speculum'),
+	(9, 'Cytobrush', 'Collect cells from cervix during screenings'),
+	(10, 'Sample vials and packaging', 'Stores samples; packaging included to send to laboratory'),
+	(11, 'Patient Resources', 'Resources for patients such as flyers and leaflets'),
+	(12, 'Information Resources', 'Informative resources to be displayed at the venue i.e. posters, presentations, and leaflets')
+
 	
 INSERT INTO ROSE_Location (Location_ID,Location_name,Location_address,Location_Capacity) VALUES 
 	(1,'Bangsar South Medical Clinic','Malaysia',50),
@@ -141,7 +141,7 @@ INSERT INTO ROSE_UpcomingEvents(NewEvent_ID,Event_ID,Predicted_Turnout) VALUES
 	(1,1,19),
 	(2,2,35),
 	(3,3,60),
-	(4,20),
+	(4,4,20),
 	(5,5,46);
 		
 

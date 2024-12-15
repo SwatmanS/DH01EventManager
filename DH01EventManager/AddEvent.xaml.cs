@@ -29,6 +29,8 @@ namespace DH01EventManager
             StaffList.ItemsSource = Settings.staffList;
             EquipmentList.ItemsSource = Settings.equipmentList;
             LocationList.ItemsSource = Settings.locationList;
+
+            
         }
 
         private void UpdateLoginImage()
@@ -157,44 +159,48 @@ namespace DH01EventManager
                 eventEndTimeBox.Text != "" && eventTurnoutBox.Text != "")
             {
                 //makes lists of the staff and equipment 
-                List<string> checkedStaff = GetCheckedItems(StaffList);
-                List<string> checkedEquipment = GetCheckedItems(EquipmentList);
-                List<string> checkedLocation = GetCheckedItems(LocationList);
+                List<String> checkedStaff = GetCheckedItems(StaffList);
+                List<String> checkedEquipment = GetCheckedItems(EquipmentList);
+                List<String> checkedLocation = GetCheckedItems(LocationList);
 
-                Random rng = new Random();
-                int rand1 = rng.Next(10,100);
+                //dummy objects to access methods
+                StaffObject dummy = new StaffObject(0, "a", "a", "a", "a");
+                LocationObject dummy1 = new LocationObject(0, "a", "a", 0);
+                EquipmentObject dummy2 = new EquipmentObject(0, "a", "a");
+
+                //uses listToObject to make a list of staffObjects obtained by names stored in checkedStaff
+                List<StaffObject> staffOb = new List<StaffObject>();
+                List<EquipmentObject> equOb = new List<EquipmentObject>();
+
+                staffOb = dummy.objListBuilder(checkedStaff, staffOb);
+                LocationObject locOb = dummy1.objListBuilder(checkedLocation);
+                equOb = dummy2.objListBuilder(checkedEquipment, equOb);
+
                 DateTime startDate = DateTime.Parse(eventDateBox.Text);
                 String startTime = eventStartTimeBox.Text;
                 String endTime = eventEndTimeBox.Text;
 
-                //endTime = endTime.Subtract(startTime);
-                int dur = EventObject.parseDuration(startTime, endTime);
+                //lists for eventID and upcomingEventID, saves the final ID in list
+                List<Int32> evID = new List<Int32>();
+                evID = DBAbstractionLayer.getAllEventID();
+                Int32 lastEvID = evID.Last(); 
+                List<Int32> upEvID = new List<Int32>();
+                upEvID = DBAbstractionLayer.getAllUpEventID();
+                Int32 lastUpEvID = upEvID.Last();
 
-                startDate = EventObject.parseStartDate(startDate,startTime);
+                DateTime date = DateTime.Parse(eventDateBox.Text);
+                Int32 est = Int32.Parse(eventTurnoutBox.Text);
 
-                //EventObject nEvent = new EventObject(rand1, eventTitleBox.Text, checkedLocation, startTime, dur, checkedStaff, checkedEquipment);
+                //creates duration and startDate varianbles
+                int dur = EventObject.parseDuration(eventStartTimeBox.Text, eventEndTimeBox.Text);
+                startDate = EventObject.parseStartDate(date,eventStartTimeBox.Text);
 
-                /*to future jasmine: need to make checkedstaff, checkedequipmnet, and checkedlocation into objects. need database search method
-                 * once obtained will need to use location search on location and save as locationobject which can be passed into the construct
-                 * equipment and staff will require a loop (foreach?) that will convert each item in list to an object using the db search method and will save
-                 * the result into the relevant object list which can then be passed into the constructor
-                 * once this is done, the addevent method will hopefully work. should be testable by checking the events page
-                 * id is currently random, could possibly make a list of events, get last id in list and add 1
-                 * currently no estimated turn out functionality have to standby and wait to see if that is the case
-                 * but we would do a similar thing hopefully of adding the turn out to the upcoming events table w a new id and corresponding event id.
-                 * to get the newid would probs do a similar thing of making a list of ids and outputting them.
-                 * maybe make new methods to just return ids.
-                */
-                //prints off the add event form which would go into the database
-                MessageBox.Show(
-                    "Event Title:\n" + eventTitleBox.Text +
-                    "\n\nEvent Date:\n" + eventDateBox.Text +
-                    "\n\nEvent Start Time:\n" + eventStartTimeBox.Text +
-                    "\n\nEvent End Time:\n" + eventEndTimeBox.Text +
-                    "\n\nEvent Expected Turnout:\n" + eventTurnoutBox.Text +
-                    "\n\nChecked staff:\n" + string.Join(", ", checkedStaff) +
-                    "\n\nChecked Equipment:\n" + string.Join(", ", checkedEquipment) +
-                    "\n\nEvent Location:\n" + string.Join(", ", checkedLocation));
+                EventObject nEvent = new EventObject(lastEvID + 1, eventTitleBox.Text, locOb, date, staffOb, equOb);
+                UpcomingEvent uEvent = new UpcomingEvent(nEvent, est);
+
+                DBAbstractionLayer.addNewEvent(nEvent);
+
+                MessageBox.Show(nEvent.toString());
 
                 //close the current window
                 this.Close();

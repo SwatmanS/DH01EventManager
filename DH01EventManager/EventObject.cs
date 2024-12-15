@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Xaml.Schema;
@@ -70,10 +71,21 @@ namespace DH01EventManager
         {
             String[] sArray;
             String sString = "";
-            foreach (StaffObject staff in eventStaff)
+
+           foreach (StaffObject staff in eventStaff)
             {
-                sString = (String.Concat(staff.getForename(), " ", staff.getSurname()));
-            }
+                if (sString == "")
+                {
+                    {
+                        sString = (String.Concat(staff.getForename(), " ", staff.getSurname()));
+                    }
+                }
+                else
+                {
+                    sString = (String.Concat(sString + ", " + staff.getForename(), " ", staff.getSurname()));
+                }
+                
+            } 
             return sString;
         }
 
@@ -83,14 +95,21 @@ namespace DH01EventManager
             String eString = "";
             foreach (EquipmentObject equip in eventEquipment)
             {
-                eString = (String.Concat(equip.getEquipmentName()));
+                if (eString == "")
+                {
+                    eString = (String.Concat(equip.getEquipmentName()));
+                }
+                else
+                {
+                    eString = (String.Concat(eString + ", " + equip.getEquipmentName()));
+                }
             }
             return eString;
         }
 
        public String toString() 
         {
-            return string.Concat($"EventID: {this.eventID}\n Event Name: ", this.eventname, "\nDate: ", getStartDate(), "\nStart Time: ", getStartTime(), "\nEnd Time: ", getEndTime(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
+            return string.Concat("Event: ", this.eventname, "\nDate: ", getStartDate(), "\nStart Time: ", getStartTime(), "\nEnd Time: ", getEndTime(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
         }
 
         public Int32 getEventDuration()
