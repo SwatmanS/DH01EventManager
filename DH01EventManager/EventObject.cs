@@ -69,9 +69,6 @@ namespace DH01EventManager
 
         public String staffString()
         {
-            List<String> sList = new List<String>();
-            sList.Add("burke");
-            sList.Add("yang");
             String[] sArray;
             String sString = "";
 
