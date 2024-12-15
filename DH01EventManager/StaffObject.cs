@@ -38,7 +38,7 @@ namespace DH01EventManager
             return String.Concat("Staff ID: ", this.staffID,"\nFull Name: ",this.forename, " ", this.surname,"\nPhone Number: ",this.staffPhoneNo,"\nPosition: ",this.staffPosition);
         }
 
-        public List <StaffObject>? listToObject(List <String> source, List<StaffObject> staffOb)
+        public List <StaffObject>? objListBuilder(List <String> source, List<StaffObject> staffOb)
         {
             //in addEvents, the names are stored as one string instead of two separate ones which are needed for the getStaffByName method
             //below code fixes this
