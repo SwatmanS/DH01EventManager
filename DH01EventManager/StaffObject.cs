@@ -37,5 +37,19 @@ namespace DH01EventManager
         {
             return String.Concat("Staff ID: ", this.staffID,"\nFull Name: ",this.forename, " ", this.surname,"\nPhone Number: ",this.staffPhoneNo,"\nPosition: ",this.staffPosition);
         }
+
+        public List <StaffObject>? listToObject(List <String> source)
+        {
+            List<StaffObject> staffOb = new List<StaffObject>();
+            foreach (String sourceItem in source)
+            {
+                String[] split = sourceItem.Split(' ');
+                String first = split[0];
+                String second = split[1];
+                StaffObject staff = DBAbstractionLayer.getStaffByName(first, second);
+                staffOb.Add(staff);
+            }
+            return staffOb;
+        }
     }
 }

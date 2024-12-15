@@ -55,23 +55,20 @@ namespace DH01EventManager
         public static void StaffObjectTest()
         {
             //int32 id, str forename, str surname, str staffPhoneNo, str staffPosition
-            var testSt = new StaffObject(1, "Ammar", "Raja", "+60167423958", "Nurse");
-            MessageBox.Show("Constructing staff object using parameters: 1, Ammar, Raja, +60167423958, Nurse", "St Constructor Test");
-            MessageBox.Show(testSt.toString(), "Constructor result");
+            var testSt = new StaffObject(1, "a", "a", "a", "a");
 
+            List<String> list = new List<String>();
+            list.Add("Hakim Ros");
+            list.Add("Hadif Tuah");
 
-            //var testSt = new StaffObject(1, "Zara", "Nurse", "Medical", "Information");
-            //MessageBox.Show("Constructing staff object using parameters: 1, Zara, Nurse, [Medical, Information]\nResult: " + testSt, "St Constructor Test");
-            //MessageBox.Show("getStaffID: " + testSt.getStaffID() + "\ngetStaffName: " + testSt.getStaffName() + "\ngetStaffType: " + testSt.getStaffType() + "\ngetWorkableEvents: " + testSt.GetWorkableEvents(), "St Getter Test");
-            //MessageBox.Show("Using setters to change the following values:\nID = 2\nName = Nor\nType = Admin\nWorkable Events = [Information]", "St Setter Test with Valid Data");
-            //testSt.setStaffID(2);
-            //testSt.setStaffName("Nor");
-            //testSt.setWorkableEvents(["Information"]);
-            //MessageBox.Show("getStaffID: " + testSt.getStaffID() + "\ngetStaffName: " + testSt.getStaffName() + "\ngetStaffType: " + testSt.getStaffType() + "\ngetWorkableEvents: " + testSt.GetWorkableEvents(), "St Setter with Valid Data Result");
+            List<StaffObject> staffOb = new List<StaffObject>();
 
+            staffOb = testSt.listToObject(list);
 
-
-            //  Doesnt Work Now after updating the Staff Object to be in line with the database/class diagram sorry! -Sam
+            foreach (StaffObject staff in staffOb)
+            {
+                    MessageBox.Show(staff.toString());
+            }
         }
 
         public static void UpcomingEventTest()
