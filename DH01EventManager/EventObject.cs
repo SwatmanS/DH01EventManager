@@ -68,12 +68,26 @@ namespace DH01EventManager
 
         public String staffString()
         {
+            List<String> sList = new List<String>();
+            sList.Add("burke");
+            sList.Add("yang");
             String[] sArray;
             String sString = "";
-            foreach (StaffObject staff in eventStaff)
+
+           foreach (StaffObject staff in eventStaff)
             {
-                sString = (String.Concat(staff.getForename(), " ", staff.getSurname()));
-            }
+                if (sString == "")
+                {
+                    {
+                        sString = (String.Concat(staff.getForename(), " ", staff.getSurname()));
+                    }
+                }
+                else
+                {
+                    sString = (String.Concat(sString + ", " + staff.getForename(), " ", staff.getSurname()));
+                }
+                
+            } 
             return sString;
         }
 
@@ -83,7 +97,14 @@ namespace DH01EventManager
             String eString = "";
             foreach (EquipmentObject equip in eventEquipment)
             {
-                eString = (String.Concat(equip.getEquipmentName()));
+                if (eString == "")
+                {
+                    eString = (String.Concat(equip.getEquipmentName()));
+                }
+                else
+                {
+                    eString = (String.Concat(eString + ", " + equip.getEquipmentName()));
+                }
             }
             return eString;
         }
