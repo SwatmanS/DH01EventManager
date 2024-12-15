@@ -15,6 +15,12 @@ namespace DH01EventManager
 
         public static int eventIndex = -1;
 
+        public static string[] staffList;
+
+        public static string[] equipmentList;
+
+        public static string[] locationList;
+
         public static List<EquipmentObject>? equipmentObjects = new List<EquipmentObject>();
         public static List<LocationObject>? locationObjects = new List<LocationObject>();  
         public static List<StaffObject>? staffObjects = new List<StaffObject>();    
