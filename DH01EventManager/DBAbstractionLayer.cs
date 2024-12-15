@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Diagnostics;
@@ -641,6 +641,10 @@ namespace DH01EventManager
                 ints.Add(qResults.GetInt32(0));
             }
             return ints;
+        }
+        public static Boolean addUpcomimgEvent(UpcomingEvent e)
+        {
+            throw new NotImplementedException();
         }
     }// DBAbstractionLayer
 }
