@@ -34,7 +34,7 @@ namespace DH01EventManager
             LocationList.ItemsSource = Settings.locationList;
 
             //sets form variables as the events fron the database
-            SetEvents(Settings.eventIndex);
+            SetEvents();
         }
 
         private void UpdateLoginImage()
@@ -81,11 +81,14 @@ namespace DH01EventManager
             this.Show();
         }
 
-        private void SetEvents(int index)
+        private void SetEvents()
         {
             //depending on index show a different event from the class
 
-            EventObject edit = DBAbstractionLayer.getEventByID(1);
+            // Retrieve the stored event ID
+            int eventID = Settings.eventIndex;
+
+            EventObject edit = DBAbstractionLayer.getEventByID(eventID);
 
             DateTime datetime = edit.getEventDate();
 

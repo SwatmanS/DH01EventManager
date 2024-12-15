@@ -130,8 +130,9 @@ namespace DH01EventManager
                     if (Settings.loggedIn == true)
                     {
                         //button clicked method
-                        editButton.Click += (s, e) => OpenEditPage(textIndex);
                         container.Children.Add(editButton);
+                        editButton.Tag = textIndex - 1; 
+                        editButton.Click += EditButton_Click;
                     }
 
                     //adds the grid container to the canvas
@@ -141,6 +142,17 @@ namespace DH01EventManager
                     textIndex++;
                 }
             }
+
+            void EditButton_Click(object sender, RoutedEventArgs e)
+            {
+                Button clickedButton = sender as Button;
+                if (clickedButton != null && clickedButton.Tag is int index)
+                {
+                    Settings.eventIndex = index+1;
+                    OpenEditPage();
+                }
+            }
+
         }
 
         private void UpdateLoginImage()
@@ -199,12 +211,8 @@ namespace DH01EventManager
             this.Show();
         }
 
-
-
-        private void OpenEditPage(int eventNum)
+        private void OpenEditPage()
         {
-            //creates a public variable for the index 
-            Settings.eventIndex = eventNum;
             //hides current window and goes to the edit event page 
             EditEvent l_page = new();
             this.Hide();
