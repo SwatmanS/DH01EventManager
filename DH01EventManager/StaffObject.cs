@@ -40,14 +40,16 @@ namespace DH01EventManager
 
         public List <StaffObject>? listToObject(List <String> source)
         {
+            //in addEvents, the names are stored as one string instead of two separate ones which are needed for the getStaffByName method
+            //below code fixes this
             List<StaffObject> staffOb = new List<StaffObject>();
             foreach (String sourceItem in source)
             {
-                String[] split = sourceItem.Split(' ');
-                String first = split[0];
-                String second = split[1];
-                StaffObject staff = DBAbstractionLayer.getStaffByName(first, second);
-                staffOb.Add(staff);
+                String[] split = sourceItem.Split(' '); //splits each item in the source staff list (which would be the checked staff) based on a blank space
+                String first = split[0]; //saves first item in split array as forename
+                String second = split[1]; //savees second item in split array as surname
+                StaffObject staff = DBAbstractionLayer.getStaffByName(first, second); //runs getStaffByName, creating the relevant staff object
+                staffOb.Add(staff); //adds to object list
             }
             return staffOb;
         }
