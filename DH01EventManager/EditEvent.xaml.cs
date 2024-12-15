@@ -97,6 +97,11 @@ namespace DH01EventManager
             eventStartTimeBox.Text = (edit.getStartTime()).ToString();
             eventEndTimeBox.Text = (edit.getEndTime()).ToString();
             eventTurnoutBox.Text = "120";
+
+
+            currentStaff.Text = "Current Staff: " + "input staff names here";
+            currentEquipment.Text = "Current Equipment: " + "input equipment here";
+            currentLocation.Text = "Current Location: " + "input location here";
         }
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)
