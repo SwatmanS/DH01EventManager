@@ -38,11 +38,10 @@ namespace DH01EventManager
             return String.Concat("Staff ID: ", this.staffID,"\nFull Name: ",this.forename, " ", this.surname,"\nPhone Number: ",this.staffPhoneNo,"\nPosition: ",this.staffPosition);
         }
 
-        public List <StaffObject>? listToObject(List <String> source)
+        public List <StaffObject>? listToObject(List <String> source, List<StaffObject> staffOb)
         {
             //in addEvents, the names are stored as one string instead of two separate ones which are needed for the getStaffByName method
             //below code fixes this
-            List<StaffObject> staffOb = new List<StaffObject>();
             foreach (String sourceItem in source)
             {
                 String[] split = sourceItem.Split(' '); //splits each item in the source staff list (which would be the checked staff) based on a blank space

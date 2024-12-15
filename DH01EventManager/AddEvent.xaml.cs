@@ -29,6 +29,8 @@ namespace DH01EventManager
             StaffList.ItemsSource = Settings.staffList;
             EquipmentList.ItemsSource = Settings.equipmentList;
             LocationList.ItemsSource = Settings.locationList;
+
+            
         }
 
         private void UpdateLoginImage()
@@ -157,12 +159,24 @@ namespace DH01EventManager
                 eventEndTimeBox.Text != "" && eventTurnoutBox.Text != "")
             {
                 //makes lists of the staff and equipment 
-                List<string> checkedStaff = GetCheckedItems(StaffList);
-                List<string> checkedEquipment = GetCheckedItems(EquipmentList);
-                List<string> checkedLocation = GetCheckedItems(LocationList);
+                List<String> checkedStaff = GetCheckedItems(StaffList);
+                List<String> checkedEquipment = GetCheckedItems(EquipmentList);
+                List<String> checkedLocation = GetCheckedItems(LocationList);
+
+                //dummy objects to access methods
+                StaffObject dummy = new StaffObject(0, "a", "a", "a", "a");
+                LocationObject dummy1 = new LocationObject(0, "a", "a", 0);
+                EquipmentObject dummy2 = new EquipmentObject(0, "a", "a");
+
+                //uses listToObject to make a list of staffObjects obtained by names stored in checkedStaff
+                List<StaffObject> staffOb = new List<StaffObject>();
+                    
+                staffOb = dummy.listToObject(checkedStaff, staffOb);
+
 
                 Random rng = new Random();
                 int rand1 = rng.Next(10,100);
+
                 DateTime startDate = DateTime.Parse(eventDateBox.Text);
                 String startTime = eventStartTimeBox.Text;
                 String endTime = eventEndTimeBox.Text;
