@@ -359,10 +359,10 @@ namespace DH01EventManager
         {
             DBAbstractionLayer.ensureStatus();
             Boolean check = true;
-            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  Rose_Equipment WHERE Event_ID = {EventID};");
+            //SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  Rose_EquipmentAssign WHERE Event_ID = {EventID};");
             foreach (StaffObject s in staffObjects)
             {
-                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES ({DBAbstractionLayer.getNewStaffAssignID()},{EventID},{s.getStaffID()});");
+                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_AssignStaff(AssignStaff_ID,Event_ID,Staff_ID) VALUES ({DBAbstractionLayer.getNewStaffAssignID()},{EventID},{s.getStaffID()});");
             }
             return check;
         }
@@ -379,15 +379,18 @@ namespace DH01EventManager
             return check;
         }
 
-        public static object getNewEquipmentAssignID()
+        public static Int32 getNewEquipmentAssignID()
         {
             List<Int32> l = new List<Int32>();
+            //Debug.WriteLine("get New Equipment Assign --");
             SQLiteDataReader? qResults = Con.querySQL($"SELECT EquipmentAssign_ID FROM ROSE_EquipmentAssign;");
             while (qResults.Read())
             {
+                //Debug.WriteLine($"ID = {qResults.GetInt32(0)}");
                 l.Add(qResults.GetInt32(0));
             }
             Int32 Mx = l.Max() + 1;
+            //Debug.WriteLine($"NewID - {Mx}");    
             return Mx;
         }
 
@@ -540,13 +543,13 @@ namespace DH01EventManager
             return DBAbstractionLayer.getEventByName(Name).getEventStaff();
         }
 
-        public Boolean updateEvent(EventObject e)
+        public static Boolean updateEvent(EventObject e)
         {
             if (DBAbstractionLayer.isNewEventID(e.getEventID()))
             {
                 return DBAbstractionLayer.addNewEvent(e);
             }
-            bool a = Con.runSQL($"UPDATE Rose_Event SET Event_Name = '{e.getEventName()}, Location_ID = {e.getEventLocation().getLocationID()},Event_Date = '{e.getEventDate()}',Event_Duration = {e.getEventDuration()} WHERE Event_ID = {e.getEventID()}");
+            bool a = Con.runSQL($"UPDATE Rose_Event SET Event_Name = '{e.getEventName()}', Location_ID = {e.getEventLocation().getLocationID()},Event_Date = '{e.getEventDate()}',Event_Duration = {e.getEventDuration()} WHERE Event_ID = {e.getEventID()}");
             Boolean b = DBAbstractionLayer.updateAssignedEquipment(e.getEventEquipment(), e.getEventID());
             Boolean c = DBAbstractionLayer.updateAssignedStaff(e.getEventStaff(), e.getEventID());
             return a && b && c;
@@ -558,7 +561,7 @@ namespace DH01EventManager
             Con.runSQL($"Delete From Rose_AssignStaff where Event_ID = {EventID}");
             foreach (StaffObject s in staffObjects)
             {
-                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES ({DBAbstractionLayer.getNewStaffAssignID()},{EventID},{s.getStaffID()});");
+                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_AssignStaff(AssignStaff_ID,Event_ID,Staff_ID) VALUES ({DBAbstractionLayer.getNewStaffAssignID()},{EventID},{s.getStaffID()});");
             }
             return check;
         }
@@ -569,7 +572,10 @@ namespace DH01EventManager
             Con.runSQL($"Delete From Rose_EquipmentAssign where Event_ID = {EventID}");
             foreach (EquipmentObject q in equipmentObjects)
             {
-                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES ({DBAbstractionLayer.getNewEquipmentAssignID()},{EventID},{q.getEquipmentID()});");
+                int newID = DBAbstractionLayer.getNewEquipmentAssignID();
+               
+                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES ({newID},{EventID},{q.getEquipmentID()});");
+                
             }
             return check;
         }

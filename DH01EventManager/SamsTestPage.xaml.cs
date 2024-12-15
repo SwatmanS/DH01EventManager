@@ -80,8 +80,18 @@ namespace DH01EventManager
                 );
             Debug.WriteLine(newEvent.toString());
             Debug.WriteLine(DBAbstractionLayer.addNewEvent(newEvent));
-            Debug.WriteLine("Testing Writing New Event to DB");
-
+            Debug.WriteLine("Testing Updating New Event to DB");
+            staffList.Add(DBAbstractionLayer.getStaffByID(2));
+            EventObject updatedEvent = new EventObject(
+                DBAbstractionLayer.getNewEventID(),
+                "TestEvent Updated :O",
+                DBAbstractionLayer.getLocationByID(2),
+                new DateTime(2024, 12, 31),
+                60,
+                staffList,
+                new List<EquipmentObject>() { DBAbstractionLayer.getEquipmentByID(2), DBAbstractionLayer.getEquipmentByID(3) }
+                );
+            DBAbstractionLayer.updateEvent(updatedEvent);
         }
     }
 } 
