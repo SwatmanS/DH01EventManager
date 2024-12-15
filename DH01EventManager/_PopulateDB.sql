@@ -141,7 +141,7 @@ INSERT INTO ROSE_UpcomingEvents(NewEvent_ID,Event_ID,Predicted_Turnout) VALUES
 	(1,1,19),
 	(2,2,35),
 	(3,3,60),
-	(4,20),
+	(4,4,20),
 	(5,5,46);
 		
 

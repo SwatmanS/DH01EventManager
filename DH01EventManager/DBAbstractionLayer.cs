@@ -629,7 +629,18 @@ namespace DH01EventManager
                 ints.Add(qResults.GetInt32(0));
             }
             return ints;
+        }
 
+        public static List<Int32> getAllUpEventID()
+        {
+            List<Int32> ints = new List<Int32>();
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT NewEvent_ID From ROSE_UpcomingEvents");
+            while (qResults.Read())
+            {
+
+                ints.Add(qResults.GetInt32(0));
+            }
+            return ints;
         }
     }// DBAbstractionLayer
 }
