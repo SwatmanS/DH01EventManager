@@ -63,7 +63,7 @@ namespace DH01EventManager
 
             List<StaffObject> staffOb = new List<StaffObject>();
 
-            staffOb = testSt.listToObject(list);
+            staffOb = testSt.objListBuilder(list,staffOb);
 
             foreach (StaffObject staff in staffOb)
             {
@@ -115,6 +115,17 @@ namespace DH01EventManager
             MessageBox.Show("ack" + testEM.getFullEventList());
         }
 
+        public static void ranMethod()
+        {
+            List <Int32> list = new List<Int32>();
+
+            list = DBAbstractionLayer.getAllEventID();
+
+            foreach(Int32 i in list)
+            {
+                MessageBox.Show(i.ToString());
+            }
+        }
 
 
     }
