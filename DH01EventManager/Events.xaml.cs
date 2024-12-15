@@ -37,7 +37,7 @@ namespace DH01EventManager
             String evString;
             String temp;
 
-
+            //possible problem here - not showing 6 events only 5?
             for(int i =0; i < upEvent.Count; i++)
             {
                 evString = events[i].toString();
