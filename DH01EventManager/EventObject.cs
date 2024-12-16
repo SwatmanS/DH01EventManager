@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Xaml.Schema;
 
@@ -26,9 +27,16 @@ namespace DH01EventManager
         private DateTime date;
         private List<StaffObject>? staff;
         public static List<String> timeList= new List<String>() { "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM" };
+        private int v1;
+        private string v2;
+        private LocationObject locationObject;
+        private DateTime dateTime;
+        private List<StaffObject>? staffObjects;
+        private List<EquipmentObject>? equipmentObjects;
 
         public  EventObject(Int32 id, String name, LocationObject location,DateTime date,Int32 duration,List<StaffObject>? staff, List<EquipmentObject>? eventEquipment) 
         {
+            Debug.WriteLine($"New Event\nid - {id} name - {name} \nduration - {duration}");
             // Creates a new EventObject
             this.eventID = id;
             this.eventname = name;
@@ -40,15 +48,17 @@ namespace DH01EventManager
             this.eventEquipment = eventEquipment;
         }// EventObject - Constructor
 
-        public EventObject(int id, string name, LocationObject location, DateTime date, List<StaffObject>? staff, List<EquipmentObject>? eventEquipment)
+        public EventObject(int v1, string v2, LocationObject locationObject, DateTime dateTime, List<StaffObject>? staffObjects, List<EquipmentObject>? equipmentObjects)
         {
-            this.eventID = id;
-            this.eventname = name;
-            this.eventlocation = location;
-            this.eventDate = date;
-            this.eventStaff = staff;
-            this.eventEquipment = eventEquipment;
+            this.v1 = v1;
+            this.v2 = v2;
+            this.locationObject = locationObject;
+            this.dateTime = dateTime;
+            this.staffObjects = staffObjects;
+            this.equipmentObjects = equipmentObjects;
         }
+
+
 
         // Event Getters
         public Int32 getEventID() { return this.eventID; }// GetEventID

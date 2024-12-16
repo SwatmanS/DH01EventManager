@@ -18,7 +18,7 @@ namespace DH01EventManager
         {
             this.eventEstimatedTurnout = estimate;
         } // Upcoming Event Constructor 
-        public UpcomingEvent(EventObject e,Int32 estimate) : base(e.getEventID(), e.getEventName(), e.getEventLocation(), e.getEventDate(), e.getEventStaff(), e.getEventEquipment())
+        public UpcomingEvent(EventObject e,Int32 estimate) : base(e.getEventID(), e.getEventName(), e.getEventLocation(), e.getEventDate(),e.getEventDuration(), e.getEventStaff(), e.getEventEquipment())
         {
             this.eventEstimatedTurnout = estimate;
         } // Upcoming Event Constructor from EventObject

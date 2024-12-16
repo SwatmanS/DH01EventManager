@@ -204,7 +204,7 @@ namespace DH01EventManager
                 string endt = eventEndTimeBox.Text;
                 Int32 duration = EventObject.parseDuration(s, endt);
                 Debug.WriteLine($"Duration - {duration}");
-                EventObject nEvent = new EventObject(lastEvID + 1, eventTitleBox.Text, locOb, startDate, duration, staffOb, equOb);
+                EventObject nEvent = new EventObject((Int32)lastEvID + 1,(String) eventTitleBox.Text, locOb, startDate, duration, staffOb, equOb);
                 UpcomingEvent uEvent = new UpcomingEvent(nEvent, est);
 
                 DBAbstractionLayer.addNewEvent(nEvent);
