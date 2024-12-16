@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -196,10 +197,14 @@ namespace DH01EventManager
 
 
                 DateTime endTime = DateTime.Parse(eventEndTimeBox.Text);
-                TimeSpan difference = endTime.Subtract(startDate);
-                Int32 dur = (int) difference.TotalMinutes;
+                
 
-                EventObject nEvent = new EventObject(lastEvID + 1, eventTitleBox.Text, locOb, startDate, dur, staffOb, equOb);
+                Debug.WriteLine($"AddEvent Parse Here <<<<<<<<< {eventStartTimeBox.Text} , {eventEndTimeBox.Text}");
+                string s = eventStartTimeBox.Text;
+                string endt = eventEndTimeBox.Text;
+                Int32 duration = EventObject.parseDuration(s, endt);
+                Debug.WriteLine($"Duration - {duration}");
+                EventObject nEvent = new EventObject(lastEvID + 1, eventTitleBox.Text, locOb, startDate, duration, staffOb, equOb);
                 UpcomingEvent uEvent = new UpcomingEvent(nEvent, est);
 
                 DBAbstractionLayer.addNewEvent(nEvent);

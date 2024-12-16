@@ -94,6 +94,13 @@ namespace DH01EventManager
                 );
             Debug.WriteLine(updatedEvent.toString());
             DBAbstractionLayer.updateEvent(updatedEvent);
+
+            Debug.WriteLine($"\n EventObject Testing");
+            foreach (String s in EventObject.timeList)
+            {
+                Debug.WriteLine(s);
+                Debug.WriteLine(EventObject.strTimeToInt(s));
+            }
         }
     }
 } 

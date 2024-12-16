@@ -25,7 +25,7 @@ namespace DH01EventManager
         private LocationObject location;
         private DateTime date;
         private List<StaffObject>? staff;
-        static List<String> timeList= new List<String>() { "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM" };
+        public static List<String> timeList= new List<String>() { "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM" };
 
         public  EventObject(Int32 id, String name, LocationObject location,DateTime date,Int32 duration,List<StaffObject>? staff, List<EquipmentObject>? eventEquipment) 
         {
@@ -125,17 +125,21 @@ namespace DH01EventManager
         public static Int32 strTimeToInt(String s)
         {
             Int32 x = 0;
-            for (int i = 0; i > EventObject.timeList.Count;i++)
+            Debug.WriteLine(EventObject.timeList.Count);
+            for (int i = 0; i < EventObject.timeList.Count;i++)
             {
+                //Debug.WriteLine($"{i} - {EventObject.timeList[i]} {s}");
                 if (s == EventObject.timeList[i])
                 {
+                    
                     x = i;
                 }
             }
             
-            Int32 halfPast = x +1 % 2;//16 Hours
-            Int32 hour = x - (halfPast) / 2;
-            return ((hour+6)*60)+(halfPast*30);
+            Int32 halfPast = (x) % 2;//16 Hours
+            Int32 hour = (x-halfPast)/2 + 6;
+            Debug.WriteLine($"strTimeToInt {s} - {hour} {halfPast}");
+            return ( hour* 60) + (halfPast * 30);
         }
         public static String dateTimeToStr(DateTime d)
         {
@@ -161,6 +165,7 @@ namespace DH01EventManager
         {
             int start = EventObject.strTimeToInt(StartTime);
             int end = EventObject.strTimeToInt(EndTime);
+            Debug.WriteLine($"{end} - {start} = {end - start}");
             return end - start;
         }
 

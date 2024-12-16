@@ -27,6 +27,7 @@ namespace DH01EventManager
              *  Put Tests Below
              * 
              */
+            DBAbstractionLayer.reset();
         }
     }
 }

@@ -221,12 +221,12 @@ namespace DH01EventManager
                 Int32 est = Int32.Parse(eventTurnoutBox.Text);
 
                 //creates duration and startDate varianbles
-                //int dur = EventObject.parseDuration(eventStartTimeBox.Text, eventEndTimeBox.Text);
+                int dur = EventObject.parseDuration(eventStartTimeBox.Text, eventEndTimeBox.Text);
 
 
                 DateTime endTime = DateTime.Parse(eventEndTimeBox.Text);
                 TimeSpan difference = endTime.Subtract(startDate);
-                Int32 dur = (int)difference.TotalMinutes;
+                //Int32 dur = (int)difference.TotalMinutes;
 
                 EventObject nEvent = new EventObject(eventID, eventTitleBox.Text, locOb, startDate, dur, staffOb, equOb);
                 UpcomingEvent uEvent = new UpcomingEvent(nEvent, est);
