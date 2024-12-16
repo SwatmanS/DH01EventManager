@@ -645,14 +645,14 @@ namespace DH01EventManager
         public static Boolean addUpcomimgEvent(UpcomingEvent e)
         {
             List<Int32> l = new List<Int32>();
-            //DBAbstractionLayer.updateEvent(e);
-            SQLiteDataReader? qResults = Con.querySQL($"SELECT Upcoming_ID FROM Rose_UpcomingEvents;");
+            DBAbstractionLayer.updateEvent(e);
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT NewEvent_ID FROM Rose_UpcomingEvents;");
             while (qResults.Read())
             {
                 l.Add(qResults.GetInt32(0));
             }
             Int32 Mx = l.Max() + 1;
-            Con.querySQL($"INSERT INTO Rose_UpcomingEvents (Upcoming_ID,Event_ID,Predicted_Turnout) VALUES ({Mx},{e.getEventID()},{e.getEstimatedTurnout()});");
+            Con.querySQL($"INSERT INTO Rose_UpcomingEvents (NewEvent_ID,Event_ID,Predicted_Turnout) VALUES ({Mx},{e.getEventID()},{e.getEstimatedTurnout()});");
             return true;
         }
     }// DBAbstractionLayer

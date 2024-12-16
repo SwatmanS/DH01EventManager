@@ -189,16 +189,19 @@ namespace DH01EventManager
                 Int32 lastUpEvID = upEvID.Last();
 
                 DateTime date = DateTime.Parse(eventDateBox.Text);
+                MessageBox.Show(date.ToString());
                 Int32 est = Int32.Parse(eventTurnoutBox.Text);
 
                 //creates duration and startDate varianbles
                 int dur = EventObject.parseDuration(eventStartTimeBox.Text, eventEndTimeBox.Text);
                 startDate = EventObject.parseStartDate(date,eventStartTimeBox.Text);
+                MessageBox.Show(startDate.ToString());
 
-                EventObject nEvent = new EventObject(lastEvID + 1, eventTitleBox.Text, locOb, date, staffOb, equOb);
+                EventObject nEvent = new EventObject(lastEvID + 1, eventTitleBox.Text, locOb, startDate, dur, staffOb, equOb);
                 UpcomingEvent uEvent = new UpcomingEvent(nEvent, est);
 
                 DBAbstractionLayer.addNewEvent(nEvent);
+                DBAbstractionLayer.addUpcomimgEvent(uEvent);
 
                 MessageBox.Show(nEvent.toString());
 
