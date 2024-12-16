@@ -71,13 +71,15 @@ namespace DH01EventManager
 
             Debug.WriteLine("\nTest DBAL-14");
            // Debug.WriteLine(DBAbstractionLayer.addNewEvent 
-           // Debug.writeLine test works in the programme
+           // test works in the programme by adding a new event
 
-            Debug.WriteLine("\nTest DBAL-15");
-            Debug.WriteLine(DBAbstractionLayer.(1));
-
+            
+            Debug.WriteLine("\nTest DBAL-15"); 
+            //Debug.WriteLine(DBAbstractionLayer.AssignStaff;
+            // test works in the programme by  assigning staff
+                /*
             Debug.WriteLine("\nTest DBAL-16");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            Debug.WriteLine(DBAbstractionLayer;
 
             Debug.WriteLine("\nTest DBAL-17");
             Debug.WriteLine(DBAbstractionLayer.(1));
@@ -180,7 +182,7 @@ namespace DH01EventManager
 
             Debug.WriteLine("\nTest DBAL-50");
             Debug.WriteLine(DBAbstractionLayer.(1));
-
+                */
 
 
 
