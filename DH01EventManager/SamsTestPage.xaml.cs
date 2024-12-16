@@ -95,17 +95,21 @@ namespace DH01EventManager
             // test works in the program by getting a new event ID from the event table
 
             Debug.WriteLine("\nTest DBAL-20");
-           // Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getNewStaffAssignID ;
+            // test works in the program by getting
 
             Debug.WriteLine("\nTest DBAL-21");
-           // Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.validEquipmentCheck;
+            // test works in the program by checking the equipment is valid in the equipment table
 
             Debug.WriteLine("\nTest DBAL-22");
-           // Debug.WriteLine(DBAbstractionLayer.(1));
-#
+            // Debug.WriteLine(DBAbstractionLayer.validLocationCheck;
+            // test works in the program by checking the location is valid in the location table 
+
             Debug.WriteLine("\nTest DBAL-23");
-          //  Debug.WriteLine(DBAbstractionLayer.(1));
-      
+            //  Debug.WriteLine(DBAbstractionLayer.validStaffCheck;
+            //  test works in the program by checking the staff are valid in the staff table
+
             /*
             Debug.WriteLine("\nTest DBAL-24");
             Debug.WriteLine(DBAbstractionLayer.(1));
@@ -142,7 +146,7 @@ namespace DH01EventManager
 
             Debug.WriteLine("\nTest DBAL-35");
             Debug.WriteLine(DBAbstractionLayer.(1));
-#
+
             Debug.WriteLine("\nTest DBAL-36");
             Debug.WriteLine(DBAbstractionLayer.(1));
 
@@ -178,7 +182,7 @@ namespace DH01EventManager
 
             Debug.WriteLine("\nTest DBAL-47");
             Debug.WriteLine(DBAbstractionLayer.(1));
-#
+
             Debug.WriteLine("\nTest DBAL-48");
             Debug.WriteLine(DBAbstractionLayer.(1));
 
