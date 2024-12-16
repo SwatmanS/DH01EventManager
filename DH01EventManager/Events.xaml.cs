@@ -37,10 +37,10 @@ namespace DH01EventManager
             String evString;
             String temp;
 
-            for(int i =0; i < upEvent.Count; i++)
+            for(int i =0; i < events.Count; i++)
             {
-                evString = upEvent[i].toString();
-                evString = upEvent[i].addString(evString);
+                evString = events[i].toString();
+                //there is an issue with how the data has been parsed to upcomingEvents so the estimated turnout can't be displayed
                 ListOf.Add(evString);
 
             }

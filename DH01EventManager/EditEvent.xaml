@@ -193,7 +193,7 @@
                 </StackPanel>
 
                 <!--event current staff text-->
-                <TextBlock Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Text="{Binding}" x:Name="currentStaff"
+                <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding}" x:Name="currentStaff" MaxWidth="400" TextWrapping="Wrap"
                    FontSize="18" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
                    Background="{x:Null}" Foreground="#209ca4"/>
 
@@ -217,7 +217,7 @@
                 </StackPanel>
 
                 <!--event current equipment text-->
-                <TextBlock Grid.Row="7" Grid.Column="2" TextWrapping="Wrap" Text="{Binding}" x:Name="currentEquipment"
+                <TextBlock Grid.Row="7" Grid.Column="2" TextWrapping="Wrap" Text="{Binding}" x:Name="currentEquipment" MaxWidth="400" 
                            FontSize="18" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
                            Background="{x:Null}" Foreground="#209ca4"/>
 
@@ -241,7 +241,7 @@
                 </StackPanel>
 
                 <!--event current equipment text-->
-                <TextBlock Grid.Row="2" Grid.Column="3" TextWrapping="Wrap" Text="{Binding}" x:Name="currentLocation"
+                <TextBlock Grid.Row="2" Grid.Column="3" TextWrapping="Wrap" Text="{Binding}" x:Name="currentLocation" MaxWidth="400" 
                            FontSize="18" FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" 
                            Background="{x:Null}" Foreground="#209ca4"/>
 

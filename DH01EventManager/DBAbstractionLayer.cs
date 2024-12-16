@@ -8,7 +8,7 @@ using System.Net;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
 using System.Windows;
 using System.Windows.Controls;
 
@@ -647,13 +647,15 @@ namespace DH01EventManager
             List<Int32> l = new List<Int32>();
             Con.runSQL($"Delete From Rose_UpcomingEvents where Event_ID = {e.getEventID()}");
             DBAbstractionLayer.updateEvent(e);
-            SQLiteDataReader? qResults = Con.querySQL($"SELECT Upcoming_ID FROM Rose_UpcomingEvents;");
+            
+            
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT NewEvent_ID FROM Rose_UpcomingEvents;");
             while (qResults.Read())
             {
                 l.Add(qResults.GetInt32(0));
             }
             Int32 Mx = l.Max() + 1;
-            Con.querySQL($"INSERT INTO Rose_UpcomingEvents (Upcoming_ID,Event_ID,Predicted_Turnout) VALUES ({Mx},{e.getEventID()},{e.getEstimatedTurnout()});");
+            Con.querySQL($"INSERT INTO Rose_UpcomingEvents (NewEvent_ID,Event_ID,Predicted_Turnout) VALUES ({Mx},{e.getEventID()},{e.getEstimatedTurnout()});");
             return true;
         }
     }// DBAbstractionLayer
