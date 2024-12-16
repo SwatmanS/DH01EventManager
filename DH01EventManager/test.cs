@@ -24,12 +24,14 @@ namespace DH01EventManager
 
         public static void EventObjectTest()
         {
-           // List<EventObject> events = new List<EventObject>();
-            //events = DBAbstractionLayer.getAllEvents();
-            //MessageBox.Show("rah " + events[0].toString(), "events");
+           List<EventObject> events = new List<EventObject>();
+            events = DBAbstractionLayer.getAllEvents();
 
-            var testEv = DBAbstractionLayer.getEventByID(1);
-            MessageBox.Show("wee" + testEv.staffString());
+            foreach (EventObject eventArgs in events)
+            {
+                MessageBox.Show("rah " + eventArgs.toString(), "events");
+            }
+            
         }
 
         public static void LocationObjectTest()

@@ -39,7 +39,7 @@ namespace DH01EventManager
 
             for(int i =0; i < upEvent.Count; i++)
             {
-                evString = upEvent[i].toString();
+                evString = events[i].toString();
                 evString = upEvent[i].addString(evString);
                 ListOf.Add(evString);
 
