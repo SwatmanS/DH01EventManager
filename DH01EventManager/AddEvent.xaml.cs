@@ -189,15 +189,12 @@ namespace DH01EventManager
                 Int32 lastUpEvID = upEvID.Last();
 
                 DateTime date = DateTime.Parse(eventDateBox.Text);
-                MessageBox.Show(date.ToString());
                 Int32 est = Int32.Parse(eventTurnoutBox.Text);
 
                 //creates duration and startDate varianbles
                 //int dur = EventObject.parseDuration(eventStartTimeBox.Text, eventEndTimeBox.Text);
 
 
-                MessageBox.Show(eventStartTimeBox.Text);
-                MessageBox.Show(startDate.ToString());
                 DateTime endTime = DateTime.Parse(eventEndTimeBox.Text);
                 TimeSpan difference = endTime.Subtract(startDate);
                 Int32 dur = (int) difference.TotalMinutes;
@@ -208,8 +205,8 @@ namespace DH01EventManager
                 DBAbstractionLayer.addNewEvent(nEvent);
                 DBAbstractionLayer.addUpcomimgEvent(uEvent);
 
-                MessageBox.Show(nEvent.toString());
-
+                MessageBox.Show("Event Added: \n" + nEvent.toString(), "Add Event");
+                
                 //close the current window
                 this.Close();
             }
