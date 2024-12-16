@@ -100,9 +100,9 @@ namespace DH01EventManager
             LocationObject loc = edit.getEventLocation();
 
 
-            currentStaff.Text = "Current Staff: " + edit.staffString();
-            currentEquipment.Text = "Current Equipment: " + edit.equipmentString();
-            currentLocation.Text = "Current Location: " + loc.getLocationName();
+            currentStaff.Text = "Current Staff:\n" + edit.staffString();
+            currentEquipment.Text = "Current Equipment:\n" + edit.equipmentString();
+            currentLocation.Text = "Current Location:\n" + loc.getLocationName();
         }
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)
