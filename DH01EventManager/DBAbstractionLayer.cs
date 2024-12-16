@@ -645,7 +645,10 @@ namespace DH01EventManager
         public static Boolean addUpcomimgEvent(UpcomingEvent e)
         {
             List<Int32> l = new List<Int32>();
-            //DBAbstractionLayer.updateEvent(e);
+            Con.runSQL($"Delete From Rose_UpcomingEvents where Event_ID = {e.getEventID()}");
+            DBAbstractionLayer.updateEvent(e);
+            
+            
             SQLiteDataReader? qResults = Con.querySQL($"SELECT NewEvent_ID FROM Rose_UpcomingEvents;");
             while (qResults.Read())
             {
