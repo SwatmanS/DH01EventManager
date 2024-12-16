@@ -176,11 +176,9 @@ namespace DH01EventManager
                 LocationObject locOb = dummy1.objListBuilder(checkedLocation);
                 equOb = dummy2.objListBuilder(checkedEquipment, equOb);
 
-                DateTime startDate = DateTime.Parse(eventDateBox.Text);
-                TimeOnly startTime = TimeOnly.Parse(eventStartTimeBox.Text);
-                TimeOnly endTime = TimeOnly.Parse(eventEndTimeBox.Text);
-                TimeSpan difference = endTime - startTime;
-                Int32 dur = (int) difference.TotalMinutes;
+                String dateString = String.Concat(eventDateBox.Text + " " + eventStartTimeBox.Text);
+
+                DateTime startDate = Convert.ToDateTime(dateString);
 
                 //lists for eventID and upcomingEventID, saves the final ID in list
                 List<Int32> evID = new List<Int32>();
@@ -196,8 +194,13 @@ namespace DH01EventManager
 
                 //creates duration and startDate varianbles
                 //int dur = EventObject.parseDuration(eventStartTimeBox.Text, eventEndTimeBox.Text);
-                startDate = EventObject.parseStartDate(date,eventStartTimeBox.Text);
+
+
+                MessageBox.Show(eventStartTimeBox.Text);
                 MessageBox.Show(startDate.ToString());
+                DateTime endTime = DateTime.Parse(eventEndTimeBox.Text);
+                TimeSpan difference = endTime.Subtract(startDate);
+                Int32 dur = (int) difference.TotalMinutes;
 
                 EventObject nEvent = new EventObject(lastEvID + 1, eventTitleBox.Text, locOb, startDate, dur, staffOb, equOb);
                 UpcomingEvent uEvent = new UpcomingEvent(nEvent, est);
