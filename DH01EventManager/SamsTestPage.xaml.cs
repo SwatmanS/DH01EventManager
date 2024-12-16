@@ -83,13 +83,16 @@ namespace DH01EventManager
             // test works in program by assigning equipment
 
             Debug.WriteLine("\nTest DBAL-17");
-            //Debug.WriteLine(DBAbstractionLayer.(1));
+            //Debug.WriteLine(DBAbstractionLayer.getNewEquipmentAssignID;
+            // test works in the program by getting a new equipment assign ID
 
             Debug.WriteLine("\nTest DBAL-18");
-           // Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.isValidDate 
+            // test works in the program by getting a valid date
 
             Debug.WriteLine("\nTest DBAL-19");
-           // Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.isNewEventID 
+            // test works in the program by getting a new event ID from the event table
 
             Debug.WriteLine("\nTest DBAL-20");
            // Debug.WriteLine(DBAbstractionLayer.(1));
