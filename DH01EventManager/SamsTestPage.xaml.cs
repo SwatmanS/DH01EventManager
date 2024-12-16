@@ -67,41 +67,43 @@ namespace DH01EventManager
 
            Debug.WriteLine("\nTest DBAL-12");
           // Debug.WriteLine(DBAbstractionLayer.updateUpcomingEvent(1));
-          // Debug.WriteLine updates upcoming events in the programme
+          // Debug.WriteLine updates upcoming events in the program
 
             Debug.WriteLine("\nTest DBAL-14");
            // Debug.WriteLine(DBAbstractionLayer.addNewEvent 
-           // test works in the programme by adding a new event
+           // test works in the program by adding a new event
 
             
             Debug.WriteLine("\nTest DBAL-15"); 
             //Debug.WriteLine(DBAbstractionLayer.AssignStaff;
-            // test works in the programme by  assigning staff
-                /*
+            // test works in the program by  assigning staff
+                
             Debug.WriteLine("\nTest DBAL-16");
-            Debug.WriteLine(DBAbstractionLayer;
+            //Debug.WriteLine(DBAbstractionLayer.AssignEquipment;
+            // test works in program by assigning equipment
 
             Debug.WriteLine("\nTest DBAL-17");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            //Debug.WriteLine(DBAbstractionLayer.(1));
 
             Debug.WriteLine("\nTest DBAL-18");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+           // Debug.WriteLine(DBAbstractionLayer.(1));
 
             Debug.WriteLine("\nTest DBAL-19");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+           // Debug.WriteLine(DBAbstractionLayer.(1));
 
             Debug.WriteLine("\nTest DBAL-20");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+           // Debug.WriteLine(DBAbstractionLayer.(1));
 
             Debug.WriteLine("\nTest DBAL-21");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+           // Debug.WriteLine(DBAbstractionLayer.(1));
 
             Debug.WriteLine("\nTest DBAL-22");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+           // Debug.WriteLine(DBAbstractionLayer.(1));
 #
             Debug.WriteLine("\nTest DBAL-23");
-            Debug.WriteLine(DBAbstractionLayer.(1));
-
+          //  Debug.WriteLine(DBAbstractionLayer.(1));
+      
+            /*
             Debug.WriteLine("\nTest DBAL-24");
             Debug.WriteLine(DBAbstractionLayer.(1));
 
