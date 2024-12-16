@@ -43,15 +43,64 @@ namespace DH01EventManager
             Debug.WriteLine("\nTest DBAL-05DBAL Get status when disconnected");
             Debug.WriteLine(DBAbstractionLayer.getStatus());
 
-            Debug.WriteLine("\nTest DBAL-06 DBAL DBAL Ensure status when connected");
+            Debug.WriteLine("\nTest DBAL-06 DBAL Ensure status when connected");
             DBAbstractionLayer.connect();
             DBAbstractionLayer.ensureStatus();
             DBAbstractionLayer.disconnect();
 
-            Debug.WriteLine("\nTest DBAL-07 DBAL DBAL Ensure status when disconnected");
+            Debug.WriteLine("\nTest DBAL-07 DBAL Ensure status when disconnected");
             DBAbstractionLayer.ensureStatus();
             DBAbstractionLayer.disconnect();
 
+            DBAbstractionLayer.ensureStatus();
+            Debug.WriteLine("\nTest DBAL-08 DBAL Is previous event with valid event");
+            Debug.WriteLine(DBAbstractionLayer.isPreviousEvent(1));
+
+            Debug.WriteLine("\nTest DBAL-09 DBAL Is previous event with invalid event");
+            Debug.WriteLine(DBAbstractionLayer.isPreviousEvent(-1));
+
+            Debug.WriteLine("\nTest DBAL-10");
+            Debug.WriteLine(DBAbstractionLayer.removeUpcomingEvent(1));
+
+            Debug.WriteLine("\nTest DBAL-11");
+            Debug.WriteLine(DBAbstractionLayer.removeUpcomingEvent(1));
+
+            Debug.WriteLine("Testing Writing New Event to DB");
+            List<StaffObject> staffList = new List<StaffObject>();
+            Debug.WriteLine(DBAbstractionLayer.getStaffByID(1));
+            staffList.Add(DBAbstractionLayer.getStaffByID(1));
+            EventObject newEvent = new EventObject(
+                DBAbstractionLayer.getNewEventID(),
+                "TestEvent :)",
+                DBAbstractionLayer.getLocationByID(1),
+                new DateTime(2024,12,31),
+                60,
+                staffList,
+                new List<EquipmentObject>() {DBAbstractionLayer.getEquipmentByID(1), DBAbstractionLayer.getEquipmentByID(2)}
+                );
+            Debug.WriteLine(newEvent.toString());
+            Debug.WriteLine(DBAbstractionLayer.addNewEvent(newEvent));
+            
+            Debug.WriteLine("Testing Updating New Event to DB");
+            staffList.Add(DBAbstractionLayer.getStaffByID(2));
+            EventObject updatedEvent = new EventObject(
+                7,
+                "TestEvent Updated :O",
+                DBAbstractionLayer.getLocationByID(2),
+                new DateTime(2024, 12, 31),
+                60,
+                staffList,
+                new List<EquipmentObject>() { DBAbstractionLayer.getEquipmentByID(2), DBAbstractionLayer.getEquipmentByID(3) }
+                );
+            Debug.WriteLine(updatedEvent.toString());
+            DBAbstractionLayer.updateEvent(updatedEvent);
+
+            Debug.WriteLine($"\n EventObject Testing");
+            foreach (String s in EventObject.timeList)
+            {
+                Debug.WriteLine(s);
+                Debug.WriteLine(EventObject.strTimeToInt(s));
+            }
         }
     }
 } 

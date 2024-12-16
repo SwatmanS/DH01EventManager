@@ -14,7 +14,7 @@ namespace DH01EventManager
     public class UpcomingEvent : EventObject
     {
         private Int32 eventEstimatedTurnout;
-        public UpcomingEvent(Int32 id, String name, LocationObject location, DateTime date, List<StaffObject>? staff, List<EquipmentObject>? eventEquipment,Int32 estimate) : base(id, name, location, date, staff, eventEquipment)
+        public UpcomingEvent(Int32 id, String name, LocationObject location, DateTime date, Int32 duration, List<StaffObject>? staff, List<EquipmentObject>? eventEquipment,Int32 estimate) : base(id, name, location, date, duration, staff, eventEquipment)
         {
             this.eventEstimatedTurnout = estimate;
         } // Upcoming Event Constructor 

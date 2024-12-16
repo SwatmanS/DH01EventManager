@@ -31,5 +31,14 @@
         {
             return String.Concat("Equipment: ", this.equipmentName, "\nID = ", this.equipmentID, "\nType = ", this.equipmentDesc);
         }
+
+        public List<EquipmentObject> objListBuilder(List<String> equ, List<EquipmentObject> equOb)
+        {
+            foreach (String s in equ)
+            {
+                equOb.Add(DBAbstractionLayer.getEquipmentByName(s)); //gets the equipmentObject for each item in the list by their name
+            }
+            return equOb;
+        }
     }
 }

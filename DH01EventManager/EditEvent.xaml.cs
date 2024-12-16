@@ -34,7 +34,7 @@ namespace DH01EventManager
             LocationList.ItemsSource = Settings.locationList;
 
             //sets form variables as the events fron the database
-            SetEvents(Settings.eventIndex);
+            SetEvents();
         }
 
         private void UpdateLoginImage()
@@ -81,11 +81,14 @@ namespace DH01EventManager
             this.Show();
         }
 
-        private void SetEvents(int index)
+        private void SetEvents()
         {
             //depending on index show a different event from the class
 
-            EventObject edit = DBAbstractionLayer.getEventByID(1);
+            // Retrieve the stored event ID
+            int eventID = Settings.eventIndex;
+
+            EventObject edit = DBAbstractionLayer.getEventByID(eventID);
 
             DateTime datetime = edit.getEventDate();
 
@@ -94,6 +97,12 @@ namespace DH01EventManager
             eventStartTimeBox.Text = (edit.getStartTime()).ToString();
             eventEndTimeBox.Text = (edit.getEndTime()).ToString();
             eventTurnoutBox.Text = "120";
+            LocationObject loc = edit.getEventLocation();
+
+
+            currentStaff.Text = "Current Staff:\n" + edit.staffString();
+            currentEquipment.Text = "Current Equipment:\n" + edit.equipmentString();
+            currentLocation.Text = "Current Location:\n" + loc.getLocationName();
         }
 
         private void NumberValidation(object sender, TextCompositionEventArgs e)
@@ -177,21 +186,54 @@ namespace DH01EventManager
             if (eventTitleBox.Text != "" && eventDateBox.Text != "" && eventStartTimeBox.Text != "" &&
                 eventEndTimeBox.Text != "" && eventTurnoutBox.Text != "")
             {
+                int eventID = Settings.eventIndex;
                 //makes lists of the staff and equipment 
-                List<string> checkedStaff = GetCheckedItems(StaffList);
-                List<string> checkedEquipment = GetCheckedItems(EquipmentList);
-                List<string> checkedLocation = GetCheckedItems(LocationList);
+                List<String> checkedStaff = GetCheckedItems(StaffList);
+                List<String> checkedEquipment = GetCheckedItems(EquipmentList);
+                List<String> checkedLocation = GetCheckedItems(LocationList);
 
-                //prints off the add event form which would go into the database
-                MessageBox.Show(
-                    "Event Title:\n" + eventTitleBox.Text +
-                    "\n\nEvent Date:\n" + eventDateBox.Text +
-                    "\n\nEvent Start Time:\n" + eventStartTimeBox.Text +
-                    "\n\nEvent End Time:\n" + eventEndTimeBox.Text +
-                    "\n\nEvent Expected Turnout:\n" + eventTurnoutBox.Text +
-                    "\n\nChecked staff:\n" + string.Join(", ", checkedStaff) +
-                    "\n\nChecked Equipment:\n" + string.Join(", ", checkedEquipment) +
-                    "\n\nEvent Location:\n" + string.Join(", ", checkedLocation));
+                //dummy objects to access methods
+                StaffObject dummy = new StaffObject(0, "a", "a", "a", "a");
+                LocationObject dummy1 = new LocationObject(0, "a", "a", 0);
+                EquipmentObject dummy2 = new EquipmentObject(0, "a", "a");
+
+                //uses listToObject to make a list of staffObjects obtained by names stored in checkedStaff
+                List<StaffObject> staffOb = new List<StaffObject>();
+                List<EquipmentObject> equOb = new List<EquipmentObject>();
+
+                staffOb = dummy.objListBuilder(checkedStaff, staffOb);
+                LocationObject locOb = dummy1.objListBuilder(checkedLocation);
+                equOb = dummy2.objListBuilder(checkedEquipment, equOb);
+
+                String dateString = String.Concat(eventDateBox.Text + " " + eventStartTimeBox.Text);
+
+                DateTime startDate = Convert.ToDateTime(dateString);
+
+                //lists for eventID and upcomingEventID, saves the final ID in list
+                List<Int32> evID = new List<Int32>();
+                evID = DBAbstractionLayer.getAllEventID();
+                Int32 lastEvID = evID.Last();
+                List<Int32> upEvID = new List<Int32>();
+                upEvID = DBAbstractionLayer.getAllUpEventID();
+                Int32 lastUpEvID = upEvID.Last();
+
+                DateTime date = DateTime.Parse(eventDateBox.Text);
+                Int32 est = Int32.Parse(eventTurnoutBox.Text);
+
+                //creates duration and startDate varianbles
+                int dur = EventObject.parseDuration(eventStartTimeBox.Text, eventEndTimeBox.Text);
+
+
+                DateTime endTime = DateTime.Parse(eventEndTimeBox.Text);
+                TimeSpan difference = endTime.Subtract(startDate);
+                //Int32 dur = (int)difference.TotalMinutes;
+
+                EventObject nEvent = new EventObject(eventID, eventTitleBox.Text, locOb, startDate, dur, staffOb, equOb);
+                UpcomingEvent uEvent = new UpcomingEvent(nEvent, est);
+
+                DBAbstractionLayer.updateEvent(nEvent);
+
+                MessageBox.Show("Event Updated: \n" + nEvent.toString(), "Edit Event");
 
                 //close the current window
                 this.Close();

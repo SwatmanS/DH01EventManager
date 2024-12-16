@@ -42,6 +42,7 @@ namespace DH01EventManager
                 Debug.WriteLine(e.toString());
                 Debug.WriteLine(u.getEstimatedTurnout());
             }
+            DBAbstractionLayer.reset();
         }
     }
 }

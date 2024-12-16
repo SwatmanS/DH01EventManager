@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Xaml.Schema;
@@ -24,7 +25,7 @@ namespace DH01EventManager
         private LocationObject location;
         private DateTime date;
         private List<StaffObject>? staff;
-        static List<String> timeList= new List<String>() { "6:00am", "6:30am", "7:00am", "7:30am", "8:00am", "8:30am", "9:00am", "9:30am", "10:00am", "10:30am", "11:00am", "11:30am", "12:00pm", "12:30pm", "1:00pm", "1:30pm", "2:00pm", "2:30pm", "3:00pm", "3:30pm", "4:00pm", "4:30pm", "5:00pm", "5:30pm", "6:00pm", "6:30pm", "7:00pm", "7:30pm", "8:00pm", "8:30pm", "9:00pm" };
+        public static List<String> timeList= new List<String>() { "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM" };
 
         public  EventObject(Int32 id, String name, LocationObject location,DateTime date,Int32 duration,List<StaffObject>? staff, List<EquipmentObject>? eventEquipment) 
         {
@@ -41,11 +42,11 @@ namespace DH01EventManager
 
         public EventObject(int id, string name, LocationObject location, DateTime date, List<StaffObject>? staff, List<EquipmentObject>? eventEquipment)
         {
-            this.id = id;
-            this.name = name;
-            this.location = location;
-            this.date = date;
-            this.staff = staff;
+            this.eventID = id;
+            this.eventname = name;
+            this.eventlocation = location;
+            this.eventDate = date;
+            this.eventStaff = staff;
             this.eventEquipment = eventEquipment;
         }
 
@@ -70,10 +71,21 @@ namespace DH01EventManager
         {
             String[] sArray;
             String sString = "";
-            foreach (StaffObject staff in eventStaff)
+
+           foreach (StaffObject staff in eventStaff)
             {
-                sString = (String.Concat(staff.getForename(), " ", staff.getSurname()));
-            }
+                if (sString == "")
+                {
+                    {
+                        sString = (String.Concat(staff.getForename(), " ", staff.getSurname()));
+                    }
+                }
+                else
+                {
+                    sString = (String.Concat(sString + ", " + staff.getForename(), " ", staff.getSurname()));
+                }
+                
+            } 
             return sString;
         }
 
@@ -83,14 +95,21 @@ namespace DH01EventManager
             String eString = "";
             foreach (EquipmentObject equip in eventEquipment)
             {
-                eString = (String.Concat(equip.getEquipmentName()));
+                if (eString == "")
+                {
+                    eString = (String.Concat(equip.getEquipmentName()));
+                }
+                else
+                {
+                    eString = (String.Concat(eString + ", " + equip.getEquipmentName()));
+                }
             }
             return eString;
         }
 
        public String toString() 
         {
-            return string.Concat("Event Name: ", this.eventname, "\nDate: ", getStartDate(), "\nStart Time: ", getStartTime(), "\nEnd Time: ", getEndTime(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
+            return string.Concat("Event: ", this.eventname, "\nDate: ", getStartDate(), "\nStart Time: ", getStartTime(), "\nEnd Time: ", getEndTime(), " \nLocation: ", this.eventlocation.getLocationName(), "\nStaff: ", staffString(),  "\nEquipment: ", equipmentString());
         }
 
         public Int32 getEventDuration()
@@ -106,17 +125,21 @@ namespace DH01EventManager
         public static Int32 strTimeToInt(String s)
         {
             Int32 x = 0;
-            for (int i = 0; i > EventObject.timeList.Count;i++)
+            Debug.WriteLine(EventObject.timeList.Count);
+            for (int i = 0; i < EventObject.timeList.Count;i++)
             {
+                //Debug.WriteLine($"{i} - {EventObject.timeList[i]} {s}");
                 if (s == EventObject.timeList[i])
                 {
+                    
                     x = i;
                 }
             }
             
-            Int32 halfPast = x +1 % 2;//16 Hours
-            Int32 hour = x - (halfPast) / 2;
-            return ((hour+6)*60)+(halfPast*30);
+            Int32 halfPast = (x) % 2;//16 Hours
+            Int32 hour = (x-halfPast)/2 + 6;
+            Debug.WriteLine($"strTimeToInt {s} - {hour} {halfPast}");
+            return ( hour* 60) + (halfPast * 30);
         }
         public static String dateTimeToStr(DateTime d)
         {
@@ -135,13 +158,14 @@ namespace DH01EventManager
 
         public static DateTime parseStartDate(DateTime startDate, String startTime)
         {
-            
+            Debug.WriteLine($"Start Date: {startDate}, Start Time {startTime}");
             return startDate.AddMinutes(EventObject.strTimeToInt(startTime));
         }
-        public static Int32 parseDuration(DateTime startDate,String StartTime, String EndTime)
+        public static Int32 parseDuration(String StartTime, String EndTime)
         {
             int start = EventObject.strTimeToInt(StartTime);
             int end = EventObject.strTimeToInt(EndTime);
+            Debug.WriteLine($"{end} - {start} = {end - start}");
             return end - start;
         }
 

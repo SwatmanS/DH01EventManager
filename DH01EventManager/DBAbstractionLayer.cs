@@ -1,13 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,7 +17,8 @@ namespace DH01EventManager
     internal class DBAbstractionLayer
     {
         static DBConnection Con = new DBConnection();
-        static string populateDB = "PRAGMA foreign_keys = 0;INSERT INTO ROSE_Login (Login_ID,Staff_ID,User_Name,Login_Password) VALUES (1,1,'User1','Rose1'),(2,2,'User2','Rose2'),(3,3,'User3','Rose3'),(4,4,'User4','Rose4');INSERT INTO ROSE_Staff (Staff_ID,Staff_Fname,Staff_Lname,Staff_position,Staff_PhoneNumber) VALUES (1,'George','Harrison','Event leader','07954500477'),(2,'John','Lennon','Manager','07954500627'),(3,'Paul','Mcartney','Assiant Manager','07954500657'),(4,'Richard','Starkey','Lab Tech','07954500677');INSERT INTO ROSE_AssignStaff (AssignStaff_ID,Staff_ID,Event_ID) VALUES (1,1,1),(2,2,2),(3,3,3),(4,4,4);	INSERT INTO ROSE_Location (Location_ID,Location_name,Location_address,Location_Capacity) VALUES (1,'Tynemouth Pool','Tynemouth Surf Cafe',30),(2,'Monument','Monument Statue',55),(3,'Cullercoats','Cullercoats beach',40),(4,'Heaton','Simonside Terrace',50);INSERT INTO ROSE_Event (Event_ID,Location_ID,Event_Name,Event_Date,Event_Duration) VALUES (1,1,'Cervical Screenings','09/12/2024 11:40:40',60),(2,2,'Cervical Screenings','09/12/2024 11:40:40',60),(3,3,'Cervical Screenings','09/12/2024 11:40:40',60),(4,4,'Cervical Screenings','09/12/2024 11:40:40',60);INSERT INTO ROSE_PastEvents(PastEvent_ID,Event_ID,Actual_Turnout) VALUES (1,1,100),(2,2,150),(3,3,130),(4,4,107);INSERT INTO ROSE_UpcomingEvents(NewEvent_ID,Event_ID,Predicted_Turnout) VALUES (1,1,150),(2,2,100),(3,3,125),(4,4,100);	INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES (1,1,1),(2,1,2),(3,2,2),(4,2,1);INSERT INTO ROSE_Equipment(Equipment_ID,Equipment_Name,Equipment_Description) VALUES (1,'Table','Wooden Table for leaflets'),(2,'Chair','Chair for sitting on');";
+        static string testpopulateDB = "PRAGMA foreign_keys = 0;INSERT INTO ROSE_Login (Login_ID,Staff_ID,User_Name,Login_Password) VALUES (1,1,'User1','Rose1'),(2,2,'User2','Rose2'),(3,3,'User3','Rose3'),(4,4,'User4','Rose4');INSERT INTO ROSE_Staff (Staff_ID,Staff_Fname,Staff_Lname,Staff_position,Staff_PhoneNumber) VALUES (1,'George','Harrison','Event leader','07954500477'),(2,'John','Lennon','Manager','07954500627'),(3,'Paul','Mcartney','Assiant Manager','07954500657'),(4,'Richard','Starkey','Lab Tech','07954500677');INSERT INTO ROSE_AssignStaff (AssignStaff_ID,Staff_ID,Event_ID) VALUES (1,1,1),(2,2,2),(3,3,3),(4,4,4);	INSERT INTO ROSE_Location (Location_ID,Location_name,Location_address,Location_Capacity) VALUES (1,'Tynemouth Pool','Tynemouth Surf Cafe',30),(2,'Monument','Monument Statue',55),(3,'Cullercoats','Cullercoats beach',40),(4,'Heaton','Simonside Terrace',50);INSERT INTO ROSE_Event (Event_ID,Location_ID,Event_Name,Event_Date,Event_Duration) VALUES (1,1,'Cervical Screenings','09/12/2024 11:40:40',60),(2,2,'Cervical Screenings','09/12/2024 11:40:40',60),(3,3,'Cervical Screenings','09/12/2024 11:40:40',60),(4,4,'Cervical Screenings','09/12/2024 11:40:40',60);INSERT INTO ROSE_PastEvents(PastEvent_ID,Event_ID,Actual_Turnout) VALUES (1,1,100),(2,2,150),(3,3,130),(4,4,107);INSERT INTO ROSE_UpcomingEvents(NewEvent_ID,Event_ID,Predicted_Turnout) VALUES (1,1,150),(2,2,100),(3,3,125),(4,4,100);	INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES (1,1,1),(2,1,2),(3,2,2),(4,2,1);INSERT INTO ROSE_Equipment(Equipment_ID,Equipment_Name,Equipment_Description) VALUES (1,'Table','Wooden Table for leaflets'),(2,'Chair','Chair for sitting on');";
+        static string populateDB = "PRAGMA foreign_keys = 0;INSERT INTO ROSE_Login (Login_ID,Staff_ID,User_Name,Login_Password) VALUES  (1,1,'User1','Rose1'),(2,2,'User2','Rose2'),(3,3,'User3','Rose3'),(4,4,'User4','Rose4');INSERT INTO ROSE_Staff (Staff_ID,Staff_Fname,Staff_Lname,Staff_position,Staff_PhoneNumber) VALUES (1, 'Aishah', 'Mayang','Manager','+60 4545 989090'),(2, 'Aishah', 'Shah','Manager','+60 4545 989090'),(3, 'Alya', 'Tiara','Manager','+60 4545 989090'),(4, 'Alya', 'Wira','Volunteer','+60 4545 989090'),(5, 'Amani', 'Wati','Volunteer','+60 4545 989090'),(6, 'Amani', 'Wira','Volunteer','+60 4545 989090'),(7, 'Ammar', 'Raja','Volunteer','+60 4545 989090'),(8, 'Arissa', 'Tam','Volunteer','+60 4545 989090'),(9, 'Ashraff', 'Tengku','Volunteer','+60 4545 989090'),(10, 'Balqis', 'Darma','Volunteer','+60 4545 989090'),(11, 'Batrisyia', 'Orked','Volunteer','+60 4545 989090'),(12, 'Damia', 'Jehan','Volunteer','+60 4545 989090'),(13, 'Damia', 'Mayang' ,'Volunteer','+60 4545 989090'),(14, 'Hadif', 'Tuah','Volunteer','+60 4545 989090'),(15, 'Hakim', 'Ros','Volunteer','+60 4545 989090'),(16, 'Haziq', 'Som','Volunteer','+60 4545 989090'),(17, 'Humaira', 'Jehan','Volunteer','+60 4545 989090'),(18, 'Irfan', 'Kesuma','Volunteer','+60 4545 989090'),(19, 'Keisha', 'Joyo','Volunteer','+60 4545 989090'),(20, 'Mia', 'Kiambang','Volunteer','+60 4545 989090'),(21, 'Noor', 'Lai','Volunteer','+60 4545 989090'),(22, 'Qaisara', 'Mayang','Volunteer','+60 4545 989090'),(23, 'Qistina', 'Mirza','Volunteer','+60 4545 989090'),(24, 'Rayyan', 'Kesuma','Volunteer','+60 4545 989090'),(25, 'Syshmi', 'Megat','Volunteer','+60 4545 989090'),(26, 'Zara', 'Shah','Volunteer','+60 4545 989090');INSERT INTO ROSE_Equipment(Equipment_ID,Equipment_Name,Equipment_Description) VALUES (1,'Furniture','Additional furniture required to run event that isnt included in the location'),(2, 'PPE', 'Equipment for medical staff to stay safe and sanitary during a screening'),(3, 'Speculum Size 1', 'Holds vaginal walls apart for screening; size 1'),(4, 'Speculum Size 2', 'Holds vaginal walls apart for screening; size 2'),(5, 'Speculum Size 3', 'Holds vaginal walls apart for screening; size 3'),(6, 'Speculum Size 4', 'Holds vaginal walls apart for screening; size 4'),(8, 'Lubricant', 'Aids with the insertion of speculum'),(9, 'Cytobrush', 'Collect cells from cervix during screenings'),(10, 'Sample vials and packaging', 'Stores samples; packaging included to send to laboratory'),(11, 'Patient Resources', 'Resources for patients such as flyers and leaflets'),(12, 'Information Resources', 'Informative resources to be displayed at the venue i.e. posters, presentations, and leaflets');INSERT INTO ROSE_Location (Location_ID,Location_name,Location_address,Location_Capacity) VALUES (1,'Bangsar South Medical Clinic','Malaysia',50),(2,'Klinik Primary Care 4U','Malaysia',50),(3,'BeHealth Clinic','Malaysia',50),(4,'Perdana Medical Clinic','Malaysia',50),(5,'Klinik Dr.Prevents','Malaysia',50),(6,'Medhope Family Clinic','Malaysia',50),(7,'Qualitas SV Care Clinic','Malaysia',50),(8,'Wellcare Clinic','Malaysia',50),(9,'Klinik Mediviron Metropark','Malaysia',50),(10,'Klinik Primaria','Malaysia',50),(11,'Klinik Family E-Medic','Malaysia',50),(12,'Klinik Careclinics Al-Amin','Malaysia',50),(13,'My Family Clinic','Malaysia',50),(14,'REN.CLINIC','Malaysia',50),(15,'RIIYYAH MEDICAL CLINIC','Malaysia',50),(16,'Muthus Clinic and Surgery','Malaysia',50),(17,'X Care Clinic','Malaysia',50),(18,'Family Clinic Seventeen','Malaysia',50),(19,'SV Care Clinic','Malaysia',50),(20,'Emerald Clinic Rawang','Malaysia',50),(21,'Nlee Family Clinic','Malaysia',50),(22,'MCare Clinic','Malaysia',50),(23,'TMC Health Centre','Malaysia',50),(24,'Clinic Medi-Genesis','Malaysia',50),(25,'One Med Clinic','Malaysia',50),(26, 'Medizone Family Clinic','Malaysia',50);INSERT INTO ROSE_Event (Event_ID,Location_ID,Event_Name,Event_Date,Event_Duration) VALUES (1,1,'Cervical Screenings','20/12/2024 11:30:00',60),(2,2,'Cervical Screenings','21/12/2024 11:30:00',60),(3,1,'Cervical Screenings','22/12/2024 11:30:00',60),(4,4,'Cervical Screenings','23/12/2024 11:30:00',60),(5,10,'Cervical Screenings','23/12/2024 11:30:00',60),(6,10,'Cervical Screenings','16/12/2024 11:30:00',60);INSERT INTO ROSE_AssignStaff (AssignStaff_ID,Staff_ID,Event_ID) VALUES (1,1,1),(2,2,1),(3,3,1),(4,4,1),(5,1,2),(6,5,2),(7,6,2),(8,7,2),(9,2,3),(10,8,3),(11,9,3),(12,10,3),(13,11,4),(14,3,4),(15,12,4),(16,13,4),(17,2,5),(18,14,5),(19,15,5),(20,16,5),(21,2,6),(22,14,6),(23,15,6),(24,16,6);INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,2,1),(6,2,2),(7,2,6),(8,2,7),(9,3,1),(10,3,2),(11,3,7),(12,3,4),(13,4,7),(14,4,2),(15,4,4),(16,4,9),(17,5,1),(18,5,10),(19,5,3),(20,5,8),(21,6,1),(22,6,10),(23,6,3),(24,6,8);INSERT INTO ROSE_PastEvents(PastEvent_ID,Event_ID,Actual_Turnout) VALUES (1,6,46);INSERT INTO ROSE_UpcomingEvents(NewEvent_ID,Event_ID,Predicted_Turnout) VALUES(1,1,19),(2,2,35),(3,3,60),(4,4,20),(5,5,46);";
         static string schemaDB = "PRAGMA foreign_keys = 0;DROP TABLE IF EXISTS ROSE_Login;DROP TABLE IF EXISTS ROSE_Staff;DROP TABLE IF EXISTS ROSE_AssignStaff;DROP TABLE IF EXISTS ROSE_Location;DROP TABLE IF EXISTS ROSE_Event;DROP TABLE IF EXISTS ROSE_PastEvents;DROP TABLE IF EXISTS ROSE_UpcomingEvents;DROP TABLE IF EXISTS ROSE_EquipmentAssign;DROP TABLE IF EXISTS ROSE_Equipment;CREATE TABLE IF NOT EXISTS ROSE_Login(Login_ID INTEGER(32),Staff_ID INTEGER(32),User_Name TEXT,Login_Password TEXT,PRIMARY KEY(Login_ID));CREATE TABLE IF NOT EXISTS ROSE_Staff(Staff_ID INTEGER(32),Staff_Fname TEXT,Staff_Lname TEXT,Staff_position TEXT,Staff_PhoneNumber TEXT,PRIMARY KEY(Staff_ID));CREATE TABLE IF NOT EXISTS ROSE_AssignStaff(AssignStaff_ID INTEGER(32),Staff_ID INTEGER(32),Event_ID INTEGER(32),PRIMARY KEY(AssignStaff_ID));CREATE TABLE IF NOT EXISTS ROSE_Location(Location_ID INTEGER(32),Location_Name CHAR(6),Location_Address CHAR(6),Location_Capacity INTEGER(32),PRIMARY KEY(Location_ID));CREATE TABLE IF NOT EXISTS ROSE_Event(Event_ID INTEGER(32),Location_ID INTEGER(32),Event_Name TEXT,Event_Date CHAR(23),Event_Duration INTEGER(32),PRIMARY KEY(Event_ID));CREATE TABLE IF NOT EXISTS ROSE_PastEvents(PastEvent_ID INTEGER(32),Event_ID INTEGER(32),Actual_Turnout INTEGER,PRIMARY KEY(PastEvent_ID));CREATE TABLE IF NOT EXISTS ROSE_UpcomingEvents(NewEvent_ID INTEGER(32),Event_ID INTEGER(32),Predicted_Turnout INTEGER(32),PRIMARY KEY(NewEvent_ID));\tCREATE TABLE IF NOT EXISTS ROSE_EquipmentAssign(EquipmentAssign_ID INTEGER(32),Event_ID INTEGER(32),Equipment_ID INTEGER(32),PRIMARY KEY(EquipmentAssign_ID));CREATE TABLE IF NOT EXISTS ROSE_Equipment(Equipment_ID INTEGER(32), Equipment_Name TEXT,Equipment_Description TEXT,PRIMARY KEY(Equipment_ID));";
         //---------------------------------------Basic Methods
 
@@ -115,19 +117,21 @@ namespace DH01EventManager
              *  Checks DB if there is an entry in the previous event table at eventID
              */
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_PastEvents WHERE Event_ID = {eventID};");
-            if (qResults.Read() == null)
+            var x = qResults.Read();
+            //Debug.WriteLine(String.Concat(qResults.Read().ToString(),"<-qResults"));
+            if (x)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
-        public static void removeUpcomingEvent(Int32 eventID)
+        public static bool removeUpcomingEvent(Int32 eventID)
         {
             /*
              *  Delets an upcominng event row at where = eventID
              */
-            Con.runSQL($"DELETE * FROM Rose_UpcomingEvents Where Event_ID = {eventID};");
+            return Con.runSQL($"DELETE  FROM Rose_UpcomingEvents Where Event_ID = {eventID};");
         }
 
         public static Boolean addPreviousEvent(EventObject e, Int32 ActualTurnout)
@@ -175,7 +179,7 @@ namespace DH01EventManager
                                    qResults.GetInt32(4),
                                    DBAbstractionLayer.getAssociatedStaff(qResults.GetInt32(0)),
                                    DBAbstractionLayer.getAssociatedEquipment(qResults.GetInt32(0))
-                                   ); ; ; ; ;
+                                   ); 
             }
             return new EventObject(EventID,
                                    "Unknown Event",
@@ -189,9 +193,8 @@ namespace DH01EventManager
             SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  ROSE_Staff WHERE Staff_ID = {StaffID};");
             if (qResults.Read()) // (Staff_ID,Staff_Fname,Staff_Lname,Staff_Position_Staff_Phonenumber)
             {
-                return new StaffObject(qResults.GetInt32(0), qResults.GetString(1), qResults.GetString(2), qResults.GetString(4), qResults.GetString(3)
-
-                                   ); 
+                Debug.WriteLine($"getStaffByID {StaffID} - {qResults.GetString(1)}");
+                return new StaffObject(qResults.GetInt32(0), qResults.GetString(1), qResults.GetString(2), qResults.GetString(4), qResults.GetString(3)); 
             }
             return new StaffObject(StaffID, "Unknown First name ", "unkown Second name", "unkown phone number", "unkown position");
                                    
@@ -292,6 +295,17 @@ namespace DH01EventManager
             Con.runSQL($"UPDATE Rose_UpcomingEvent SET Event_ID = {upcoming.getEventID()},Predicted_Turnout = {upcoming.getEstimatedTurnout()} WHERE NewEvent_ID = {upcoming.getEventID()};");
         }
 
+        public static Int32 getNewEventID()
+        {
+            List<Int32> l = new List<Int32>();
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT Event_ID FROM ROSE_Event;");
+            while (qResults.Read())
+            {
+                l.Add(qResults.GetInt32(0));
+            }
+            Int32 Mx = l.Max() + 1;
+            return Mx;
+        }
         public static List<UserObject> getAllUsers()
         {
             List<UserObject> l = new List<UserObject>();
@@ -311,18 +325,27 @@ namespace DH01EventManager
             DBAbstractionLayer.ensureStatus();
             if (!DBAbstractionLayer.validStaffCheck(e.getEventStaff()))
             {
+                Debug.WriteLine("Add New Event Failure - Invalid Staff");
                 return false;
             }
             else if (!DBAbstractionLayer.validLocationCheck(e.getEventLocation()))
             {
+                Debug.WriteLine("Add New Event Failure - Invalid Location");
                 return false;
             }
             else if (!DBAbstractionLayer.validEquipmentCheck(e.getEventEquipment()))
             {
+                Debug.WriteLine("Add New Event Failure - Invalid Equipment");
                 return false;
             }
-            else if (!DBAbstractionLayer.isNewEventID(e.getEventID()))
+            else if (DBAbstractionLayer.isNewEventID(e.getEventID()))
             {
+                Debug.WriteLine("Add New Event Failure - Invalid Event ID");
+                return false;
+            }
+            else if (e.getEventDuration() <= 0)
+            {
+                Debug.WriteLine("Add New Event Failure - Invalid Duration");
                 return false;
             }
             
@@ -336,12 +359,13 @@ namespace DH01EventManager
         {
             DBAbstractionLayer.ensureStatus();
             Boolean check = true;
+            //SQLiteDataReader? qResults = Con.querySQL($"SELECT * From  Rose_EquipmentAssign WHERE Event_ID = {EventID};");
             foreach (StaffObject s in staffObjects)
             {
-                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES ({DBAbstractionLayer.getNewStaffAssignID()},{EventID},{s.getStaffID()});");
+                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_AssignStaff(AssignStaff_ID,Event_ID,Staff_ID) VALUES ({DBAbstractionLayer.getNewStaffAssignID()},{EventID},{s.getStaffID()});");
             }
             return check;
-    }
+        }
 
 
         public static bool AssignEquipment(List<EquipmentObject>? equipmentObjects,Int32 EventID)
@@ -355,15 +379,18 @@ namespace DH01EventManager
             return check;
         }
 
-        public static object getNewEquipmentAssignID()
+        public static Int32 getNewEquipmentAssignID()
         {
             List<Int32> l = new List<Int32>();
+            //Debug.WriteLine("get New Equipment Assign --");
             SQLiteDataReader? qResults = Con.querySQL($"SELECT EquipmentAssign_ID FROM ROSE_EquipmentAssign;");
             while (qResults.Read())
             {
+                //Debug.WriteLine($"ID = {qResults.GetInt32(0)}");
                 l.Add(qResults.GetInt32(0));
             }
             Int32 Mx = l.Max() + 1;
+            //Debug.WriteLine($"NewID - {Mx}");    
             return Mx;
         }
 
@@ -411,7 +438,7 @@ namespace DH01EventManager
             foreach (EquipmentObject q in equipmentObjects)
             {
                 // Test ID
-                if (null != Con.querySQL($"SELECT * FROM ROSE_Equipment WHERE Equipment_ID = {q.getEquipmentID()};"))
+                if (!(Con.querySQL($"SELECT * FROM ROSE_Equipment WHERE Equipment_ID = {q.getEquipmentID()};").Read()))
                 {
                     return false;
                 }
@@ -422,7 +449,7 @@ namespace DH01EventManager
         public static Boolean validLocationCheck(LocationObject locationObject)
         {
             // Test ID
-            if (null != Con.querySQL($"SELECT * FROM ROSE_Equipment WHERE Equipment_ID = {locationObject.getLocationID()};"))
+            if (!(Con.querySQL($"SELECT * FROM ROSE_Location WHERE Location_ID = {locationObject.getLocationID()};").Read()))
             {
                 return false;
             }
@@ -434,7 +461,7 @@ namespace DH01EventManager
             foreach (StaffObject s in staffObjects)
             {
                 // Test ID
-                if (null != Con.querySQL($"SELECT * FROM ROSE_Staff WHERE Staff_ID = {s.getStaffID()};"))
+                if (!Con.querySQL($"SELECT * FROM ROSE_Staff WHERE Staff_ID = {s.getStaffID()};").Read())
                 {
                     return false;
                 }
@@ -516,13 +543,13 @@ namespace DH01EventManager
             return DBAbstractionLayer.getEventByName(Name).getEventStaff();
         }
 
-        public Boolean updateEvent(EventObject e)
+        public static Boolean updateEvent(EventObject e)
         {
             if (DBAbstractionLayer.isNewEventID(e.getEventID()))
             {
                 return DBAbstractionLayer.addNewEvent(e);
             }
-            bool a = Con.runSQL($"UPDATE Rose_Event SET Event_Name = '{e.getEventName()}, Location_ID = {e.getEventLocation().getLocationID()},Event_Date = '{e.getEventDate()}',Event_Duration = {e.getEventDuration()} WHERE Event_ID = {e.getEventID()}");
+            bool a = Con.runSQL($"UPDATE Rose_Event SET Event_Name = '{e.getEventName()}', Location_ID = {e.getEventLocation().getLocationID()},Event_Date = '{e.getEventDate()}',Event_Duration = {e.getEventDuration()} WHERE Event_ID = {e.getEventID()}");
             Boolean b = DBAbstractionLayer.updateAssignedEquipment(e.getEventEquipment(), e.getEventID());
             Boolean c = DBAbstractionLayer.updateAssignedStaff(e.getEventStaff(), e.getEventID());
             return a && b && c;
@@ -534,7 +561,7 @@ namespace DH01EventManager
             Con.runSQL($"Delete From Rose_AssignStaff where Event_ID = {EventID}");
             foreach (StaffObject s in staffObjects)
             {
-                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES ({DBAbstractionLayer.getNewStaffAssignID()},{EventID},{s.getStaffID()});");
+                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_AssignStaff(AssignStaff_ID,Event_ID,Staff_ID) VALUES ({DBAbstractionLayer.getNewStaffAssignID()},{EventID},{s.getStaffID()});");
             }
             return check;
         }
@@ -545,11 +572,91 @@ namespace DH01EventManager
             Con.runSQL($"Delete From Rose_EquipmentAssign where Event_ID = {EventID}");
             foreach (EquipmentObject q in equipmentObjects)
             {
-                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES ({DBAbstractionLayer.getNewEquipmentAssignID()},{EventID},{q.getEquipmentID()});");
+                int newID = DBAbstractionLayer.getNewEquipmentAssignID();
+               
+                check = check && Con.runSQL($"PRAGMA foreign_keys = 0;INSERT INTO ROSE_EquipmentAssign(EquipmentAssign_ID,Event_ID,Equipment_ID) VALUES ({newID},{EventID},{q.getEquipmentID()});");
+                
             }
             return check;
         }
 
+        public static List<EquipmentObject>? getAllEquipment()
+        {
+            {
+                List<EquipmentObject> l = new List<EquipmentObject>();
+                SQLiteDataReader? qResults = Con.querySQL($"SELECT * From ROSE_Equipment");
+                while (qResults.Read())
+                {
 
+                    l.Add(new EquipmentObject(qResults.GetInt32(0),qResults.GetString(1), qResults.GetString(2)));
+                }
+                return l;
+            }
+            
+        }
+
+        public static List<LocationObject>? getAllLocations()
+        {
+            List<LocationObject> l = new List<LocationObject>();
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From ROSE_Location");
+            while (qResults.Read())
+            {
+
+                l.Add(new LocationObject(qResults.GetInt32(0), qResults.GetString(1), qResults.GetString(2), qResults.GetInt32(3)));
+            }
+            return l; 
+        }
+
+        internal static List<StaffObject>? getAllStaff()
+        {
+            List<StaffObject> l = new List<StaffObject>();
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT * From ROSE_Staff");
+            while (qResults.Read())
+            {
+
+                l.Add(new StaffObject(qResults.GetInt32(0), qResults.GetString(1), qResults.GetString(2), qResults.GetString(3), qResults.GetString(4)));
+            }
+            return l;
+        }
+
+        public static List<Int32> getAllEventID()
+        {
+            List <Int32> ints = new List<Int32>();
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT Event_ID From ROSE_Event");
+            while (qResults.Read())
+            {
+
+                ints.Add(qResults.GetInt32(0));
+            }
+            return ints;
+        }
+
+        public static List<Int32> getAllUpEventID()
+        {
+            List<Int32> ints = new List<Int32>();
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT NewEvent_ID From ROSE_UpcomingEvents");
+            while (qResults.Read())
+            {
+
+                ints.Add(qResults.GetInt32(0));
+            }
+            return ints;
+        }
+        public static Boolean addUpcomimgEvent(UpcomingEvent e)
+        {
+            List<Int32> l = new List<Int32>();
+            Con.runSQL($"Delete From Rose_UpcomingEvents where Event_ID = {e.getEventID()}");
+            DBAbstractionLayer.updateEvent(e);
+            
+            
+            SQLiteDataReader? qResults = Con.querySQL($"SELECT NewEvent_ID FROM Rose_UpcomingEvents;");
+            while (qResults.Read())
+            {
+                l.Add(qResults.GetInt32(0));
+            }
+            Int32 Mx = l.Max() + 1;
+            Con.querySQL($"INSERT INTO Rose_UpcomingEvents (NewEvent_ID,Event_ID,Predicted_Turnout) VALUES ({Mx},{e.getEventID()},{e.getEstimatedTurnout()});");
+            return true;
+        }
     }// DBAbstractionLayer
 }

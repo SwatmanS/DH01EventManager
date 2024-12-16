@@ -25,10 +25,11 @@ namespace DH01EventManager
                 Window debugWindow = new DebugWindow();
                 debugWindow.Show();
             }
-
+            
             //connects to the database
             DBAbstractionLayer.connect();
-
+            //Gets Info for frontend
+            Settings.getDBData();
             //updates the logged in image 
             UpdateLoginImage();
         }
@@ -52,7 +53,7 @@ namespace DH01EventManager
 
         private void GoHome_Click(object sender, RoutedEventArgs e)
         {
-            //hides current window and goes to the home page 
+            //hides current window and goes to the home page
             MainWindow l_page = new();
             this.Hide();
             l_page.ShowDialog();

@@ -27,15 +27,16 @@ namespace DH01EventManager
 
         private void alucard(object sender, RoutedEventArgs e)
         {
-            //close the current window
+            //jasmine's tests
 
             //test.EquipmentObjectTest();
             //test.LocationObjectTest();
             //test.StaffObjectTest();
             //test.UserObjectTest();
-            //test.EventObjectTest();
+            test.EventObjectTest();
             //test.LogInObjectTest();
-            test.EventManagerTest();
+            //test.EventManagerTest();
+            //test.ranMethod();
         }
     }
 }

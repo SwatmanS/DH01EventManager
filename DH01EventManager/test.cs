@@ -24,9 +24,24 @@ namespace DH01EventManager
 
         public static void EventObjectTest()
         {
-            List<EventObject> events = new List<EventObject>();
+
+            List<UpcomingEvent> uEvents = new List<UpcomingEvent>();
+            uEvents = DBAbstractionLayer.getUpcomingEvents();
+
+            foreach (UpcomingEvent upcoming in uEvents)
+            {
+                MessageBox.Show("Crying: " + upcoming.getStartTime() + upcoming.getEndTime() + upcoming.getEventDuration());
+            }
+           /*List<EventObject> events = new List<EventObject>();
             events = DBAbstractionLayer.getAllEvents();
-            MessageBox.Show("rah " + events[0].toString(), "events");
+
+            foreach (EventObject eventArgs in events)
+            {
+                MessageBox.Show("rah " + eventArgs.toString(), "events");
+            }
+
+            */
+            
         }
 
         public static void LocationObjectTest()
@@ -52,23 +67,20 @@ namespace DH01EventManager
         public static void StaffObjectTest()
         {
             //int32 id, str forename, str surname, str staffPhoneNo, str staffPosition
-            var testSt = new StaffObject(1, "Ammar", "Raja", "+60167423958", "Nurse");
-            MessageBox.Show("Constructing staff object using parameters: 1, Ammar, Raja, +60167423958, Nurse", "St Constructor Test");
-            MessageBox.Show(testSt.toString(), "Constructor result");
+            var testSt = new StaffObject(1, "a", "a", "a", "a");
 
+            List<String> list = new List<String>();
+            list.Add("Hakim Ros");
+            list.Add("Hadif Tuah");
 
-            //var testSt = new StaffObject(1, "Zara", "Nurse", "Medical", "Information");
-            //MessageBox.Show("Constructing staff object using parameters: 1, Zara, Nurse, [Medical, Information]\nResult: " + testSt, "St Constructor Test");
-            //MessageBox.Show("getStaffID: " + testSt.getStaffID() + "\ngetStaffName: " + testSt.getStaffName() + "\ngetStaffType: " + testSt.getStaffType() + "\ngetWorkableEvents: " + testSt.GetWorkableEvents(), "St Getter Test");
-            //MessageBox.Show("Using setters to change the following values:\nID = 2\nName = Nor\nType = Admin\nWorkable Events = [Information]", "St Setter Test with Valid Data");
-            //testSt.setStaffID(2);
-            //testSt.setStaffName("Nor");
-            //testSt.setWorkableEvents(["Information"]);
-            //MessageBox.Show("getStaffID: " + testSt.getStaffID() + "\ngetStaffName: " + testSt.getStaffName() + "\ngetStaffType: " + testSt.getStaffType() + "\ngetWorkableEvents: " + testSt.GetWorkableEvents(), "St Setter with Valid Data Result");
+            List<StaffObject> staffOb = new List<StaffObject>();
 
+            staffOb = testSt.objListBuilder(list,staffOb);
 
-
-            //  Doesnt Work Now after updating the Staff Object to be in line with the database/class diagram sorry! -Sam
+            foreach (StaffObject staff in staffOb)
+            {
+                    MessageBox.Show(staff.toString());
+            }
         }
 
         public static void UpcomingEventTest()
@@ -115,6 +127,17 @@ namespace DH01EventManager
             MessageBox.Show("ack" + testEM.getFullEventList());
         }
 
+        public static void ranMethod()
+        {
+            List <Int32> list = new List<Int32>();
+
+            list = DBAbstractionLayer.getAllEventID();
+
+            foreach(Int32 i in list)
+            {
+                MessageBox.Show(i.ToString());
+            }
+        }
 
 
     }
