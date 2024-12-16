@@ -8,7 +8,7 @@ using System.Net;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
 using System.Windows;
 using System.Windows.Controls;
 
@@ -645,7 +645,7 @@ namespace DH01EventManager
         public static Boolean addUpcomimgEvent(UpcomingEvent e)
         {
             List<Int32> l = new List<Int32>();
-            DBAbstractionLayer.updateEvent(e);
+            //DBAbstractionLayer.updateEvent(e);
             SQLiteDataReader? qResults = Con.querySQL($"SELECT NewEvent_ID FROM Rose_UpcomingEvents;");
             while (qResults.Read())
             {

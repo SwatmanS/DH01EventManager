@@ -177,8 +177,10 @@ namespace DH01EventManager
                 equOb = dummy2.objListBuilder(checkedEquipment, equOb);
 
                 DateTime startDate = DateTime.Parse(eventDateBox.Text);
-                String startTime = eventStartTimeBox.Text;
-                String endTime = eventEndTimeBox.Text;
+                TimeOnly startTime = TimeOnly.Parse(eventStartTimeBox.Text);
+                TimeOnly endTime = TimeOnly.Parse(eventEndTimeBox.Text);
+                TimeSpan difference = endTime - startTime;
+                Int32 dur = (int) difference.TotalMinutes;
 
                 //lists for eventID and upcomingEventID, saves the final ID in list
                 List<Int32> evID = new List<Int32>();
@@ -193,7 +195,7 @@ namespace DH01EventManager
                 Int32 est = Int32.Parse(eventTurnoutBox.Text);
 
                 //creates duration and startDate varianbles
-                int dur = EventObject.parseDuration(eventStartTimeBox.Text, eventEndTimeBox.Text);
+                //int dur = EventObject.parseDuration(eventStartTimeBox.Text, eventEndTimeBox.Text);
                 startDate = EventObject.parseStartDate(date,eventStartTimeBox.Text);
                 MessageBox.Show(startDate.ToString());
 
