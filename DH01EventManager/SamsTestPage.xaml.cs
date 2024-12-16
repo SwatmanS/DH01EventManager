@@ -65,8 +65,9 @@ namespace DH01EventManager
            // Debug.WriteLine("\nTest DBAL-11");
            // Debug.WriteLine(DBAbstractionLayer.addPreviousEvent
 
-           // Debug.WriteLine("\nTest DBAL-12");
-          //  Debug.WriteLine(DBAbstractionLayer.updateUpcomingEvent(1));
+           Debug.WriteLine("\nTest DBAL-12");
+          // Debug.WriteLine(DBAbstractionLayer.updateUpcomingEvent(1));
+          // Debug.WriteLine updates upcoming events in the programme
 
             Debug.WriteLine("\nTest DBAL-14");
            // Debug.WriteLine(DBAbstractionLayer.addNewEvent 
