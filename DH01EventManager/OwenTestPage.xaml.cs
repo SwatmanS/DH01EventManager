@@ -28,6 +28,9 @@ namespace DH01EventManager
              *  Put Tests Below
              * 
              */
+            DBAbstractionLayer.reset();
+            DBAbstractionLayer.ensureStatus();
+            /*
             Debug.WriteLine("Test DBAL-60 get all events test");
             List<EventObject> l =  DBAbstractionLayer.getAllEvents();
             foreach (EventObject e in l)
@@ -42,7 +45,8 @@ namespace DH01EventManager
                 Debug.WriteLine(e.toString());
                 Debug.WriteLine(u.getEstimatedTurnout());
             }
-            DBAbstractionLayer.reset();
+            */
+            
         }
     }
 }
