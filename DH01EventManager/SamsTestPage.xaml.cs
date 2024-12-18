@@ -223,24 +223,6 @@ namespace DH01EventManager
 
 
 
-            34.getLocationByID
-35.getPastEventsByID
-36.getEquipmentByID
-37.getPreviousEvents
-38.getUpcomingEventData
-39.getAllPreviousTurnoutsAtLocation
-40.getEquipmentIDByName
-41.getStaffIDByNames
-42.getLocationIDByName
-43.getEventIDByName
-44.getEventByName
-45.getLocationByName
-46.getStaffByName
-47.getEquipmentByName
-48.getLocationFromEventName
-49.getEquipmentFromEventName
-50.getStaffFromEventName
-
 
 
 
