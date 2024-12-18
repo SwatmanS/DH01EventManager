@@ -110,91 +110,136 @@ namespace DH01EventManager
             //  Debug.WriteLine(DBAbstractionLayer.validStaffCheck;
             //  test works in the program by checking the staff are valid in the staff table
 
-            /*
+            
             Debug.WriteLine("\nTest DBAL-24");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.updateEvent;
+            //  test works in the program by checking the events have been updated in the events table
 
             Debug.WriteLine("\nTest DBAL-25");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.updateAssignedStaff;
+            //  test works in the program by checking the staff are valid in the staff table
 
             Debug.WriteLine("\nTest DBAL-26");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.updateAssignedEquipment;
+            //  test works in the program by checking the staff are valid in the staff table
 
             Debug.WriteLine("\nTest DBAL-27");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getAllEvents;
+            //test works in the program by getting all events
 
             Debug.WriteLine("\nTest DBAL-28");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getAssociatedEquipment;
+            //test works in the program by getting the associated equipment 
 
             Debug.WriteLine("\nTest DBAL-29");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getAssociatedStaff;
+            //test works in the program  by getting the associated staff
 
             Debug.WriteLine("\nTest DBAL-30");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getAssociatedLocation;
+            //test works in the program  by getting the associated location
 
             Debug.WriteLine("\nTest DBAL-31");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer..getUpcomingEvents;
+            //test works in the program  by getting the upcoming events
 
             Debug.WriteLine("\nTest DBAL-32");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            //  Debug.WriteLine(DBAbstractionLayer.getEventByID;
+            //test works in the program  by getting the event by ID from event table
 
             Debug.WriteLine("\nTest DBAL-33");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getStaffByID;
+            //test works in the program  by getting the staff by ID from staff table
 
             Debug.WriteLine("\nTest DBAL-34");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            //Debug.WriteLine(DBAbstractionLayer.getLocationByID;
+            //test works in the program  by getting the location by ID from location table
 
             Debug.WriteLine("\nTest DBAL-35");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getPastEventsByID;
+            //test works in the program  by getting the past events by ID from event table
 
             Debug.WriteLine("\nTest DBAL-36");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getEquipmentByID;
+            //test works in the program  by getting the equipment by ID from equipment table
 
             Debug.WriteLine("\nTest DBAL-37");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getPreviousEvents;
+            //test works in the program  by getting the previous events
 
             Debug.WriteLine("\nTest DBAL-38");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getUpcomingEventData;
+            //test works in the program  by getting the upcoming events data
 
             Debug.WriteLine("\nTest DBAL-39");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getAllPreviousTurnoutsAtLocation;
+            //test works in the program  by getting the previous turnouts from the event table
 
             Debug.WriteLine("\nTest DBAL-40");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getEquipmentIDByName;
+            //test works in the program  by getting the equipment ID by name
 
             Debug.WriteLine("\nTest DBAL-41");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getStaffIDByNames;
+            //test works in the program  by getting the staff ID by name
 
             Debug.WriteLine("\nTest DBAL-42");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getLocationIDByName;
+            //test works in the program  by getting the location ID by name
 
             Debug.WriteLine("\nTest DBAL-43");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getEventIDByName;
+            //test works in the program  by getting the event ID by name
 
             Debug.WriteLine("\nTest DBAL-44");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getEventByName;
+            //test works in the program  by getting the event by name
 
             Debug.WriteLine("\nTest DBAL-45");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getLocationByName;
+            //test works in the program  by getting the location by name
 
             Debug.WriteLine("\nTest DBAL-46");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            //  Debug.WriteLine(DBAbstractionLayer.getStaffByName;
+            //test works in the program  by getting the staff by name
 
             Debug.WriteLine("\nTest DBAL-47");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getEquipmentByName;
+            //test works in the program  by getting the equipment by name
 
             Debug.WriteLine("\nTest DBAL-48");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getLocationFromEventName;
+            //test works in the program  by getting the location from event name
 
             Debug.WriteLine("\nTest DBAL-49");
-            Debug.WriteLine(DBAbstractionLayer.(1));
+            // Debug.WriteLine(DBAbstractionLayer.getEquipmentFromEventName;
+            //test works in the program  by getting the equipment from event name
 
             Debug.WriteLine("\nTest DBAL-50");
-            Debug.WriteLine(DBAbstractionLayer.(1));
-                */
+            // Debug.WriteLine(DBAbstractionLayer.getStaffFromEventName;
+            //test works in the program  by getting the staff from event name
 
 
 
+
+
+            34.getLocationByID
+35.getPastEventsByID
+36.getEquipmentByID
+37.getPreviousEvents
+38.getUpcomingEventData
+39.getAllPreviousTurnoutsAtLocation
+40.getEquipmentIDByName
+41.getStaffIDByNames
+42.getLocationIDByName
+43.getEventIDByName
+44.getEventByName
+45.getLocationByName
+46.getStaffByName
+47.getEquipmentByName
+48.getLocationFromEventName
+49.getEquipmentFromEventName
+50.getStaffFromEventName
 
 
 
